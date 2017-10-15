@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import {Collapse} from 'react-collapse';
 import logo from './logo.svg';
+import MessageSection from './components/MessageSection';
 import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      connectOpen: true,
-      messageOpen: false,
+      connectOpen: false,
+      messageOpen: true,
       prayerOpen: false,
       songOpen: false,
       readingOpen: false,
@@ -88,6 +89,11 @@ class App extends Component {
             >
               Message Notes
             </button>
+            <Collapse isOpened={this.state.messageOpen}>
+              <div className="Section-content">
+                <MessageSection />
+              </div>
+            </Collapse>
           </div>
           <div className="Section">
             <button
