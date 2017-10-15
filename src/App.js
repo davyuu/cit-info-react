@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Collapse} from 'react-collapse';
+import {Helmet} from 'react-helmet';
 import logo from './logo.svg';
 import MessageSection from './components/MessageSection';
 import './App.css';
@@ -28,20 +29,23 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Helmet>
+          <title>CIT info</title>
+        </Helmet>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo"/>
           <h1 className="App-title">Church In Toronto</h1>
         </header>
         <div className="Main">
           <div className="Section">
-            <button
+            <div
               className="Section-title"
               onClick={() => this.setState({
                 connectOpen: !this.state.connectOpen
               })}
             >
               Connect
-            </button>
+            </div>
             <Collapse isOpened={this.state.connectOpen}>
               <div className="Section-content">
                 <label className="Connect-form-label">
@@ -81,14 +85,14 @@ class App extends Component {
             </Collapse>
           </div>
           <div className="Section">
-            <button
+            <div
               className="Section-title"
               onClick={() => this.setState({
                 messageOpen: !this.state.messageOpen
               })}
             >
               Message Notes
-            </button>
+            </div>
             <Collapse isOpened={this.state.messageOpen}>
               <div className="Section-content">
                 <MessageSection />
@@ -96,54 +100,54 @@ class App extends Component {
             </Collapse>
           </div>
           <div className="Section">
-            <button
+            <div
               className="Section-title"
               onClick={() => this.setState({
                 prayerOpen: !this.state.prayerOpen
               })}
             >
               Prayer Requests
-            </button>
+            </div>
           </div>
           <div className="Section">
-            <button
+            <div
               className="Section-title"
               onClick={() => this.setState({
                 songOpen: !this.state.songOpen
               })}
             >
               Song List
-            </button>
+            </div>
           </div>
           <div className="Section">
-            <button
+            <div
               className="Section-title"
               onClick={() => this.setState({
                 readingOpen: !this.state.readingOpen
               })}
             >
               Bible Reading
-            </button>
+            </div>
           </div>
           <div className="Section">
-            <button
+            <div
               className="Section-title"
               onClick={() => this.setState({
                 nextOpen: !this.state.nextOpen
               })}
             >
               Next Step>
-            </button>
+            </div>
           </div>
           <div className="Section">
-            <button
+            <div
               className="Section-title"
               onClick={() => this.setState({
                 givingOpen: !this.state.givingOpen
               })}
             >
               Giving
-            </button>
+            </div>
           </div>
         </div>
       </div>

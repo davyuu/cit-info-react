@@ -23,8 +23,12 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .Main {
@@ -37,7 +41,6 @@
   margin: 3px;
   border-radius: 20px;
   background-color: #2196F3
-
 }
 
 .Section-title {
@@ -45,6 +48,9 @@
   font-weight: 400;
   margin: 8px;
   color: #FFF;
+  border: none;
+  background-color: Transparent;
+  outline: none;
 }
 
 .Section-content {
