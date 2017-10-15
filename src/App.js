@@ -9,7 +9,7 @@ class App extends Component {
     super(props);
     this.state = {
       connectOpen: false,
-      messageOpen: true,
+      messageOpen: false,
       prayerOpen: false,
       songOpen: false,
       readingOpen: false,
