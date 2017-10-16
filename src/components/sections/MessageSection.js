@@ -1,6 +1,7 @@
 import React from 'react'
 import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
+import './MessageSection.css';
 
 class MessageSection extends React.Component {
   constructor(props) {
@@ -18,10 +19,11 @@ class MessageSection extends React.Component {
     console.log("david test");
     console.log(event);
     return (
-      <div>
-        <h1>{event.title}</h1>
-        <h2>{event.series}</h2>
-        <div className="content" dangerouslySetInnerHTML={{__html: event.notes}}></div>
+      <div className="Message">
+        <h1 className="Message-title">{event.title}</h1>
+        <h2 className="Message-series">{event.series}</h2>
+        <div className="Message-outline" dangerouslySetInnerHTML={{__html: event.notes}}></div>
+        <div className="Message-notes"></div>
       </div>
     )
   }
