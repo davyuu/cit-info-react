@@ -1,5 +1,6 @@
 import React from 'react'
 import {Collapse} from 'react-collapse';
+import images from './../../images/images.js';
 import './Section.css';
 
 class Section extends React.Component {
@@ -13,13 +14,19 @@ class Section extends React.Component {
   render() {
     return (
       <div className="Section">
-        <div
-          className="Section-title"
-          onClick={() => this.setState({
-            isOpen: !this.state.isOpen
-          })}
-        >
-          {this.props.title}
+        <div className="Section-btn">
+          <img 
+            className="Section-img"
+            src={images.icMicBlack} 
+          />
+          <div
+            className="Section-title"
+            onClick={() => this.setState({
+              isOpen: !this.state.isOpen
+            })}
+          >
+            {this.props.title}
+          </div>
         </div>
         <Collapse isOpened={this.state.isOpen}>
           <div className="Section-content">

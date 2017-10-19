@@ -8,14 +8,15 @@
 }
 
 .App-header {
-  background-color: #222;
+  background-color: purple;
   padding: 10px;
   color: white;
 }
 
 .App-title {
-  font-size: 1.5em;
-  font-weight: 500;
+  font-size: 5em;
+  font-weight: 700;
+  margin: 10px;
 }
 
 .App-intro {

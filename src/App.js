@@ -11,24 +11,31 @@ class App extends Component {
     return (
       <div className="App">
         <Helmet>
-          <title>CIT info</title>
+          <title>CIT Info</title>
         </Helmet>
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo"/>
-          <h1 className="App-title">Church In Toronto</h1>
+          <h1 className="App-title">cit</h1>
         </header>
         <div className="Main">
           <Section
-            title={"I'm new here"}
-            content={(<ConnectSection />)}
+            title={"Latest Message"}
+            content={(<MessageSection />)}
           />
           <Section
-            title={"Announcements"}
+            title={"What's Happening"}
             content={(<p>TEST</p>)}
           />
           <Section
-            title={"Message Outline"}
-            content={(<MessageSection />)}
+            title={"Giving"}
+            content={(<p>TEST</p>)}
+          />
+          <Section
+            title={"Community Groups"}
+            content={(<p>TEST</p>)}
+          />
+          <Section
+            title={"Get Connected"}
+            content={(<ConnectSection />)}
           />
         </div>
       </div>
