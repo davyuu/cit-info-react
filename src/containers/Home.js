@@ -1,6 +1,6 @@
 import React from 'react'
-import routes from './routes';
-import images from './../images/images.js';
+import routes from './../routes/routes';
+import images from './../images/images';
 import Section from './../components/Section';
 import './Home.css';
 

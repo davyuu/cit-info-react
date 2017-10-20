@@ -1,11 +1,11 @@
 import React from 'react'
 import {Route, Switch} from 'react-router-dom'
-import Home from './Home';
-import Message from './Message';
-import News from './News';
-import Giving from './Giving';
-import Groups from './Groups';
-import Connect from './Connect';
+import Home from './../containers/Home';
+import Message from './../containers/Message';
+import News from './../containers/News';
+import Giving from './../containers/Giving';
+import Groups from './../containers/Groups';
+import Connect from './../containers/Connect';
 import routes from './routes';
 
 const Main = () => (
