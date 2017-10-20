@@ -1,12 +1,18 @@
 import React from 'react';
 import Loading from './../components/Loading';
+import * as colors from './../constants/colors';
+import HeaderBar from "../components/HeaderBar";
 
 class Message extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			currentMessage: 0,
-			messages: []
+			messages: [{
+				title: 'Hope & Praise',
+				outline: '<p>test test test</p>',
+				study: '<p>study</p>'
+			}]
 		}
 	}
 
@@ -30,6 +36,10 @@ class Message extends React.Component {
 		const message = this.state.messages[this.state.currentMessage];
 		return (
 			<div style={styles.container}>
+				<HeaderBar
+					goBack={this.props.history.goBack}
+					title={'Latest Message'}
+				/>
 				<div style={styles.header}>
 					<div>Message Outline</div>
 				</div>
@@ -43,7 +53,6 @@ class Message extends React.Component {
 
 const styles = {
 	container: {
-		padding: 10,
 	},
 	title: {
 		marginLeft: 20,
