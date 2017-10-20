@@ -1,0 +1,11 @@
+.Home-header {
+  background-color: #7674fb;
+  padding: 10px;
+  color: white;
+}
+
+.Home-title {
+  font-size: 5em;
+  font-weight: 700;
+  margin: 10px;
+}

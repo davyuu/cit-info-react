@@ -1,42 +1,42 @@
 import React from 'react'
-import {graphql} from 'react-apollo';
-import gql from 'graphql-tag';
 import './MessageSection.css';
 
 class MessageSection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentEvent: 0
+      currentmessage: 0,
+      messages: []
     }
   }
 
+
+  componentDidMount() {
+    let dataURL = 'http://localhost/cit/wp-json/wp/v2/messages';
+    fetch(dataURL)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          messages: res.map(val => {
+            return val.acf; 
+          })
+        })
+      })
+  }
+
   render() {
-    if (this.props.data.loading) {
+    if (this.state.messages.length === 0) {
       return <div>Loading</div>
     }
-    const event = this.props.data.allEvents[this.state.currentEvent];
-    console.log("david test");
-    console.log(event);
+    const message = this.state.messages[this.state.currentmessage];
     return (
       <div className="Message">
-        <h1 className="Message-title">{event.title}</h1>
-        <h2 className="Message-series">{event.series}</h2>
-        <div className="Message-outline" dangerouslySetInnerHTML={{__html: event.notes}}></div>
-        <div className="Message-notes"></div>
+        <h1 className="Message-title">{message.title}</h1>
+        <div className="Message-outline" dangerouslySetInnerHTML={{__html: message.outline}}></div>
+        <div className="Message-study" dangerouslySetInnerHTML={{__html: message.study_guide}}></div>
       </div>
     )
   }
 }
 
-const eventQuery = gql `query allEvents {
-  allEvents(orderBy: createdAt_DESC) {
-    title
-    series
-    notes
-    songs
-    date
-  }
-}`
-
-export default graphql(eventQuery)(MessageSection)
+export default MessageSection
