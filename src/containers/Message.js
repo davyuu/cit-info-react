@@ -11,16 +11,16 @@ class Message extends React.Component {
 		this.state = {
 			currentMessage: 0,
 			currentTab: 0,
-			messages: [],
-			/*messages: [{
+			// messages: [],
+			messages: [{
 				title: 'Hope & Praise',
 				seriesName: 'Psalms For All Seasons',
 				seriesImage: images.psalmHeader,
 				messageNumber: 12,
 				messageChapter: 'Psalms 71',
-				outline: '<p>Message Outline content</p>',
-				studyGuide: '<p>Study Guide content</p>'
-			}]*/
+				outline: '<h1><span style=\"font-weight: 400;\">Looking Back</span></h1>\n<ol>\n<li style=\"font-weight: 400; text-align: left;\"><span style=\"font-weight: 400;\">Recognizing God&#8217;s sovereignity</span>\n<ol>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">God has been…</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Brought forth by God…</span></li>\n</ol>\n</li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Past experiences</span>\n<ol>\n<li style=\"font-weight: 400; text-align: left;\"><span style=\"font-weight: 400;\">Having leaned on God…</span></li>\n<li style=\"font-weight: 400; text-align: left;\"><span style=\"font-weight: 400;\">Taught by God…</span></li>\n<li style=\"font-weight: 400; text-align: left;\"><span style=\"font-weight: 400;\">God caused me to&#8230;</span></li>\n</ol>\n</li>\n</ol>\n<h1><span style=\"font-weight: 400;\">Looking Forward</span></h1>\n<ol>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Prayer not to be discarded or abandoned in old age &#8211; v. 18</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Making declarations concerning God</span>\n<ol>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">After trouble,</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Telling about God’s</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Hoping continually</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Praising and singing</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Proclaiming Your</span></li>\n</ol>\n</li>\n</ol>\n<h1><span style=\"font-weight: 400;\">Present and Ongoing life​​</span></h1>\n<ol>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Toward God</span>\n<ol>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Seeking</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Prayer</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Hoping</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">God</span></li>\n</ol>\n</li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Toward Others</span>\n<ol>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Proclaiming</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Proclaiming</span></li>\n</ol>\n</li>\n</ol>\n',
+				studyGuide: '<h1><span style=\"font-weight: 400;\">Examining the text &amp; our hearts:</span></h1>\n<ol>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">What specific aspects</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">When the psalmist looks back</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">When the psalmist looks to the future</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">When people contemplate</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">As Christians, what should</span></li>\n</ol>\n'
+			}]
 		}
 	}
 
