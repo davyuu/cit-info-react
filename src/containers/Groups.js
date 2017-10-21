@@ -1,8 +1,29 @@
-import React from 'react'
+import React from 'react';
+import HeaderBar from "../components/HeaderBar";
 
-const Groups = () => (
-	<div className="Groups">
-	</div>
-);
+class Groups extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+
+	componentDidMount() {
+	}
+
+	render() {
+		return (
+			<div style={styles.container}>
+				<HeaderBar
+					goBack={this.props.history.goBack}
+					title={'Community Groups'}
+				/>
+			</div>
+		)
+	}
+}
+
+const styles = {
+	container: {
+	},
+};
 
 export default Groups
