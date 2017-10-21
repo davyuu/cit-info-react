@@ -1,0 +1,58 @@
+.outline {
+
+}
+
+.outline h1,h2,h3,h4,h5,h6 {
+    font-size: 1.5em;
+    margin: 1em 0 0 0;
+}
+
+.outline ol {
+    margin: 0 1em;
+    padding: 0;
+    list-style-type: upper-alpha;
+}
+
+.outline ol li {
+    margin-top: 0.5em;
+}
+
+.outline ol ol {
+    margin: 0 0 0 1em;
+    padding: 0;
+    list-style-type: decimal;
+}
+
+.outline ol ol li {
+    margin: 0;
+    padding: 0;
+}
+
+.outline ol span {
+    margin-left: 0.5em;
+    font-size: 0.9em;
+}
+
+.study-guide {
+
+}
+
+.study-guide h1,h2,h3,h4,h5,h6 {
+    font-size: 1.4em;
+    margin: 1em 0 0 0;
+}
+
+.study-guide ol {
+    margin: 0 1em;
+    padding: 0;
+    list-style-type: decimal;
+}
+
+.study-guide ol li {
+    margin-top: 0.5em;
+}
+
+.study-guide ol span {
+    margin-left: 0.5em;
+    font-size: 0.9em;
+}

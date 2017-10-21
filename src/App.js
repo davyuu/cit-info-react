@@ -1,5 +1,6 @@
 import React from 'react';
 import {Helmet} from 'react-helmet';
+import Head from './routes/Head';
 import Main from './routes/Main';
 
 class App extends React.Component {
@@ -9,6 +10,7 @@ class App extends React.Component {
 				<Helmet>
 					<title>CIT Info</title>
 				</Helmet>
+				<Head/>
 				<Main/>
 			</div>
 		);

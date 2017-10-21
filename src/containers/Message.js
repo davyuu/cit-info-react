@@ -3,6 +3,7 @@ import Loading from './../components/Loading';
 import images from './../images/images';
 import * as colors from './../constants/colors';
 import HeaderBar from "../components/HeaderBar";
+import './Message.css';
 
 class Message extends React.Component {
 	constructor(props) {
@@ -10,11 +11,16 @@ class Message extends React.Component {
 		this.state = {
 			currentMessage: 0,
 			currentTab: 0,
-			messages: [{
+			messages: [],
+			/*messages: [{
 				title: 'Hope & Praise',
+				seriesName: 'Psalms For All Seasons',
+				seriesImage: images.psalmHeader,
+				messageNumber: 12,
+				messageChapter: 'Psalms 71',
 				outline: '<p>Message Outline content</p>',
 				studyGuide: '<p>Study Guide content</p>'
-			}]
+			}]*/
 		}
 	}
 
@@ -25,7 +31,16 @@ class Message extends React.Component {
 			.then(res => {
 				this.setState({
 					messages: res.map(val => {
-						return val.acf;
+						const message = val.acf;
+						return {
+							title: message.title,
+							seriesName: message.series_name,
+							seriesImage: message.series_image,
+							messageNumber: message.message_number,
+							messageChapter: message.message_chapter,
+							outline: message.outline,
+							studyGuide: message.study_guide,
+						};
 					})
 				})
 			})
@@ -39,13 +54,15 @@ class Message extends React.Component {
 		const messageOutline = (
 			<div style={styles.content}>
 				<h1 style={styles.title}>{message.title}</h1>
-				<div style={styles.outline} dangerouslySetInnerHTML={{__html: message.outline}}/>
+				<p style={styles.numberChapter}>Message {message.messageNumber} - {message.messageChapter}</p>
+				<div className='outline' dangerouslySetInnerHTML={{__html: message.outline}}/>
 			</div>
 		)
 		const studyGuide = (
 			<div style={styles.content}>
 				<h1 style={styles.title}>{message.title}</h1>
-				<div style={styles.study} dangerouslySetInnerHTML={{__html: message.studyGuide}}/>
+				<p style={styles.numberChapter}>Message {message.messageNumber} - {message.messageChapter}</p>
+				<div className='study-guide' dangerouslySetInnerHTML={{__html: message.studyGuide}}/>
 			</div>
 		);
 		const currentTab = this.state.currentTab;
@@ -58,7 +75,7 @@ class Message extends React.Component {
 				<div style={styles.headerContainer}>
 					<img
 						style={styles.headerImg}
-						src={images.psalmHeader}
+						src={message.seriesImage}
 					/>
 					<div style={styles.headerTabs}>
 						<div
@@ -94,16 +111,16 @@ const styles = {
 	},
 	headerTabs: {
 		position: 'absolute',
-		marginLeft: 20,
+		marginLeft: 10,
 	},
 	tab: {
 		float: 'left',
 		paddingTop: 10,
 		paddingBottom: 10,
-		marginLeft: 10,
-		marginRight: 10,
+		marginLeft: 20,
+		marginRight: 20,
 		fontSize: 12,
-		fontWeight: '700',
+		fontWeight: '600',
 		borderBottomStyle: 'solid',
 		borderBottomWidth: 5,
 	},
@@ -119,14 +136,19 @@ const styles = {
 		padding: 20,
 	},
 	title: {
-		fontSize: 32,
-		fontWeight: '500'
+		marginTop: 20,
+		marginBottom: 0,
+		paddingBottom: 0,
+		fontSize: 36,
+		fontWeight: '500',
+		color: colors.PURPLE
 	},
-	outline: {
+	numberChapter: {
+		fontSize: 13,
+		fontWeight: '500',
+		margin: 0,
+		color: colors.LIGHT_LIGHT_PURPLE
 	},
-	study: {
-
-	}
 };
 
 export default Message
