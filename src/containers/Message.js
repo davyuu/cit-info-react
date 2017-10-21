@@ -1,5 +1,6 @@
 import React from 'react';
 import Loading from './../components/Loading';
+import images from './../images/images';
 import * as colors from './../constants/colors';
 import HeaderBar from "../components/HeaderBar";
 
@@ -34,18 +35,29 @@ class Message extends React.Component {
 			return <Loading/>
 		}
 		const message = this.state.messages[this.state.currentMessage];
+		const content = (
+			<div style={styles.content}>
+				<h1 style={styles.title}>{message.title}</h1>
+				<div style={styles.outline} dangerouslySetInnerHTML={{__html: message.outline}}/>
+				<div style={styles.study} dangerouslySetInnerHTML={{__html: message.study_guide}}/>
+			</div>
+		)
 		return (
 			<div style={styles.container}>
 				<HeaderBar
 					goBack={this.props.history.goBack}
 					title={'Latest Message'}
 				/>
-				<div style={styles.header}>
-					<div>Message Outline</div>
+				<div style={styles.headerContainer}>
+					<img
+						style={styles.headerImg}
+						src={images.psalmHeader}
+					/>
+					<div style={styles.headerTabs}>
+						<div>Message Outline</div>
+					</div>
 				</div>
-				<h1 style={styles.title}>{message.title}</h1>
-				<div style={styles.outline} dangerouslySetInnerHTML={{__html: message.outline}}/>
-				<div style={styles.study} dangerouslySetInnerHTML={{__html: message.study_guide}}/>
+				{content}
 			</div>
 		)
 	}
@@ -54,8 +66,21 @@ class Message extends React.Component {
 const styles = {
 	container: {
 	},
+	headerContainer: {
+		display: 'flex',
+		alignItems: 'flex-end',
+	},
+	headerImg: {
+		width: '100%',
+		position: 'relative'
+	},
+	headerTabs: {
+		position: 'absolute',
+	},
+	content: {
+		padding: 20,
+	},
 	title: {
-		marginLeft: 20,
 		fontSize: 32,
 		fontWeight: '500'
 	},

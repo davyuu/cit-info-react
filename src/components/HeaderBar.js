@@ -21,14 +21,16 @@ class HeaderBar extends React.Component {
 const styles = {
 	headerBar: {
 		height: 50,
+		width: '100%',
 		display: 'flex',
 		alignItems: 'center',
 		backgroundColor: colors.PURPLE,
 	},
 	goBack: {
-		height: 40,
-		width: 40,
+		height: 32,
+		width: 32,
 		padding: 4,
+		margin: 5,
 	},
 	headerTitle: {
 		fontSize: 20,

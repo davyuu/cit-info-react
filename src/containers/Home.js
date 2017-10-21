@@ -11,27 +11,27 @@ const Home = () => (
 		</header>
 		<Section
 			title={"Latest Message"}
-			image={images.icMicBlack}
+			image={images.messages}
 			linkTo={routes.message}
 		/>
 		<Section
 			title={"What's Happening"}
-			image={images.icMicBlack}
+			image={images.whatsHappening}
 			linkTo={routes.news}
 		/>
 		<Section
 			title={"Giving"}
-			image={images.icMicBlack}
+			image={images.giving}
 			linkTo={routes.giving}
 		/>
 		<Section
 			title={"Community Groups"}
-			image={images.icMicBlack}
+			image={images.giving}
 			linkTo={routes.groups}
 		/>
 		<Section
 			title={"Get Connected"}
-			image={images.icMicBlack}
+			image={images.giving}
 			linkTo={routes.connect}
 		/>
 	</div>

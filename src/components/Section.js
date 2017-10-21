@@ -40,8 +40,8 @@ const styles = {
   },
   img: {
     margin: 15,
-    height: 60,
-    width: 60,
+    height: 50,
+    width: 50,
   },
   title: {
     fontSize: 24,
