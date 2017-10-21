@@ -9,10 +9,11 @@ class Message extends React.Component {
 		super(props);
 		this.state = {
 			currentMessage: 0,
+			currentTab: 0,
 			messages: [{
 				title: 'Hope & Praise',
-				outline: '<p>test test test</p>',
-				study: '<p>study</p>'
+				outline: '<p>Message Outline content</p>',
+				studyGuide: '<p>Study Guide content</p>'
 			}]
 		}
 	}
@@ -35,13 +36,19 @@ class Message extends React.Component {
 			return <Loading/>
 		}
 		const message = this.state.messages[this.state.currentMessage];
-		const content = (
+		const messageOutline = (
 			<div style={styles.content}>
 				<h1 style={styles.title}>{message.title}</h1>
 				<div style={styles.outline} dangerouslySetInnerHTML={{__html: message.outline}}/>
-				<div style={styles.study} dangerouslySetInnerHTML={{__html: message.study_guide}}/>
 			</div>
 		)
+		const studyGuide = (
+			<div style={styles.content}>
+				<h1 style={styles.title}>{message.title}</h1>
+				<div style={styles.study} dangerouslySetInnerHTML={{__html: message.studyGuide}}/>
+			</div>
+		);
+		const currentTab = this.state.currentTab;
 		return (
 			<div style={styles.container}>
 				<HeaderBar
@@ -54,10 +61,21 @@ class Message extends React.Component {
 						src={images.psalmHeader}
 					/>
 					<div style={styles.headerTabs}>
-						<div>Message Outline</div>
+						<div
+							style={{...styles.tab, ...currentTab === 0 ? styles.activeTab : styles.inactiveTab}}
+							onClick={() => this.setState({currentTab: 0})}
+						>
+							MESSAGE OUTLINE
+						</div>
+						<div
+							style={{...styles.tab, ...currentTab === 1 ? styles.activeTab : styles.inactiveTab}}
+							onClick={() => this.setState({currentTab: 1})}
+						>
+							STUDY GUIDE
+						</div>
 					</div>
 				</div>
-				{content}
+				{currentTab === 0 ? messageOutline : studyGuide}
 			</div>
 		)
 	}
@@ -76,6 +94,26 @@ const styles = {
 	},
 	headerTabs: {
 		position: 'absolute',
+		marginLeft: 20,
+	},
+	tab: {
+		float: 'left',
+		paddingTop: 10,
+		paddingBottom: 10,
+		marginLeft: 10,
+		marginRight: 10,
+		fontSize: 12,
+		fontWeight: '700',
+		borderBottomStyle: 'solid',
+		borderBottomWidth: 5,
+	},
+	activeTab : {
+		color: colors.WHITE,
+		borderBottomColor: colors.TRANSLUCENT_WHITE
+	},
+	inactiveTab: {
+		color: colors.TRANSLUCENT_WHITE,
+		borderBottomColor: colors.TRANSPARENT
 	},
 	content: {
 		padding: 20,
@@ -85,12 +123,10 @@ const styles = {
 		fontWeight: '500'
 	},
 	outline: {
-		margin: 0,
-		padding: 0,
 	},
 	study: {
 
 	}
-}
+};
 
 export default Message

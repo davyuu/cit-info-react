@@ -5,3 +5,4 @@ export const RED = '#F00';
 export const PURPLE = 'purple';
 
 export const TRANSPARENT = 'rgba(0,0,0,0)';
+export const TRANSLUCENT_WHITE = 'rgba(255,255,255,0.5)';
