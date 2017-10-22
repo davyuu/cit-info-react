@@ -67,7 +67,7 @@ class Message extends React.Component {
 		);
 		const currentTab = this.state.currentTab;
 		return (
-			<div style={styles.container}>
+			<div>
 				<HeaderBar
 					goBack={this.props.history.goBack}
 					title={'Latest Message'}
@@ -92,15 +92,16 @@ class Message extends React.Component {
 						</div>
 					</div>
 				</div>
-				{currentTab === 0 ? messageOutline : studyGuide}
+				<div style={styles.container}>
+					{currentTab === 0 ? messageOutline : studyGuide}
+				</div>
 			</div>
 		)
 	}
 }
 
 const styles = {
-	container: {
-	},
+	container: {},
 	headerContainer: {
 		display: 'flex',
 		alignItems: 'flex-end',
@@ -124,7 +125,7 @@ const styles = {
 		borderBottomStyle: 'solid',
 		borderBottomWidth: 5,
 	},
-	activeTab : {
+	activeTab: {
 		color: colors.WHITE,
 		borderBottomColor: colors.TRANSLUCENT_WHITE
 	},
