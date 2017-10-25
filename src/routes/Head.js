@@ -1,8 +1,8 @@
 import React from 'react'
+import images from '../images/images'
 
 const Head = () => (
 	<head>
-		<title>CIT Info</title>
 	</head>
 );
 

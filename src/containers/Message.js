@@ -66,6 +66,8 @@ class Message extends React.Component {
 			</div>
 		);
 		const currentTab = this.state.currentTab;
+		const messageTabStyles = currentTab === 0 ? styles.activeTab : styles.inactiveTab;
+		const studyTabStyles = currentTab === 1 ? styles.activeTab : styles.inactiveTab;
 		return (
 			<div>
 				<HeaderBar
@@ -79,13 +81,13 @@ class Message extends React.Component {
 					/>
 					<div style={styles.headerTabs}>
 						<div
-							style={{...styles.tab, ...currentTab === 0 ? styles.activeTab : styles.inactiveTab}}
+							style={Object.assign({}, styles.tab, messageTabStyles)}
 							onClick={() => this.setState({currentTab: 0})}
 						>
 							MESSAGE OUTLINE
 						</div>
 						<div
-							style={{...styles.tab, ...currentTab === 1 ? styles.activeTab : styles.inactiveTab}}
+							style={Object.assign({}, styles.tab, studyTabStyles)}
 							onClick={() => this.setState({currentTab: 1})}
 						>
 							STUDY GUIDE
