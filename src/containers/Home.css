@@ -1,12 +1,21 @@
 .Home-header {
-  background-color: #7674fb;
-  padding: 10px;
+  padding: 20px;
   color: white;
+}
+
+.Home-title-container {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  padding: 50px;
+  border-radius: 50%;
+  background-color: chartreuse;
 }
 
 .Home-title {
   text-align: center;
-  font-size: 5em;
-  font-weight: 700;
-  margin: 10px;
+  vertical-align: middle;
+  font-size: 10em;
+  font-weight: 900;
+  margin: 0;
 }

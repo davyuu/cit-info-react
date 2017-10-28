@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   resolve: {
     extensions: [
+      '.jsx',
       '.js',
       '.css'
     ]
@@ -36,6 +37,11 @@ module.exports = {
         test: /\.css$/,
         use: [ 'style-loader', 'css-loader' ]
       },
+			{
+				test: /\.jsx$/,
+				loader: 'babel-loader',
+				exclude: /node_modules/
+			},
       {
         test: /\.js$/,
         loader: 'babel-loader',
