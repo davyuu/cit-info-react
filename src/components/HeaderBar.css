@@ -1,0 +1,18 @@
+.header-bar {
+    height: 9em;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.header-bar-back-button {
+    height: 5em;
+    width: 5em;
+    padding: 1em;
+    margin: 1em;
+}
+.header-bar-title {
+    font-size: 3.5em;
+    font-weight: 500;
+    margin: auto;
+    color: white;
+}

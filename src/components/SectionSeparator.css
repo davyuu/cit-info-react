@@ -1,0 +1,7 @@
+.separator {
+    width: 90%;
+    height: 5px;
+    margin: auto;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0,0.5);
+}
