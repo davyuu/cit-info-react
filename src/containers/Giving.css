@@ -1,16 +1,26 @@
-.questionAnswer {
-
+.giving-container {
+    padding: 4em;
 }
-
-.questionAnswer h1 {
-    font-size: 1.2em;
-    font-weight: 700;
+.giving-title {
+    width: 70%;
+    font-size: 6.5em;
+    font-weight: 500;
     margin: 0;
 }
-
-.questionAnswer p {
-    font-size: 0.9em;
+.giving-description {
+    font-size: 1em;
     font-weight: 500;
-    margin: 0.5em 0;
+    line-height: 50px;
+    margin: 2em 0;
 }
-
+.giving-btn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 1em 0;
+    margin: 2em 0;
+    border-radius: 0.3em;
+    font-size: 3em;
+    color: white;
+    text-decoration: none;
+}

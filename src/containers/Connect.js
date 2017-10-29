@@ -3,6 +3,8 @@ import HeaderBar from "../components/HeaderBar";
 import * as colors from './../constants/colors';
 import './Connect.css';
 
+const themeColor = '#3852ff';
+
 class Connect extends React.Component {
 	constructor(props) {
 		super(props);
