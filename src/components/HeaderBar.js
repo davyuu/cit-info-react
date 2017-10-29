@@ -5,14 +5,17 @@ import './HeaderBar.css';
 class HeaderBar extends React.Component {
 	render() {
 		return (
-			<div className='header-bar'>
+			<div
+				className='header-bar'
+				style={{backgroundColor: this.props.color}}
+			>
 				<img
-					className='back-button'
+					className='header-bar-back-button'
 					src={images.icArrowLeftWhite}
 					onClick={this.props.goBack}
 				/>
-				<div className='header-title'>{this.props.title}</div>
-				<div className='back-button'/>
+				<div className='header-bar-title'>{this.props.title}</div>
+				<div className='header-bar-back-button'/>
 			</div>
 		)
 	}

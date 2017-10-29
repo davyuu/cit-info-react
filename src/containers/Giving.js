@@ -27,7 +27,7 @@ class Giving extends React.Component {
 							earth (2 Corinthians 9:6-7). Giving at Journey is simple and secure.</p>
 						<a
 							style={styles.giveBtn}
-							href='http://churchintoronto.com/give/'
+							href='https://www.canadahelps.org/en/dn/20223'
 						>
 							GIVE
 						</a>

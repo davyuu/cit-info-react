@@ -3,15 +3,14 @@
     width: 100%;
     display: flex;
     align-items: center;
-    background-color: #4a275d;
 }
-.back-button {
+.header-bar-back-button {
     height: 5em;
     width: 5em;
     padding: 1em;
     margin: 1em;
 }
-.header-title {
+.header-bar-title {
     font-size: 3.5em;
     font-weight: 500;
     margin: auto;

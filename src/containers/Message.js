@@ -1,9 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
 import Loading from './../components/Loading';
-import * as colors from './../constants/colors';
 import HeaderBar from "../components/HeaderBar";
 import './Message.css';
+
+const themeColor = '#4a275d';
 
 class Message extends React.Component {
 	constructor(props) {
@@ -41,44 +42,40 @@ class Message extends React.Component {
 		if (this.state.messages.length === 0) {
 			return <Loading/>
 		}
+
 		const message = this.state.messages[this.state.currentMessage];
-		const messageOutline = (
-			<div className='content'>
-				<h1 className='title'>{message.title}</h1>
-				<p className='number-chapter'>Message {message.messageNumber} - {message.messageChapter}</p>
-				<div className='outline' dangerouslySetInnerHTML={{__html: message.outline}}/>
-			</div>
-		)
-		const studyGuide = (
-			<div className='content'>
-				<h1 className='title'>{message.title}</h1>
-				<p className='number-chapter'>Message {message.messageNumber} - {message.messageChapter}</p>
-				<div className='study-guide' dangerouslySetInnerHTML={{__html: message.studyGuide}}/>
-			</div>
-		);
 		const currentTab = this.state.currentTab;
+
+		const messageOutline = (
+				<div className='message-outline' dangerouslySetInnerHTML={{__html: message.outline}}/>
+		);
+		const studyGuide = (
+				<div className='message-study-guide' dangerouslySetInnerHTML={{__html: message.studyGuide}}/>
+		);
 		const messageTabClass = classNames({
-			'tab': true,
-			'active-tab': currentTab === 0,
-			'inactive-tab': currentTab === 1
+			'message-tab': true,
+			'message-active-tab': currentTab === 0,
+			'message-inactive-tab': currentTab === 1
 		});
 		const studyTabClass = classNames({
-			'tab': true,
-			'active-tab': currentTab === 1,
-			'inactive-tab': currentTab === 0
+			'message-tab': true,
+			'message-active-tab': currentTab === 1,
+			'message-inactive-tab': currentTab === 0
 		});
+
 		return (
 			<div>
 				<HeaderBar
 					goBack={this.props.history.goBack}
 					title={'Latest Message'}
+					color={themeColor}
 				/>
-				<div className='header-container'>
+				<div className='message-header-container'>
 					<img
-						className='header-img'
+						className='message-header-img'
 						src={message.seriesImage}
 					/>
-					<div className='header-tabs'>
+					<div className='message-header-tabs'>
 						<div
 							className={messageTabClass}
 							onClick={() => this.setState({currentTab: 0})}
@@ -93,7 +90,9 @@ class Message extends React.Component {
 						</div>
 					</div>
 				</div>
-				<div className='container'>
+				<div className='message-content'>
+					<h1 className='message-title' style={{color: themeColor}}>{message.title}</h1>
+					<p className='message-number-chapter'>Message {message.messageNumber} - {message.messageChapter}</p>
 					{currentTab === 0 ? messageOutline : studyGuide}
 				</div>
 			</div>

@@ -4,11 +4,11 @@
     align-items: center;
     text-decoration: none;
 }
-.img {
+.section .img {
     margin: 4em;
-    width: 12%;
+    width: 11%;
 }
-.title {
+.section .title {
     font-size: 4em;
     font-weight: 700;
     color: black;

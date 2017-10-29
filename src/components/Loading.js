@@ -1,21 +1,10 @@
 import React from 'react'
+import './Loading.css'
 
 const Loading = () => (
-	<div style={styles.container}>
-		<h1 style={styles.text}>LOADING...</h1>
+	<div className='loading'>
+		<h1 className='loading-text'>LOADING...</h1>
 	</div>
 );
-
-const styles = {
-	container: {
-
-	},
-	text: {
-		textAlign: 'center',
-		marginTop: 200,
-		fontSize: 36,
-		fontWeight: '700',
-	}
-}
 
 export default Loading

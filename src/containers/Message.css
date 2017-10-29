@@ -1,23 +1,16 @@
-.container {
-
-}
-
-.header-container {
+.message-header-container {
     display: flex;
     align-items: flex-end;
 }
-
-.header-img {
+.message-header-img {
     width: 100%;
     position: relative;
 }
-
-.header-tabs {
+.message-header-tabs {
     position: absolute;
     margin-left: 10px;
 }
-
-.tab {
+.message-tab {
     float: left;
     padding-bottom: 1em;
     margin-left: 2em;
@@ -26,94 +19,74 @@
     letter-spacing: 2px;
     border-bottom: 0.4em solid;
 }
-
-.active-tab {
+.message-active-tab {
     color: white;
     border-bottom-color: rgba(255, 255, 255, 0.5);
 }
-
-.inactive-tab {
+.message-inactive-tab {
     color: white;
     opacity: 0.5;
     border-bottom-color: transparent;
 }
-
-.content {
+.message-content {
     padding: 4em;
 }
-
-.title {
+.message-title {
     margin: 0;
     padding: 0;
     font-size: 6em;
     font-weight: 500;
-    color: #4a275d;
 }
-
-.number-chapter {
+.message-number-chapter {
     font-size: 1em;
     font-weight: 500;
     margin: 0 0 1em 0;
     color: grey;
 }
-
-.outline {
-
+.message-outline {
 }
-
-.outline h1,h2,h3,h4,h5,h6 {
+.message-outline h1,h2,h3,h4,h5,h6 {
     font-size: 3em;
     font-weight: 500;
     margin: 1em 0 0 0;
 }
-
-.outline ol {
+.message-outline ol {
     margin: 0 3em;
     padding: 0;
     list-style-type: upper-alpha;
 }
-
-.outline ol li {
+.message-outline ol li {
     margin-top: 0.5em;
 }
-
-.outline ol span {
+.message-outline ol span {
     margin-left: 0.5em;
     font-size: 1em;
 }
-
-.outline ol ol {
+.message-outline ol ol {
     margin: 0 0 0 3em;
     padding: 0;
     list-style-type: decimal;
 }
-
-.outline ol ol li {
+.message-outline ol ol li {
     margin: 0;
     padding: 0;
 }
-
-.study-guide {
-
+.message-study-guide {
 }
-
-.study-guide h1,h2,h3,h4,h5,h6 {
+.message-study-guide h1,h2,h3,h4,h5,h6 {
     font-size: 3em;
     font-weight: 500;
     margin: 1em 0 0 0;
 }
-
-.study-guide ol {
+.message-study-guide ol {
     margin: 0 2em;
     padding: 0;
     list-style-type: decimal;
 }
-
-.study-guide ol li {
+.message-study-guide ol li {
     margin-top: 0.5em;
 }
-
-.study-guide ol span {
+.message-study-guide ol span {
     margin-left: 0.5em;
     font-size: 0.9em;
 }
