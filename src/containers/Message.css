@@ -1,14 +1,74 @@
+.container {
+
+}
+
+.header-container {
+    display: flex;
+    align-items: flex-end;
+}
+
+.header-img {
+    width: 100%;
+    position: relative;
+}
+
+.header-tabs {
+    position: absolute;
+    margin-left: 10px;
+}
+
+.tab {
+    float: left;
+    padding-bottom: 1em;
+    margin-left: 2em;
+    font-size: 2em;
+    font-weight: 600;
+    letter-spacing: 2px;
+    border-bottom: 0.4em solid;
+}
+
+.active-tab {
+    color: white;
+    border-bottom-color: rgba(255, 255, 255, 0.5);
+}
+
+.inactive-tab {
+    color: white;
+    opacity: 0.5;
+    border-bottom-color: transparent;
+}
+
+.content {
+    padding: 4em;
+}
+
+.title {
+    margin: 0;
+    padding: 0;
+    font-size: 6em;
+    font-weight: 500;
+    color: #4a275d;
+}
+
+.number-chapter {
+    font-size: 1em;
+    font-weight: 500;
+    margin: 0 0 1em 0;
+    color: grey;
+}
+
 .outline {
 
 }
 
 .outline h1,h2,h3,h4,h5,h6 {
-    font-size: 1.5em;
+    font-size: 3em;
+    font-weight: 500;
     margin: 1em 0 0 0;
 }
 
 .outline ol {
-    margin: 0 1em;
+    margin: 0 3em;
     padding: 0;
     list-style-type: upper-alpha;
 }
@@ -17,8 +77,13 @@
     margin-top: 0.5em;
 }
 
+.outline ol span {
+    margin-left: 0.5em;
+    font-size: 1em;
+}
+
 .outline ol ol {
-    margin: 0 0 0 1em;
+    margin: 0 0 0 3em;
     padding: 0;
     list-style-type: decimal;
 }
@@ -28,22 +93,18 @@
     padding: 0;
 }
 
-.outline ol span {
-    margin-left: 0.5em;
-    font-size: 0.9em;
-}
-
 .study-guide {
 
 }
 
 .study-guide h1,h2,h3,h4,h5,h6 {
-    font-size: 1.4em;
+    font-size: 3em;
+    font-weight: 500;
     margin: 1em 0 0 0;
 }
 
 .study-guide ol {
-    margin: 0 1em;
+    margin: 0 2em;
     padding: 0;
     list-style-type: decimal;
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import Loading from './../components/Loading';
 import * as colors from './../constants/colors';
 import HeaderBar from "../components/HeaderBar";
@@ -10,7 +11,6 @@ class Message extends React.Component {
 		this.state = {
 			currentMessage: 0,
 			currentTab: 0,
-			// messages: [],
 			messages: []
 		}
 	}
@@ -43,106 +43,62 @@ class Message extends React.Component {
 		}
 		const message = this.state.messages[this.state.currentMessage];
 		const messageOutline = (
-			<div style={styles.content}>
-				<h1 style={styles.title}>{message.title}</h1>
-				<p style={styles.numberChapter}>Message {message.messageNumber} - {message.messageChapter}</p>
+			<div className='content'>
+				<h1 className='title'>{message.title}</h1>
+				<p className='number-chapter'>Message {message.messageNumber} - {message.messageChapter}</p>
 				<div className='outline' dangerouslySetInnerHTML={{__html: message.outline}}/>
 			</div>
 		)
 		const studyGuide = (
-			<div style={styles.content}>
-				<h1 style={styles.title}>{message.title}</h1>
-				<p style={styles.numberChapter}>Message {message.messageNumber} - {message.messageChapter}</p>
+			<div className='content'>
+				<h1 className='title'>{message.title}</h1>
+				<p className='number-chapter'>Message {message.messageNumber} - {message.messageChapter}</p>
 				<div className='study-guide' dangerouslySetInnerHTML={{__html: message.studyGuide}}/>
 			</div>
 		);
 		const currentTab = this.state.currentTab;
-		const messageTabStyles = currentTab === 0 ? styles.activeTab : styles.inactiveTab;
-		const studyTabStyles = currentTab === 1 ? styles.activeTab : styles.inactiveTab;
+		const messageTabClass = classNames({
+			'tab': true,
+			'active-tab': currentTab === 0,
+			'inactive-tab': currentTab === 1
+		});
+		const studyTabClass = classNames({
+			'tab': true,
+			'active-tab': currentTab === 1,
+			'inactive-tab': currentTab === 0
+		});
 		return (
 			<div>
 				<HeaderBar
 					goBack={this.props.history.goBack}
 					title={'Latest Message'}
 				/>
-				<div style={styles.headerContainer}>
+				<div className='header-container'>
 					<img
-						style={styles.headerImg}
+						className='header-img'
 						src={message.seriesImage}
 					/>
-					<div style={styles.headerTabs}>
+					<div className='header-tabs'>
 						<div
-							style={Object.assign({}, styles.tab, messageTabStyles)}
+							className={messageTabClass}
 							onClick={() => this.setState({currentTab: 0})}
 						>
 							MESSAGE OUTLINE
 						</div>
 						<div
-							style={Object.assign({}, styles.tab, studyTabStyles)}
+							className={studyTabClass}
 							onClick={() => this.setState({currentTab: 1})}
 						>
 							STUDY GUIDE
 						</div>
 					</div>
 				</div>
-				<div style={styles.container}>
+				<div className='container'>
 					{currentTab === 0 ? messageOutline : studyGuide}
 				</div>
 			</div>
 		)
 	}
 }
-
-const styles = {
-	container: {},
-	headerContainer: {
-		display: 'flex',
-		alignItems: 'flex-end',
-	},
-	headerImg: {
-		width: '100%',
-		position: 'relative'
-	},
-	headerTabs: {
-		position: 'absolute',
-		marginLeft: 10,
-	},
-	tab: {
-		float: 'left',
-		paddingTop: 10,
-		paddingBottom: 10,
-		marginLeft: 20,
-		marginRight: 20,
-		fontSize: 12,
-		fontWeight: '600',
-		borderBottomStyle: 'solid',
-		borderBottomWidth: 5,
-	},
-	activeTab: {
-		color: colors.WHITE,
-		borderBottomColor: colors.TRANSLUCENT_WHITE
-	},
-	inactiveTab: {
-		color: colors.TRANSLUCENT_WHITE,
-		borderBottomColor: colors.TRANSPARENT
-	},
-	content: {
-		padding: 20,
-	},
-	title: {
-		marginTop: 20,
-		marginBottom: 0,
-		paddingBottom: 0,
-		fontSize: 36,
-		fontWeight: '500',
-		color: colors.PURPLE
-	},
-	numberChapter: {
-		fontSize: 13,
-		fontWeight: '500',
-		margin: 0,
-		color: colors.LIGHT_LIGHT_PURPLE
-	},
-};
 
 export default Message

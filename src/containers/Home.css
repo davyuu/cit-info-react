@@ -1,13 +1,13 @@
 .Home-header {
-  padding: 20px;
+  padding: 2em;
   color: white;
 }
 
 .Home-title-container {
-  width: 200px;
-  height: 200px;
+  width: 12em;
+  height: 12em;
   margin: 0 auto;
-  padding: 50px;
+  padding: 4em;
   border-radius: 50%;
   background-color: chartreuse;
 }
