@@ -64,7 +64,7 @@ class Message extends React.Component {
 		});
 
 		return (
-			<div>
+			<div className='message'>
 				<HeaderBar
 					goBack={this.props.history.goBack}
 					title={'Latest Message'}

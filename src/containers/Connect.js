@@ -1,6 +1,5 @@
 import React from 'react'
 import HeaderBar from "../components/HeaderBar";
-import * as colors from './../constants/colors';
 import './Connect.css';
 
 const themeColor = '#3852ff';
@@ -9,9 +8,10 @@ class Connect extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			firstName: '',
-			lastName: '',
+			name: '',
 			email: '',
+			phone: '',
+			message: ''
 		}
 	}
 
@@ -21,76 +21,66 @@ class Connect extends React.Component {
 
 	render() {
 		return (
-			<div className="Connect">
+			<div className="connect">
 				<HeaderBar
 					goBack={this.props.history.goBack}
-					title={'Latest Message'}
+					title={'Connect'}
+					color={themeColor}
 				/>
-				<label className="Connect-form-label">
-					<span className="Connect-form-required">*</span> First Name:
+				<div className="connect-container">
+					<h1 className="connect-title">Get connected with us</h1>
+					<p className="connect-description">We know that it's important for you to find a church that really fits. We can connect you with one of our pastors to answer any questions you might have about our church's beliefs, community, and culture.</p>
+					<h2 className="connect-form-label">Name</h2>
 					<input
-						className="Connect-form-input"
+						className="connect-form-input"
 						type="text"
-						value={this.state.firstName}
-						onChange={(e) => this.setState({firstName: e.target.value})}
+						placeholder="Your name"
+						value={this.state.name}
+						onChange={(e) => this.setState({name: e.target.value})}
 					/>
-				</label>
-				<label className="Connect-form-label">
-					<span className="Connect-form-required">*</span> Last Name:
+					<h2 className="connect-form-label">Email</h2>
 					<input
-						className="Connect-form-input"
+						className="connect-form-input"
 						type="text"
-						value={this.state.lastName}
-						onChange={(e) => this.setState({lastName: e.target.value})}
-					/>
-				</label>
-				<label className="Connect-form-label">
-					<span className="Connect-form-required">*</span> Email:
-					<input
-						className="Connect-form-input"
-						type="text"
+						placeholder="youremailaddress@example.com"
 						value={this.state.email}
 						onChange={(e) => this.setState({email: e.target.value})}
 					/>
-				</label>
-				<button
-					className="Connect-form-submit"
-					onClick={() => this.onConnectFormSubmit()}
-				>
-					Submit
-				</button>
+					<h2 className="connect-form-label">Email</h2>
+					<input
+						className="connect-form-input"
+						type="text"
+						placeholder="(123)456-7890)"
+						value={this.state.phone}
+						onChange={(e) => this.setState({phone: e.target.value})}
+					/>
+					<h2 className="connect-form-label">Which best describes you?</h2>
+					<input
+						className="connect-form-input"
+						type="text"
+						placeholder="Choose one option"
+						// value={this.state.email}
+						// onChange={(e) => this.setState({email: e.target.value})}
+					/>
+					<h2 className="connect-form-label">Message</h2>
+					<textarea
+						className="connect-form-textarea"
+						type="text"
+						placeholder="Add your message (optional)"
+						value={this.state.message}
+						onChange={(e) => this.setState({message: e.target.value})}
+					/>
+					<div
+						className="connect-form-submit"
+						style={{backgroundColor: themeColor}}
+						// onClick={() => this.onConnectFormSubmit()}
+					>
+						Get Connected
+					</div>
+				</div>
 			</div>
 		)
 	}
-}
-
-const styles = {
-	container: {
-
-	},
-	formLabel: {
-		display: 'block',
-		margin: 5,
-		fontSize: 16,
-	},
-	formRequired: {
-		color: colors.RED,
-	},
-	formInput: {
-		marginLeft: 10,
-		borderWidth: 1,
-		borderRadius: 5,
-		borderColor: colors.LIGHT_LIGHT_GRAY,
-	},
-	formSubmit: {
-		margin: 10,
-		padding: 5,
-		fontSize: 16,
-		backgroundColor: colors.WHITE,
-		borderWidth: 1,
-		borderRadius: 5,
-		borderColor: colors.LIGHT_LIGHT_GRAY,
-	},
 }
 
 export default Connect
