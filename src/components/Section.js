@@ -12,15 +12,15 @@ class Section extends React.Component {
 
   render() {
     return (
-      <Link 
+      <Link
         className='section'
         to={this.props.linkTo}
       >
-        <img 
-          className='img'
-          src={this.props.image} 
+        <img
+          className='section-img'
+          src={this.props.image}
         />
-        <h1 className='title'>
+        <h1 className='section-title'>
           {this.props.title}
         </h1>
       </Link>

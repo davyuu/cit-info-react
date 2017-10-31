@@ -3,6 +3,7 @@ const images = {
 	messages: require('./sectionIcons/messages.png'),
 	whatsHappening: require('./sectionIcons/whats_happening.png'),
 	giving: require('./sectionIcons/giving.png'),
+	connect: require('./sectionIcons/connect.png'),
 };
 
 export default images;

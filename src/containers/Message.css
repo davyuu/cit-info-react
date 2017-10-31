@@ -1,92 +1,83 @@
 .message-header-container {
-    display: flex;
-    align-items: flex-end;
+  position: relative;
 }
+
 .message-header-img {
-    width: 100%;
-    position: relative;
+  max-width: 100%;
 }
+
 .message-header-tabs {
-    position: absolute;
-    margin-left: 10px;
+  position: absolute;
+  bottom: 0;
 }
+
 .message-tab {
-    float: left;
-    padding-bottom: 1em;
-    margin-left: 2em;
-    font-size: 2em;
-    font-weight: 600;
-    letter-spacing: 2px;
-    border-bottom: 0.4em solid;
+  float: left;
+  padding-bottom: 0.6em;
+  margin-left: 2em;
+  font-size: 0.75em;
+  font-weight: 600;
+  color: white;
+  border-bottom: 0.8em solid;
 }
+
 .message-active-tab {
-    color: white;
-    border-bottom-color: rgba(255, 255, 255, 0.5);
+  border-bottom-color: rgba(255, 255, 255, 0.7);
 }
+
 .message-inactive-tab {
-    color: white;
-    opacity: 0.5;
-    border-bottom-color: transparent;
+  opacity: 0.5;
+  border-bottom-color: transparent;
 }
-.message-content {
-    padding: 4em;
+
+.message-container {
+  padding: 1.2em;
 }
+
 .message-title {
-    margin: 0;
-    padding: 0;
-    font-size: 6em;
-    font-weight: 500;
+  margin: 0;
+  padding: 0;
+  font-size: 2.3em;
+  font-weight: 500;
 }
+
 .message-number-chapter {
-    font-size: 1em;
-    font-weight: 500;
-    margin: 0 0 1em 0;
-    color: grey;
+  font-size: 0.9em;
+  font-weight: 500;
+  margin: 0 0 1em 0;
+  color: grey;
 }
-.message-outline {
+
+.message-html {}
+
+.message-html h1, h2, h3, h4, h5, h6 {
+  font-size: 1.3em;
+  font-weight: 500;
+  margin: 1em 0 0 0;
 }
-.message-outline h1,h2,h3,h4,h5,h6 {
-    font-size: 3em;
-    font-weight: 500;
-    margin: 1em 0 0 0;
+
+.message-html ol {
+  margin: 0 1.5em;
+  padding: 0;
+  list-style-type: upper-alpha;
+  font-size: 0.92em;
 }
-.message-outline ol {
-    margin: 0 3em;
-    padding: 0;
-    list-style-type: upper-alpha;
+
+.message-html ol span {
+  margin: 0 0 0 0.3em;
 }
-.message-outline ol li {
-    margin-top: 0.5em;
+
+.message-html ol li {
+  margin: 0.5em 0 0 0;
 }
-.message-outline ol span {
-    margin-left: 0.5em;
-    font-size: 1em;
+
+.message-html ol ol {
+  margin: 0 0 0 1em;
+  padding: 0;
+  list-style-type: decimal;
 }
-.message-outline ol ol {
-    margin: 0 0 0 3em;
-    padding: 0;
-    list-style-type: decimal;
-}
-.message-outline ol ol li {
-    margin: 0;
-    padding: 0;
-}
-.message-study-guide {
-}
-.message-study-guide h1,h2,h3,h4,h5,h6 {
-    font-size: 3em;
-    font-weight: 500;
-    margin: 1em 0 0 0;
-}
-.message-study-guide ol {
-    margin: 0 2em;
-    padding: 0;
-    list-style-type: decimal;
-}
-.message-study-guide ol li {
-    margin-top: 0.5em;
-}
-.message-study-guide ol span {
-    margin-left: 0.5em;
-    font-size: 0.9em;
+
+.message-html ol ol li {
+  margin: 0.2em 0 0 0;
+  padding: 0;
 }

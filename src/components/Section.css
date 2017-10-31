@@ -1,15 +1,17 @@
 .section {
-    height: 14em;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
+  height: 5em;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
-.section .img {
-    margin: 4em;
-    width: 11%;
+
+.section-img {
+  width: 2.5em;
+  margin: 1em;
 }
-.section .title {
-    font-size: 4em;
-    font-weight: 700;
-    color: black;
+
+.section-title {
+  font-size: 1.4em;
+  font-weight: 700;
+  color: black;
 }

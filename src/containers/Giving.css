@@ -1,26 +1,29 @@
 .giving-container {
-    padding: 4em;
+  padding: 2em;
 }
+
 .giving-title {
-    width: 70%;
-    font-size: 6.5em;
-    font-weight: 500;
-    margin: 0;
+  width: 70%;
+  margin: 0;
+  font-size: 2.2em;
+  font-weight: 500;
 }
+
 .giving-description {
-    font-size: 1em;
-    font-weight: 500;
-    line-height: 50px;
-    margin: 2em 0;
+  margin: 1em 0;
+  font-size: 0.9em;
+  font-weight: 500;
+  line-height: 1.5em;
 }
+
 .giving-btn {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    padding: 1em 0;
-    margin: 2em 0;
-    border-radius: 0.3em;
-    font-size: 3em;
-    color: white;
-    text-decoration: none;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1em 0;
+  margin: 2em 0;
+  border-radius: 0.3em;
+  font-size: 1em;
+  color: white;
+  text-decoration: none;
 }
