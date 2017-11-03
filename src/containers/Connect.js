@@ -1,8 +1,24 @@
 import React from 'react'
+import Select from 'react-select'
 import HeaderBar from '../components/HeaderBar';
 import './Connect.css';
+import 'react-select/dist/react-select.css';
 
 const themeColor = '#3852ff';
+const options = [{
+		value: 'new church',
+		label: 'I\'m looking for a new church'
+	}, {
+		value: 'new christian',
+		label: 'I\'m a new christian'
+	}, {
+		value: 'interested',
+		label: 'I\'m interested in knowing more about Christianity'
+	}, {
+		value: 'other',
+		label: 'Other'
+	}
+]
 
 class Connect extends React.Component {
 	constructor(props) {
@@ -11,12 +27,17 @@ class Connect extends React.Component {
 			name: '',
 			email: '',
 			phone: '',
+			description: '',
 			message: ''
 		}
 	}
 
 	onConnectFormSubmit() {
-		console.log(this.state.firstName);
+		this.validateForm();
+	}
+
+	validateForm() {
+
 	}
 
 	render() {
@@ -55,12 +76,17 @@ class Connect extends React.Component {
 						onChange={(e) => this.setState({phone: e.target.value})}
 					/>
 					<h2 className='connect-form-label'>Which best describes you?</h2>
-					<input
-						className='connect-form-input'
-						type='text'
-						placeholder='Choose one option'
-						// value={this.state.email}
-						// onChange={(e) => this.setState({email: e.target.value})}
+					<Select
+						className='connect-form-select'
+						autoFocus
+						simpleValue
+						name="selected-state"
+						options={options}
+						onChange={(value) => this.setState({description: value})}
+						value={this.state.description}
+						clearable={false}
+						searchable={false}
+						// placeholder='Choose one option'
 					/>
 					<h2 className='connect-form-label'>Message</h2>
 					<textarea
@@ -73,7 +99,7 @@ class Connect extends React.Component {
 					<div
 						className='connect-form-submit'
 						style={{backgroundColor: themeColor}}
-						// onClick={() => this.onConnectFormSubmit()}
+						onClick={() => this.onConnectFormSubmit()}
 					>
 						Get Connected
 					</div>

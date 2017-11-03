@@ -1,7 +1,7 @@
 .connect {}
 
 .connect-container {
-  padding: 2em;
+  padding: 1.5em;
 }
 
 .connect-title {
@@ -31,6 +31,14 @@
   border-color: lightgray;
   font-size: 0.8em;
   font-weight: 500;
+  font-family: 'Lato', sans-serif;
+}
+
+.connect-form-select {
+  margin: 0.5em 0 1em 0;
+  font-size: 0.8em;
+  font-weight: 500;
+  font-family: 'Lato', sans-serif;
 }
 
 .connect-form-textarea {
@@ -43,6 +51,7 @@
   border-color: lightgray;
   font-size: 0.8em;
   font-weight: 500;
+  font-family: 'Lato', sans-serif;
 }
 
 .connect-form-submit {
