@@ -1,8 +1,10 @@
 import React from 'react'
 import Select from 'react-select'
+import AlertContainer from 'react-alert'
 import HeaderBar from '../components/HeaderBar';
-import './Connect.css';
+import * as Utils from '../utils/Utils'
 import 'react-select/dist/react-select.css';
+import './Connect.css';
 
 const themeColor = '#3852ff';
 const options = [{
@@ -19,6 +21,13 @@ const options = [{
 		label: 'Other'
 	}
 ]
+const alertOptions = {
+	offset: 10,
+	position: 'top right',
+	theme: 'light',
+	time: 2000,
+	transition: 'fade'
+}
 
 class Connect extends React.Component {
 	constructor(props) {
@@ -37,12 +46,29 @@ class Connect extends React.Component {
 	}
 
 	validateForm() {
-
+		const {name, email, phone, description, message} = this.state;
+		this.msg.removeAll()
+		if(name === '') {
+			this.msg.error('Please enter your name')
+		}
+		if(email === '') {
+			this.msg.error('Please enter your email')
+		}
+		else if(!Utils.isValidEmail(email)) {
+			this.msg.error('Please enter a valid email')
+		}
+		if(phone !== '' && !Utils.isValidPhoneNumber(phone)) {
+			this.msg.error('Please enter a valid phone number')
+		}
+		if(description === '') {
+			this.msg.error('Please select a description')
+		}
 	}
 
 	render() {
 		return (
 			<div className='connect'>
+				<AlertContainer ref={a => this.msg = a} {...alertOptions} />
 				<HeaderBar
 					goBack={this.props.history.goBack}
 					title={'Connect'}
@@ -70,8 +96,8 @@ class Connect extends React.Component {
 					<h2 className='connect-form-label'>Phone (Optional)</h2>
 					<input
 						className='connect-form-input'
-						type='text'
-						placeholder='(123) 456-7890'
+						type='number'
+						placeholder='1234567890'
 						value={this.state.phone}
 						onChange={(e) => this.setState({phone: e.target.value})}
 					/>
