@@ -149,7 +149,7 @@ class Connect extends React.Component {
 							className='connect-form-input'
 							type='number'
 							name='phone'
-							placeholder='1234567890'
+							placeholder='4161234567'
 							value={this.state.phone}
 							onChange={(e) => this.setState({phone: e.target.value})}
 						/>
