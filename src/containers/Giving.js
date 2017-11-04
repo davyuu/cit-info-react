@@ -20,7 +20,7 @@ class Giving extends React.Component {
 							<a
 								className='giving-btn'
 								style={{backgroundColor: themeColor}}
-								href='https://www.canadahelps.org/en/dn/20223'
+								href='https://churchintoronto.churchcenteronline.com/giving'
 							>
 								Give Online
 							</a>
