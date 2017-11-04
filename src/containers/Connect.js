@@ -25,7 +25,7 @@ const alertOptions = {
 	offset: 10,
 	position: 'top right',
 	theme: 'light',
-	time: 2000,
+	time: 1500,
 	transition: 'fade'
 }
 
@@ -175,13 +175,13 @@ class Connect extends React.Component {
 							value={this.state.message}
 							onChange={(e) => this.setState({message: e.target.value})}
 						/>
-						<button
+						<div
 							className='connect-form-submit'
 							style={{backgroundColor: themeColor}}
 							onClick={() => this.onConnectFormSubmit()}
 						>
 							Get Connected
-						</button>
+						</div>
 					</div>
 				</div>
 			</div>
