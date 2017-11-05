@@ -1,6 +1,6 @@
 const routes = {
 	home: '/',
-	message: '/message',
+	message: '/messages',
 	news: '/news',
 	giving: '/giving',
 	groups: '/groups',
