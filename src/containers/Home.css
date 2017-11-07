@@ -1,25 +1,24 @@
 .home-header {
-  padding-top: 2em;
-  color: white;
+  position: relative;
 }
 
-.home-title-container {
-  width: 4.5em;
-  height: 4.5em;
-  margin: 0 auto;
-  padding: 1.5em;
-  border-radius: 50%;
-  background-color: #5bff60;
+.home-title-container-img {
+  position: relative;
+  height: auto;
+  width: auto;
 }
 
-.home-title {
-  text-align: center;
-  vertical-align: middle;
-  font-size: 3.5em;
-  font-weight: 900;
-  margin: 0;
+.home-title-logo-img {
+  position: absolute;
+  display: block;
+  width: 4.7em;
+  height: 4.7em;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: 0.5em auto;
 }
 
 .home-content {
-  padding: 1em;
+  padding: 0 1em;
 }

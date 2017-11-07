@@ -1,9 +1,12 @@
 const images = {
+	logo: require('./home/cit-logo.svg'),
+	banner: require('./home/top-banner.svg'),
+	messages: require('./home/latest-message.svg'),
+	whatsHappening: require('./home/whats-happening.svg'),
+	giving: require('./home/giving.svg'),
+	groups: require('./home/community-groups.svg'),
+	connect: require('./home/connect.svg'),
 	icArrowLeftWhite: require('./icons/ic_arrow_left_white.png'),
-	messages: require('./sectionIcons/messages.png'),
-	whatsHappening: require('./sectionIcons/whats_happening.png'),
-	giving: require('./sectionIcons/giving.png'),
-	connect: require('./sectionIcons/connect.png'),
 };
 
 export default images;
