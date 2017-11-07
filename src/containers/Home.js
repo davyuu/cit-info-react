@@ -7,11 +7,10 @@ import './Home.css';
 
 const Home = () => (
 	<div className='home'>
-		<header className='home-header'>
-			<div className='home-title-container'>
-				<h1 className='home-title'>cit</h1>
-			</div>
-		</header>
+		<div className='home-header'>
+			<img src={images.banner} className='home-title-container-img'/>
+  		<img src={images.logo} className='home-title-logo-img'/>
+		</div>
 		<div className='home-content'>
 			<Section
 				title={'Latest Message'}
@@ -36,7 +35,7 @@ const Home = () => (
 				linkTo={routes.groups}
 			/>*/}
 			<Section
-				title={'Get Connected'}
+				title={'Connect'}
 				image={images.connect}
 				linkTo={routes.connect}
 			/>
