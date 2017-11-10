@@ -8,8 +8,8 @@ import './Home.css';
 const Home = () => (
 	<div className='home'>
 		<div className='home-header'>
-			<img src={images.banner} className='home-title-container-img'/>
-  		<img src={images.logo} className='home-title-logo-img'/>
+			<div className='home-title-container-img' dangerouslySetInnerHTML={{__html: images.banner}} />
+			<div className='home-title-logo-img' dangerouslySetInnerHTML={{__html: images.logo}} />
 		</div>
 		<div className='home-content'>
 			<Section

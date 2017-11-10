@@ -16,7 +16,11 @@
   left: 0;
   right: 0;
   top: 0;
-  margin: 0.5em auto;
+  margin: 1.5em auto 0;
+}
+
+.home-title-logo-img .cls-1 {
+  fill: #f6f6f6;
 }
 
 .home-content {
