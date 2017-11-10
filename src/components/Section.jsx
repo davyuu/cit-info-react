@@ -16,10 +16,7 @@ class Section extends React.Component {
         className='section'
         to={this.props.linkTo}
       >
-        <img
-          className='section-img'
-          src={this.props.image}
-        />
+	      <div className='section-img' dangerouslySetInnerHTML={{__html: this.props.image}} />
         <h1 className='section-title'>
           {this.props.title}
         </h1>
