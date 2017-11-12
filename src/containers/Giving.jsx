@@ -1,8 +1,9 @@
 import React from 'react';
 import HeaderBar from "../components/HeaderBar";
+import * as Colors from '../constants/Colors'
 import './Giving.css';
 
-const themeColor = '#15c340';
+const themeColor = Colors.GIVING_THEME;
 
 class Giving extends React.Component {
 	render() {

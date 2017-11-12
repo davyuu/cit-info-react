@@ -1,17 +1,26 @@
 .header-bar {
-    height: 3.2em;
-    width: 100%;
-    display: flex;
-    align-items: center;
+  height: 3.2em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .header-bar-back-button {
-    height: 2em;
-    width: 2em;
-    padding: 0.5em;
+  height: 2em;
+  width: 2em;
+  padding: 0.5em;
 }
+
 .header-bar-title {
-    font-size: 1.25em;
-    font-weight: 700;
-    margin: auto;
-    color: white;
+  font-size: 1.25em;
+  font-weight: 700;
+  margin: auto;
+  color: white;
+}
+
+.header-bar-right {
+  height: 2em;
+  width: 2em;
+  padding: 0.5em;
 }
