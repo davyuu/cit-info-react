@@ -2,9 +2,10 @@ import React from 'react';
 import classNames from 'classnames';
 import Loading from './../components/Loading';
 import HeaderBar from "../components/HeaderBar";
+import * as Colors from '../constants/Colors'
 import './Message.css';
 
-const themeColor = '#4a275d';
+const themeColor = Colors.MESSAGE_THEME;
 
 class Message extends React.Component {
   constructor(props) {
@@ -16,11 +17,11 @@ class Message extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     let dataURL = 'http://mycit.info/wp-json/wp/v2/messages';
     fetch(dataURL)
-    	.then(res => res.json())
-      .then(res => {
+  	.then(res => res.json())
+    .then(res => {
       this.setState({
         messages: res.map(val => {
           const message = val.acf;

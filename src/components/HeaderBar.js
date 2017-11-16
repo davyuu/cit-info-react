@@ -15,7 +15,7 @@ class HeaderBar extends React.Component {
 					onClick={this.props.goBack}
 				/>
 				<div className='header-bar-title'>{this.props.title}</div>
-				<div className='header-bar-back-button'/>
+				<div className='header-bar-right'/>
 			</div>
 		)
 	}
