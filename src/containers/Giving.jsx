@@ -16,7 +16,7 @@ class Giving extends React.Component {
 				/>
 				<div className='giving-container'>
 						<h1 className='giving-title'>You can't outgive God</h1>
-						<p className='giving-description'>All donations are safe and secure. Online giving receipts will be provided directly from Canada Helps. Please follow the instructions provided through the link below.</p>
+						<p className='giving-description'>All donations are safe and secure. Online giving receipts will be provided directly from Planning Center Giving. Please follow the instructions provided through the link below.</p>
 						<div>
 							<a
 								className='giving-btn'
