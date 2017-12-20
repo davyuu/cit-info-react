@@ -4,6 +4,7 @@ import AlertContainer from 'react-alert'
 import Alert from 'react-s-alert'
 import base64 from 'base-64'
 import HeaderBar from '../components/HeaderBar';
+import routes from '../routes/routes'
 import * as Utils from '../utils/Utils'
 import * as Colors from '../constants/Colors'
 import 'react-select/dist/react-select.css';
@@ -230,7 +231,7 @@ class Connect extends React.Component {
 		}).then((res) => {
 			console.log(res)
     	if (res.status === 200) {
-				this.showSuccess('Successfully sent', this.props.history.goBack)
+				this.props.history.push(routes.confirm);
       } else {
 				this.showError('An error occured')
       }
