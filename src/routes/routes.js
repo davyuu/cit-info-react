@@ -4,7 +4,8 @@ const routes = {
 	news: '/news',
 	giving: '/giving',
 	groups: '/groups',
-  connect: '/connect'	
+  connect: '/connect',
+  confirm: '/confirm'
 };	
 
 export default routes;

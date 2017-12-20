@@ -1,0 +1,29 @@
+.confirm-container {
+  padding: 1.5em;
+}
+
+.confirm-title {
+  width: 70%;
+  margin: 0;
+  font-size: 2.2em;
+  font-weight: 500;
+}
+
+.confirm-description {
+  margin: 1em 0;
+  font-size: 0.9em;
+  font-weight: 500;
+  line-height: 1.5em;
+}
+
+.confirm-btn {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1em 0;
+  margin: 2em 0;
+  border-radius: 0.3em;
+  font-size: 1em;
+  color: white;
+  text-decoration: none;
+}

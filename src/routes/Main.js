@@ -8,6 +8,7 @@ import News from './../containers/News';
 import Giving from './../containers/Giving';
 import Groups from './../containers/Groups';
 import Connect from './../containers/Connect';
+import Confirm from './../containers/Confirm';
 import routes from './routes';
 import './Main.css';
 
@@ -23,6 +24,7 @@ const Main = () => (
 			<Route path={routes.giving} component={Giving}/>
 			<Route path={routes.groups} component={Groups}/>
 			<Route path={routes.connect} component={Connect}/>
+			<Route path={routes.confirm} component={Confirm}/>
 		</AnimatedSwitch>
 );
 
