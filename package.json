@@ -1,7 +1,7 @@
 {
   "name": "cit-info-react",
   "description": "CIT Info",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "author": "David Yu",
   "license": "ISC",
   "main": "webpack.config.js",
