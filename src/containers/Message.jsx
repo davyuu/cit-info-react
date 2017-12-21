@@ -2,10 +2,10 @@ import React from 'react'
 import classNames from 'classnames'
 import Loading from '../components/Loading'
 import HeaderBar from '../components/HeaderBar'
-import * as Colors from '../constants/Colors'
+import * as colors from '../constants/colors'
 import './Message.css'
 
-const themeColor = Colors.MESSAGE_THEME;
+const themeColor = colors.MESSAGE_THEME;
 
 class Message extends React.Component {
   constructor(props) {

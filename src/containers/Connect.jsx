@@ -7,14 +7,14 @@ import base64 from 'base-64'
 import HeaderBar from '../components/HeaderBar'
 import routes from '../routes/routes'
 import * as Utils from '../utils/Utils'
-import * as Colors from '../constants/Colors'
+import * as colors from '../constants/colors'
 
 import 'react-select/dist/react-select.css'
 import 'react-s-alert/dist/s-alert-default.css'
 import 'react-s-alert/dist/s-alert-css-effects/slide.css'
 import './Connect.css'
 
-const themeColor = Colors.CONNECT_THEME;
+const themeColor = colors.CONNECT_THEME;
 const options = [{
 		value: 'new church',
 		label: 'I\'m looking for a new church'

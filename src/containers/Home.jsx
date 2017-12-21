@@ -14,15 +14,16 @@ const Home = () => (
 		<div className='home-content'>
 			<Section
 				title={'Latest Message'}
-				image={images.messages}
+				image={images.message}
 				linkTo={routes.message}
 			/>
 			<SectionSeparator/>
-			{/*<Section
-				title={'What's Happening'}
+			<Section
+				title={'What\'s Happening'}
 				image={images.whatsHappening}
 				linkTo={routes.news}
-			/>*/}
+			/>
+			<SectionSeparator/>
 			<Section
 				title={'Giving'}
 				image={images.giving}
