@@ -1,9 +1,9 @@
-import React from 'react';
-import classNames from 'classnames';
-import Loading from './../components/Loading';
-import HeaderBar from "../components/HeaderBar";
+import React from 'react'
+import classNames from 'classnames'
+import Loading from '../components/Loading'
+import HeaderBar from '../components/HeaderBar'
 import * as Colors from '../constants/Colors'
-import './Message.css';
+import './Message.css'
 
 const themeColor = Colors.MESSAGE_THEME;
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import './Section.css';
+import './Section.css'
 
 class Section extends React.Component {
   constructor(props) {
