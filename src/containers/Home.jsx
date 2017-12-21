@@ -1,9 +1,9 @@
 import React from 'react'
-import routes from './../routes/routes';
-import images from './../images/images';
-import Section from './../components/Section';
-import SectionSeparator from './../components/SectionSeparator';
-import './Home.css';
+import routes from '../routes/routes'
+import images from '../images/images'
+import Section from '../components/Section'
+import SectionSeparator from '../components/SectionSeparator'
+import './Home.css'
 
 const Home = () => (
 	<div className='home'>

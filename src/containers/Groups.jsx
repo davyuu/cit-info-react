@@ -1,5 +1,5 @@
-import React from 'react';
-import HeaderBar from "../components/HeaderBar";
+import React from 'react'
+import HeaderBar from '../components/HeaderBar'
 
 class Groups extends React.Component {
 	constructor(props) {

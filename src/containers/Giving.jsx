@@ -1,7 +1,7 @@
-import React from 'react';
-import HeaderBar from "../components/HeaderBar";
+import React from 'react'
+import HeaderBar from '../components/HeaderBar'
 import * as Colors from '../constants/Colors'
-import './Giving.css';
+import './Giving.css'
 
 const themeColor = Colors.GIVING_THEME;
 

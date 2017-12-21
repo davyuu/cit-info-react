@@ -1,16 +1,17 @@
 import React from 'react'
-import {AnimatedSwitch, spring} from 'react-router-transition'
+import {AnimatedSwitch} from 'react-router-transition'
 import {Route} from 'react-router-dom'
-import * as Transitions from './../utils/Transitions';
-import Home from './../containers/Home';
-import Message from './../containers/Message';
-import News from './../containers/News';
-import Giving from './../containers/Giving';
-import Groups from './../containers/Groups';
-import Connect from './../containers/Connect';
-import Confirm from './../containers/Confirm';
-import routes from './routes';
-import './Main.css';
+
+import * as Transitions from '../utils/Transitions'
+import Home from '../containers/Home'
+import Message from '../containers/Message'
+import News from '../containers/News'
+import Giving from '../containers/Giving'
+import Groups from '../containers/Groups'
+import Connect from '../containers/Connect'
+import Confirm from '../containers/Confirm'
+import routes from './routes'
+import './Main.css'
 
 const Main = () => (
 		<AnimatedSwitch

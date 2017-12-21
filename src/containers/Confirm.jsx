@@ -1,10 +1,11 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-import HeaderBar from "../components/HeaderBar";
-import routes from '../routes/routes';
-import strings from '../constants/strings';
+import React from 'react'
+import {Link} from 'react-router-dom'
+
+import HeaderBar from '../components/HeaderBar'
+import routes from '../routes/routes'
+import strings from '../constants/strings'
 import * as Colors from '../constants/Colors'
-import './Confirm.css';
+import './Confirm.css'
 
 const themeColor = Colors.CONNECT_THEME;
 

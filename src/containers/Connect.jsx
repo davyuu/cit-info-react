@@ -3,14 +3,16 @@ import Select from 'react-select'
 import AlertContainer from 'react-alert'
 import Alert from 'react-s-alert'
 import base64 from 'base-64'
-import HeaderBar from '../components/HeaderBar';
+
+import HeaderBar from '../components/HeaderBar'
 import routes from '../routes/routes'
 import * as Utils from '../utils/Utils'
 import * as Colors from '../constants/Colors'
-import 'react-select/dist/react-select.css';
-import 'react-s-alert/dist/s-alert-default.css';
-import 'react-s-alert/dist/s-alert-css-effects/slide.css';
-import './Connect.css';
+
+import 'react-select/dist/react-select.css'
+import 'react-s-alert/dist/s-alert-default.css'
+import 'react-s-alert/dist/s-alert-css-effects/slide.css'
+import './Connect.css'
 
 const themeColor = Colors.CONNECT_THEME;
 const options = [{
@@ -26,14 +28,14 @@ const options = [{
 		value: 'other',
 		label: 'Other'
 	}
-]
+];
 const alertOptions = {
 	offset: 25,
 	position: 'bottom right',
 	theme: 'light',
 	time: 1500,
 	transition: 'fade'
-}
+};
 
 const app_id = '8a253088577f90fe8abd972f3d0d8a7f215a09368606dd69ce2807e1286f11e5';
 const secret = '84c12963c49f42d6b2a226f73b36dead2e8157b0e61535e18dfa58df0d6256b3';
@@ -64,31 +66,31 @@ class Connect extends React.Component {
 	}
 
 	isFormValid() {
-		const {firstName, lastName, email, phone, description, message} = this.state;
+		const {firstName, lastName, email, phone, description} = this.state;
 		this.hideErrors();
 		let isValid = true;
 		if(firstName === '') {
-			this.showError('Please enter your first name')
+			this.showError('Please enter your first name');
 			isValid = false;
 		}
 		if(lastName === '') {
-			this.showError('Please enter your last name')
+			this.showError('Please enter your last name');
 			isValid = false;
 		}
 		if(email === '') {
-			this.showError('Please enter your email')
+			this.showError('Please enter your email');
 			isValid = false;
 		}
 		else if(!Utils.isValidEmail(email)) {
-			this.showError('Please enter a valid email')
+			this.showError('Please enter a valid email');
 			isValid = false;
 		}
 		if(phone !== '' && !Utils.isValidPhoneNumber(phone)) {
-			this.showError('Please enter a valid phone number')
+			this.showError('Please enter a valid phone number');
 			isValid = false;
 		}
 		if(description === '') {
-			this.showError('Please select a description')
+			this.showError('Please select a description');
 			isValid = false;
 		}
 		return isValid;
@@ -106,7 +108,7 @@ class Connect extends React.Component {
 					last_name: lastName
 				}
 			}
-		}
+		};
     fetch(dataURL, {
 			headers: headers,
 			method: 'post',
@@ -119,12 +121,12 @@ class Connect extends React.Component {
 				this.createEmailForPerson(res.data.id)
 			} else {
 				console.log(res);
-				this.showError('An error occured')
+				this.showError('An error occurred')
 			}
     })
 		.catch(err => {
 			console.log(err);
-			this.showError('An error occured')
+			this.showError('An error occurred')
 		})
 	}
 
@@ -139,7 +141,7 @@ class Connect extends React.Component {
 					location: "Home"
         },
 			}
-		}
+		};
     fetch(dataURL, {
 			headers: headers,
 			method: 'post',
@@ -152,12 +154,12 @@ class Connect extends React.Component {
 				this.createPhoneNumberForPerson(personId);
 			} else {
 				console.log(res);
-				this.showError('An error occured')
+				this.showError('An error occurred')
 			}
     })
 		.catch(err => {
 			console.log(err);
-			this.showError('An error occured')
+			this.showError('An error occurred')
 		})
 	}
 
@@ -176,7 +178,7 @@ class Connect extends React.Component {
           location: "Mobile",
         },
 			}
-		}
+		};
     fetch(dataURL, {
 			headers: headers,
 			method: 'post',
@@ -215,12 +217,12 @@ class Connect extends React.Component {
 			'phone',
 			'description',
 			'message',
-		]
+		];
 	  data.formDataNameOrder = JSON.stringify(fields);
 		data.formGoogleSheetName = "responses";
 		const encoded = Object.keys(data).map(function(k) {
       return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-  	}).join('&')
+  	}).join('&');
 
 		fetch('https://script.google.com/macros/s/AKfycbxuFGgV8bYE_6X0Hozof7mXLOJ0b2mDWJfhV7o_XTSa8t1_WcfI/exec', {
 		  method: 'POST',
@@ -229,15 +231,15 @@ class Connect extends React.Component {
 		  },
 		  body: encoded
 		}).then((res) => {
-			console.log(res)
+			console.log(res);
     	if (res.status === 200) {
 				this.props.history.push(routes.confirm);
       } else {
-				this.showError('An error occured')
+				this.showError('An error occurred')
       }
     }).catch((err) => {
       console.log(err);
-			this.showError('An error occured')
+			this.showError('An error occurred')
     });
 	}
 

@@ -1,6 +1,6 @@
 import React from 'react'
-import images from './../images/images';
-import './HeaderBar.css';
+import images from './../images/images'
+import './HeaderBar.css'
 
 class HeaderBar extends React.Component {
 	render() {
