@@ -4,10 +4,10 @@ import {Link} from 'react-router-dom'
 import HeaderBar from '../components/HeaderBar'
 import routes from '../routes/routes'
 import strings from '../constants/strings'
-import * as Colors from '../constants/Colors'
+import * as colors from '../constants/colors'
 import './Confirm.css'
 
-const themeColor = Colors.CONNECT_THEME;
+const themeColor = colors.CONNECT_THEME;
 
 class Confirm extends React.Component {
 	render() {
