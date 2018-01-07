@@ -7,6 +7,8 @@ const images = {
 	groups: require('./home/community-groups.svg'),
 	connect: require('./home/connect.svg'),
 	icArrowLeftWhite: require('./icons/ic_arrow_left_white.png'),
+
+	christmas: require('./christmas.png')
 };
 
 export default images;
