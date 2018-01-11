@@ -1,13 +1,34 @@
 import React from 'react';
-import Head from './routes/Head';
-import Main from './routes/Main';
+import {AnimatedSwitch} from 'react-router-transition'
+import {Route} from 'react-router-dom'
+
+import * as Transitions from './utils/Transitions'
+import Home from './pages/Home'
+import Message from './pages/Message'
+import News from './pages/News'
+import Giving from './pages/Giving'
+import Groups from './pages/Groups'
+import Connect from './pages/Connect'
+import Confirm from './pages/Confirm'
+import routes from './constants/routes'
+import './App.css'
 
 class App extends React.Component {
 	render() {
 		return (
-			<div className="App">
-				<Main/>
-			</div>
+      <AnimatedSwitch
+        {...Transitions.glideTransitions}
+        mapStyles={Transitions.glideMapStyles}
+        className="switch-wrapper"
+      >
+        <Route exact path={routes.home} component={Home}/>
+        <Route path={routes.message} component={Message}/>
+        <Route path={routes.news} component={News}/>
+        <Route path={routes.giving} component={Giving}/>
+        <Route path={routes.groups} component={Groups}/>
+        <Route path={routes.connect} component={Connect}/>
+        <Route path={routes.confirm} component={Confirm}/>
+      </AnimatedSwitch>
 		);
 	}
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import routes from '../routes/routes'
+import routes from '../constants/routes'
 import images from '../images/images'
 import Section from '../components/Section'
 import SectionSeparator from '../components/SectionSeparator'

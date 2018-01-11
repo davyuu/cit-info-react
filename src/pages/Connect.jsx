@@ -5,7 +5,7 @@ import Alert from 'react-s-alert'
 import base64 from 'base-64'
 
 import HeaderBar from '../components/HeaderBar'
-import routes from '../routes/routes'
+import routes from '../constants/routes'
 import * as Utils from '../utils/Utils'
 import * as colors from '../constants/colors'
 
