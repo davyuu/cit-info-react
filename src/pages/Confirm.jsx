@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 import HeaderBar from '../components/HeaderBar'
-import routes from '../routes/routes'
+import routes from '../constants/routes'
 import strings from '../constants/strings'
 import * as colors from '../constants/colors'
 import './Confirm.css'
