@@ -1,6 +1,6 @@
 import React from 'react';
 import {AnimatedSwitch} from 'react-router-transition'
-import {Route} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 import * as Transitions from './utils/Transitions'
 import Home from './pages/Home'
@@ -16,19 +16,23 @@ import './App.css'
 class App extends React.Component {
 	render() {
 		return (
-      <AnimatedSwitch
-        {...Transitions.glideTransitions}
-        mapStyles={Transitions.glideMapStyles}
-        className="switch-wrapper"
-      >
-        <Route exact path={routes.home} component={Home}/>
-        <Route path={routes.message} component={Message}/>
-        <Route path={routes.news} component={News}/>
-        <Route path={routes.giving} component={Giving}/>
-        <Route path={routes.groups} component={Groups}/>
-        <Route path={routes.connect} component={Connect}/>
-        <Route path={routes.confirm} component={Confirm}/>
-      </AnimatedSwitch>
+      <Router>
+        {/*<AnimatedSwitch
+          {...Transitions.glideTransitions}
+          mapStyles={Transitions.glideMapStyles}
+          className="switch-wrapper"
+        >
+        </AnimatedSwitch>*/}
+        <Switch>
+          <Route exact path={routes.home} component={Home}/>
+          <Route path={routes.message} component={Message}/>
+          <Route path={routes.news} component={News}/>
+          <Route path={routes.giving} component={Giving}/>
+          <Route path={routes.groups} component={Groups}/>
+          <Route path={routes.connect} component={Connect}/>
+          <Route path={routes.confirm} component={Confirm}/>
+        </Switch>
+      </Router>
 		);
 	}
 }
