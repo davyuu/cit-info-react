@@ -1,6 +1,6 @@
 import React from 'react';
-import {AnimatedSwitch} from 'react-router-transition'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+// import {AnimatedSwitch} from 'react-router-transition'
+import {HashRouter as Router, Route, Switch} from 'react-router-dom'
 
 import * as Transitions from './utils/Transitions'
 import Home from './pages/Home'
