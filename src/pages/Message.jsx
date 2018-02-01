@@ -2,6 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import Loading from '../components/Loading'
 import HeaderBar from '../components/HeaderBar'
+import FloatingButtons from '../components/FloatingButtons'
 import * as colors from '../constants/colors'
 import './Message.css'
 
@@ -14,7 +15,9 @@ class Message extends React.Component {
       currentMessage: 0,
       currentTab: 0,
       messages: []
-    }
+    };
+    this.goNextWeek = this.goNextWeek.bind(this);
+    this.goPreviousWeek = this.goPreviousWeek.bind(this);
   }
 
   componentWillMount() {
@@ -37,6 +40,28 @@ class Message extends React.Component {
         })
       })
     })
+  }
+
+  isFirstWeek() {
+    return this.state.currentMessage === 0;
+  }
+
+  isLastWeek() {
+    return this.state.currentMessage >= this.state.messages.length - 1;
+  }
+
+  goNextWeek() {
+    const currentMessage = this.state.currentMessage;
+    if(!this.isFirstWeek()) {
+    	this.setState({currentMessage: currentMessage - 1})
+    }
+  }
+
+  goPreviousWeek() {
+    const currentMessage = this.state.currentMessage;
+    if(!this.isLastWeek()) {
+      this.setState({currentMessage: currentMessage + 1})
+    }
   }
 
   render() {
@@ -87,13 +112,19 @@ class Message extends React.Component {
       )
     }
 
-		return (
+    return (
 			<div className='message'>
 				<HeaderBar
 					goBack={this.props.history.goBack}
 					title={'Latest Message'}
 					color={themeColor}
 				/>
+        <FloatingButtons
+          leftClicked={this.goPreviousWeek}
+          rightClicked={this.goNextWeek}
+          leftClickable={!this.isLastWeek()}
+          rightClickable={!this.isFirstWeek()}
+        />
 				{content}
 			</div>
 		)

@@ -1,6 +1,7 @@
 import React from 'react'
 import Loading from '../components/Loading'
 import HeaderBar from '../components/HeaderBar'
+import FloatingButtons from '../components/FloatingButtons'
 import SectionSeparator from '../components/SectionSeparator'
 import * as colors from '../constants/colors'
 import images from '../images/images'
@@ -14,7 +15,9 @@ class News extends React.Component {
     this.state = {
       currentNews: 0,
 			news: []
-    }
+    };
+    this.goNextWeek = this.goNextWeek.bind(this);
+    this.goPreviousWeek = this.goPreviousWeek.bind(this);
 	}
 
   componentWillMount() {
@@ -31,6 +34,28 @@ class News extends React.Component {
         })
       })
     })
+  }
+
+	isFirstWeek() {
+    return this.state.currentNews === 0;
+  }
+
+  isLastWeek() {
+    return this.state.currentNews >= this.state.news.length - 1;
+  }
+
+  goNextWeek() {
+    const currentNews = this.state.currentNews;
+    if(!this.isLastWeek()) {
+      this.setState({currentNews: currentNews - 1})
+    }
+  }
+
+  goPreviousWeek() {
+    const currentNews = this.state.currentNews;
+    if(!this.isFirstWeek()) {
+      this.setState({currentNews: currentNews + 1})
+    }
   }
 
 	render() {
@@ -75,6 +100,12 @@ class News extends React.Component {
 					title={'What\'s Happening'}
 					color={themeColor}
 				/>
+        <FloatingButtons
+          leftClicked={this.goPreviousWeek}
+          rightClicked={this.goNextWeek}
+          leftClickable={!this.isLastWeek()}
+          rightClickable={!this.isFirstWeek()}
+        />
 				{content}
 			</div>
 		)
