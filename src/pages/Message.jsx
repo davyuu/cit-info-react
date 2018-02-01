@@ -2,6 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import Loading from '../components/Loading'
 import HeaderBar from '../components/HeaderBar'
+import FloatingButtons from '../components/FloatingButtons'
 import * as colors from '../constants/colors'
 import './Message.css'
 
@@ -14,7 +15,9 @@ class Message extends React.Component {
       currentMessage: 0,
       currentTab: 0,
       messages: []
-    }
+    };
+    this.nextWeek = this.nextWeek.bind(this);
+    this.lastWeek = this.lastWeek.bind(this);
   }
 
   componentWillMount() {
@@ -37,6 +40,20 @@ class Message extends React.Component {
         })
       })
     })
+  }
+
+  nextWeek() {
+    const currentMessage = this.state.currentMessage;
+    if(currentMessage > 0) {
+    	this.setState({currentMessage: currentMessage - 1})
+    }
+  }
+
+  lastWeek() {
+    const currentMessage = this.state.currentMessage;
+    if(currentMessage + 1 < this.state.messages.length) {
+      this.setState({currentMessage: currentMessage + 1})
+    }
   }
 
   render() {
@@ -94,6 +111,10 @@ class Message extends React.Component {
 					title={'Latest Message'}
 					color={themeColor}
 				/>
+        <FloatingButtons
+          leftClicked={this.lastWeek}
+          rightClicked={this.nextWeek}
+        />
 				{content}
 			</div>
 		)

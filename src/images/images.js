@@ -6,7 +6,8 @@ const images = {
 	giving: require('./home/giving.svg'),
 	groups: require('./home/community-groups.svg'),
 	connect: require('./home/connect.svg'),
-	icArrowLeftWhite: require('./icons/ic_arrow_left_white.png'),
+	arrowLeftWhite: require('./icons/arrow_left_white.png'),
+  arrowRightWhite: require('./icons/arrow_right_white.png'),
 
 	christmas: require('./christmas.png')
 };

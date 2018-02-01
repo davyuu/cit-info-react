@@ -11,7 +11,7 @@ class HeaderBar extends React.Component {
 			>
 				<img
 					className='header-bar-back-button'
-					src={images.icArrowLeftWhite}
+					src={images.arrowLeftWhite}
 					onClick={this.props.goBack}
 				/>
 				<div className='header-bar-title'>{this.props.title}</div>
