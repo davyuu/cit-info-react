@@ -16,8 +16,8 @@ class Message extends React.Component {
       currentTab: 0,
       messages: []
     };
-    this.nextWeek = this.nextWeek.bind(this);
-    this.lastWeek = this.lastWeek.bind(this);
+    this.goNextWeek = this.goNextWeek.bind(this);
+    this.goPreviousWeek = this.goPreviousWeek.bind(this);
   }
 
   componentWillMount() {
@@ -42,16 +42,24 @@ class Message extends React.Component {
     })
   }
 
-  nextWeek() {
+  isFirstWeek() {
+    return this.state.currentMessage === 0;
+  }
+
+  isLastWeek() {
+    return this.state.currentMessage >= this.state.messages.length - 1;
+  }
+
+  goNextWeek() {
     const currentMessage = this.state.currentMessage;
-    if(currentMessage > 0) {
+    if(!this.isFirstWeek()) {
     	this.setState({currentMessage: currentMessage - 1})
     }
   }
 
-  lastWeek() {
+  goPreviousWeek() {
     const currentMessage = this.state.currentMessage;
-    if(currentMessage + 1 < this.state.messages.length) {
+    if(!this.isLastWeek()) {
       this.setState({currentMessage: currentMessage + 1})
     }
   }
@@ -104,7 +112,7 @@ class Message extends React.Component {
       )
     }
 
-		return (
+    return (
 			<div className='message'>
 				<HeaderBar
 					goBack={this.props.history.goBack}
@@ -112,8 +120,10 @@ class Message extends React.Component {
 					color={themeColor}
 				/>
         <FloatingButtons
-          leftClicked={this.lastWeek}
-          rightClicked={this.nextWeek}
+          leftClicked={this.goPreviousWeek}
+          rightClicked={this.goNextWeek}
+          leftClickable={!this.isLastWeek()}
+          rightClickable={!this.isFirstWeek()}
         />
 				{content}
 			</div>

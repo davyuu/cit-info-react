@@ -16,8 +16,8 @@ class News extends React.Component {
       currentNews: 0,
 			news: []
     };
-    this.nextWeek = this.nextWeek.bind(this);
-    this.lastWeek = this.lastWeek.bind(this);
+    this.goNextWeek = this.goNextWeek.bind(this);
+    this.goPreviousWeek = this.goPreviousWeek.bind(this);
 	}
 
   componentWillMount() {
@@ -36,19 +36,27 @@ class News extends React.Component {
     })
   }
 
-  nextWeek() {
-    const currentNews = this.state.currentNews;
-		if(currentNews > 0) {
-			this.setState({currentNews: currentNews - 1})
-		}
-	}
+	isFirstWeek() {
+    return this.state.currentNews === 0;
+  }
 
-	lastWeek() {
+  isLastWeek() {
+    return this.state.currentNews >= this.state.news.length - 1;
+  }
+
+  goNextWeek() {
     const currentNews = this.state.currentNews;
-    if(currentNews + 1 < this.state.news.length) {
+    if(!this.isLastWeek()) {
+      this.setState({currentNews: currentNews - 1})
+    }
+  }
+
+  goPreviousWeek() {
+    const currentNews = this.state.currentNews;
+    if(!this.isFirstWeek()) {
       this.setState({currentNews: currentNews + 1})
     }
-	}
+  }
 
 	render() {
     let content;
@@ -93,8 +101,10 @@ class News extends React.Component {
 					color={themeColor}
 				/>
         <FloatingButtons
-          leftClicked={this.lastWeek}
-          rightClicked={this.nextWeek}
+          leftClicked={this.goPreviousWeek}
+          rightClicked={this.goNextWeek}
+          leftClickable={!this.isLastWeek()}
+          rightClickable={!this.isFirstWeek()}
         />
 				{content}
 			</div>
