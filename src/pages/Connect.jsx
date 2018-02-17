@@ -3,6 +3,7 @@ import Select from 'react-select'
 import AlertContainer from 'react-alert'
 import Alert from 'react-s-alert'
 import base64 from 'base-64'
+import {RingLoader} from 'react-spinners'
 
 import HeaderBar from '../components/HeaderBar'
 import routes from '../constants/routes'
@@ -52,14 +53,14 @@ class Connect extends React.Component {
 			phone: '',
 			description: '',
 			message: '',
-			sending: false
+			loading: false
 		}
 	}
 
 	onConnectFormSubmit() {
-		if(!this.state.sending) {
-			this.setState({sending: true});
-			if(this.isFormValid()) {
+		if(this.isFormValid()) {
+			if(!this.state.loading) {
+				this.setState({loading: true});
 				this.createPerson();
 			}
 		}
@@ -233,7 +234,7 @@ class Connect extends React.Component {
 		}).then((res) => {
 			console.log(res);
     	if (res.status === 200) {
-				this.props.history.push(routes.confirm);
+				this.showSuccess();
       } else {
 				this.showError('An error occurred')
       }
@@ -251,7 +252,7 @@ class Connect extends React.Component {
 	showError(msg) {
 		this.msg.error(msg, {
 			onClose: () => {
-				this.setState({sending: false});
+				this.setState({loading: false});
 			}
 		})
 		// Alert.error(msg, {
@@ -262,9 +263,13 @@ class Connect extends React.Component {
 		// })
 	}
 
-	showSuccess(msg, onClose) {
-		this.setState({sending: false});
-		this.msg.success('Successfully sent', {onClose})
+	showSuccess() {
+		this.setState({loading: false});
+		this.msg.success('Successfully sent', {
+			onClose: () => {
+				this.props.history.push(routes.confirm);
+			}
+		})
 		// Alert.success(msg, {
 		// 	position: 'bottom-right',
 		//   effect: 'slide',
@@ -352,6 +357,15 @@ class Connect extends React.Component {
 							Get Connected
 						</div>
 					</div>
+				</div>
+				<div
+					className='connect-loading'
+					style={{visibility: this.state.loading === true ? 'visible' : 'hidden'}}
+				>
+					<RingLoader
+						color={themeColor}
+						loading={true}
+					/>
 				</div>
         <Alert stack={true} timeout={1500}/>
 			</div>
