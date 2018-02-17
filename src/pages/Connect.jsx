@@ -32,7 +32,7 @@ const options = [{
 ];
 const alertOptions = {
 	offset: 25,
-	position: 'bottom right',
+	position: 'top right',
 	theme: 'light',
 	time: 1500,
 	transition: 'fade'
