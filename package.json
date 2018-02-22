@@ -12,6 +12,7 @@
   "dependencies": {
     "base-64": "^0.1.0",
     "classnames": "^2.2.5",
+    "moment": "^2.20.1",
     "react": "^16.0.0",
     "react-alert": "^2.4.0",
     "react-dom": "^16.0.0",
