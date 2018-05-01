@@ -13,6 +13,7 @@
 
 .message-tab {
   float: left;
+  cursor: pointer;
   padding-bottom: 0.6em;
   margin-left: 2em;
   font-size: 0.75em;
@@ -28,6 +29,10 @@
 .message-inactive-tab {
   opacity: 0.5;
   border-bottom-color: transparent;
+}
+
+.message-inactive-tab:hover {
+  opacity: 0.7;
 }
 
 .message-container {

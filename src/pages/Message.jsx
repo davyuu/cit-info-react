@@ -77,8 +77,6 @@ class Message extends React.Component {
       const message = this.state.messages[this.state.currentMessage];
       const currentTab = this.state.currentTab;
 
-      console.log(message.date)
-
       const tabClass = (index) => {
         return classNames({
           'message-tab': true,
