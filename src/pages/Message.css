@@ -136,3 +136,25 @@
 .song-divider {
   margin: 2em 0;
 }
+
+.message-modal {
+  position: absolute;
+  top: 35%;
+  left: 20%;
+  right: 20%;
+  border: none;
+  background-color: white;
+}
+
+.message-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.3);
+}
+
+.ReactModal__Body--open {
+  overflow-y: hidden;
+}

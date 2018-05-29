@@ -1,24 +1,34 @@
 import React from 'react'
 import classNames from 'classnames'
 import moment from 'moment'
+import Modal from 'react-modal'
+import Picker from 'rmc-picker'
 import Loading from '../components/Loading'
 import HeaderBar from '../components/HeaderBar'
 import FloatingButtons from '../components/FloatingButtons'
 import * as colors from '../constants/colors'
 import './Message.css'
+import 'rmc-picker/assets/index.css';
 
 const themeColor = colors.MESSAGE_THEME;
+
+Modal.setAppElement('#app')
 
 class Message extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      modalIsOpen: false,
       currentMessage: 0,
       currentTab: 0,
       messages: []
     };
     this.goNextWeek = this.goNextWeek.bind(this);
     this.goPreviousWeek = this.goPreviousWeek.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.selectWeek = this.selectWeek.bind(this);
+    this.onDateChange = this.onDateChange.bind(this);
   }
 
   componentWillMount() {
@@ -47,13 +57,14 @@ class Message extends React.Component {
     })
   }
 
-  isFirstWeek() {
-    return this.state.currentMessage === 0;
+  openModal() {
+    this.setState({modalIsOpen: true});
   }
 
-  isLastWeek() {
-    return this.state.currentMessage >= this.state.messages.length - 1;
+  closeModal() {
+    this.setState({modalIsOpen: false});
   }
+
 
   goNextWeek() {
     const currentMessage = this.state.currentMessage;
@@ -69,13 +80,29 @@ class Message extends React.Component {
     }
   }
 
+  isFirstWeek() {
+    return this.state.currentMessage === 0;
+  }
+
+  isLastWeek() {
+    return this.state.currentMessage >= this.state.messages.length - 1;
+  }
+
+  selectWeek() {
+    this.openModal();
+  }
+
+  onDateChange(value) {
+    this.setState({currentMessage: value})
+  }
+
   render() {
     let content;
-    if (this.state.messages.length === 0) {
+    const {messages, currentMessage, currentTab} = this.state
+    if (messages.length === 0) {
       content = <Loading/>;
     } else {
-      const message = this.state.messages[this.state.currentMessage];
-      const currentTab = this.state.currentTab;
+      const message = messages[currentMessage];
 
       const tabClass = (index) => {
         return classNames({
@@ -142,14 +169,39 @@ class Message extends React.Component {
 					goBack={this.props.history.goBack}
 					title={'Latest Message'}
 					color={themeColor}
-				/>
+    />
         <FloatingButtons
           leftClicked={this.goPreviousWeek}
           rightClicked={this.goNextWeek}
+          longClicked={this.selectWeek}
           leftClickable={!this.isLastWeek()}
           rightClickable={!this.isFirstWeek()}
         />
 				{content}
+        <Modal
+          className='message-modal'
+          overlayClassName='message-modal-overlay'
+          isOpen={this.state.modalIsOpen}
+          onRequestClose={this.closeModal}
+          onClick={() => console.log('test')}
+        >
+          <Picker
+            selectedValue={currentMessage}
+            onValueChange={this.onDateChange}
+          >
+            {messages.map((message, i) => {
+              return (
+                <Picker.Item
+                  key={i}
+                  className='message-modal-picker-item'
+                  value={i}
+                >
+                  {message.date.format('dddd MMMM DD, YYYY')}
+                </Picker.Item>
+              )
+            })}
+          </Picker>
+        </Modal>
 			</div>
 		)
   }
