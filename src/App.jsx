@@ -14,14 +14,14 @@ import routes from './constants/routes'
 import './App.css'
 
 class App extends React.Component {
-	render() {
-		return (
+  render() {
+    return (
       <Router>
         {/*<AnimatedSwitch
           {...Transitions.glideTransitions}
           mapStyles={Transitions.glideMapStyles}
           className="switch-wrapper"
-        >
+          >
         </AnimatedSwitch>*/}
         <Switch>
           <Route exact path={routes.home} component={Home}/>
@@ -33,8 +33,8 @@ class App extends React.Component {
           <Route path={routes.confirm} component={Confirm}/>
         </Switch>
       </Router>
-		);
-	}
+    );
+  }
 }
 
 export default App;
