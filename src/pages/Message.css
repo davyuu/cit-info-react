@@ -8,15 +8,17 @@
 
 .message-header-tabs {
   position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
   bottom: 0;
 }
 
 .message-tab {
-  float: left;
   cursor: pointer;
-  padding-bottom: 0.6em;
-  margin-left: 2em;
-  font-size: 0.75em;
+  padding: 0.5em;
+  font-size: 0.7em;
   font-weight: 600;
   color: white;
   border-bottom: 0.8em solid;
@@ -61,6 +63,11 @@
 }
 
 .message-html {}
+
+.message-html p {
+  margin: 0;
+  font-size: 0.9em;
+}
 
 .message-html ol {
   margin: 0;

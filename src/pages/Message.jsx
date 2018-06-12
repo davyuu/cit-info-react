@@ -11,8 +11,18 @@ import './Message.css'
 import 'rmc-picker/assets/index.css';
 
 const themeColor = colors.MESSAGE_THEME;
+const MESSAGE_KEY = 0;
+const SUPPLEMENT_KEY = 1;
+const STUDY_KEY = 2;
+const SONGS_KEY = 3;
 
 Modal.setAppElement('#app')
+
+window.oncontextmenu = (event) => {
+     event.preventDefault();
+     event.stopPropagation();
+     return false;
+};
 
 class Message extends React.Component {
   constructor(props) {
@@ -20,7 +30,7 @@ class Message extends React.Component {
     this.state = {
       modalIsOpen: false,
       currentMessage: 0,
-      currentTab: 0,
+      currentTab: MESSAGE_KEY,
       messages: []
     };
     this.goNextWeek = this.goNextWeek.bind(this);
@@ -32,7 +42,7 @@ class Message extends React.Component {
   }
 
   componentWillMount() {
-    let dataURL = 'http://mycit.info/wp-json/wp/v2/messages';
+    let dataURL = 'https://mycit.info/wp-json/wp/v2/messages';
     fetch(dataURL)
   	.then(res => res.json())
     .then(res => {
@@ -49,6 +59,7 @@ class Message extends React.Component {
             outline: message.outline,
             studyChapter: message.study_chapter,
             studyGuide: message.study_guide,
+            supplementaryMaterial: message.supplementary_material,
             setList: message.set_list,
             childrenSetList: message.children_set_list,
           };
@@ -113,7 +124,7 @@ class Message extends React.Component {
       }
 
       let tabContent;
-      if(currentTab === 0) {
+      if(currentTab === MESSAGE_KEY) {
         tabContent = (
           <div className='message-container'>
             <h1 className='message-title' style={{color: themeColor}}>{message.title}</h1>
@@ -122,7 +133,13 @@ class Message extends React.Component {
             <div className='message-html' dangerouslySetInnerHTML={{__html: message.outline}}/>
           </div>
         )
-      } else if(currentTab === 1) {
+      } else if(currentTab === SUPPLEMENT_KEY) {
+        tabContent = (
+          <div className='message-container'>
+            <div className='message-html' dangerouslySetInnerHTML={{__html: message.supplementaryMaterial}}/>
+          </div>
+        )
+      }  else if(currentTab === STUDY_KEY) {
         tabContent = (
           <div className='message-container'>
             <h1 className='study-title' style={{color: themeColor}}>Examining the text & our hearts:</h1>
@@ -130,7 +147,7 @@ class Message extends React.Component {
             <div className='study-html' dangerouslySetInnerHTML={{__html: message.studyGuide}}/>
           </div>
         )
-      } else if(currentTab === 2) {
+      }else if(currentTab === SONGS_KEY) {
         tabContent = (
           <div className='message-container'>
             <h1 className='song-title' style={{color: themeColor}}>This week's set list:</h1>
@@ -147,13 +164,16 @@ class Message extends React.Component {
           <div className='message-header-container'>
             <img className='message-header-img' src={message.seriesImage}/>
             <div className='message-header-tabs'>
-              <div className={tabClass(0)} onClick={() => this.setState({currentTab: 0})}>
-                MESSAGE OUTLINE
+              <div className={tabClass(MESSAGE_KEY)} onClick={() => this.setState({currentTab: MESSAGE_KEY})}>
+                MESSAGE
               </div>
-              <div className={tabClass(1)} onClick={() => this.setState({currentTab: 1})}>
+              <div className={tabClass(SUPPLEMENT_KEY)} onClick={() => this.setState({currentTab: SUPPLEMENT_KEY})}>
+                SUPPLEMENT
+              </div>
+              <div className={tabClass(STUDY_KEY)} onClick={() => this.setState({currentTab: STUDY_KEY})}>
                 STUDY GUIDE
               </div>
-              <div className={tabClass(2)} onClick={() => this.setState({currentTab: 2})}>
+              <div className={tabClass(SONGS_KEY)} onClick={() => this.setState({currentTab: SONGS_KEY})}>
                 SONGS
               </div>
             </div>

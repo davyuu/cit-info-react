@@ -11,12 +11,12 @@ module.exports = {
   },
   entry: './src/index.jsx',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'public'),
     filename: 'index.js'
   },
   devServer: {
     inline: true,
-    contentBase: './dist',
+    contentBase: './public',
     port: 8080
   },
   module: {
@@ -56,7 +56,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       favicon: './src/images/favicon.ico',
-      template: './src/index.html'
+      template: './src/index.html',
+      hash: true
     })
   ]
 }
