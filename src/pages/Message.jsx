@@ -12,8 +12,8 @@ import 'rmc-picker/assets/index.css';
 
 const themeColor = colors.MESSAGE_THEME;
 const MESSAGE_KEY = 0;
-const SUPPLEMENT_KEY = 1;
-const STUDY_KEY = 2;
+const STUDY_KEY = 1;
+const SUPPLEMENT_KEY = 2;
 const SONGS_KEY = 3;
 
 Modal.setAppElement('#app')
@@ -133,13 +133,7 @@ class Message extends React.Component {
             <div className='message-html' dangerouslySetInnerHTML={{__html: message.outline}}/>
           </div>
         )
-      } else if(currentTab === SUPPLEMENT_KEY) {
-        tabContent = (
-          <div className='message-container'>
-            <div className='message-html' dangerouslySetInnerHTML={{__html: message.supplementaryMaterial}}/>
-          </div>
-        )
-      }  else if(currentTab === STUDY_KEY) {
+      } else if(currentTab === STUDY_KEY) {
         tabContent = (
           <div className='message-container'>
             <h1 className='study-title' style={{color: themeColor}}>Examining the text & our hearts:</h1>
@@ -147,14 +141,28 @@ class Message extends React.Component {
             <div className='study-html' dangerouslySetInnerHTML={{__html: message.studyGuide}}/>
           </div>
         )
-      }else if(currentTab === SONGS_KEY) {
+      } else if(currentTab === SUPPLEMENT_KEY) {
+        tabContent = (
+          <div className='message-container'>
+            <div className='message-html' dangerouslySetInnerHTML={{__html: message.supplementaryMaterial}}/>
+          </div>
+        )
+      } else if(currentTab === SONGS_KEY) {
+        let childrenSetList;
+        if(message.childrenSetList) {
+          childrenSetList = (
+            <div>
+              <div className='song-divider'/>
+              <h1 className='song-title' style={{color: themeColor}}>Children's set list:</h1>
+              <div className='song-html' dangerouslySetInnerHTML={{__html: message.childrenSetList}}/>
+            </div>
+          )
+        }
         tabContent = (
           <div className='message-container'>
             <h1 className='song-title' style={{color: themeColor}}>This week's set list:</h1>
             <div className='song-html' dangerouslySetInnerHTML={{__html: message.setList}}/>
-            <div className='song-divider'/>
-            <h1 className='song-title' style={{color: themeColor}}>Children's set list:</h1>
-            <div className='song-html' dangerouslySetInnerHTML={{__html: message.childrenSetList}}/>
+            {childrenSetList}
           </div>
         )
       }
@@ -167,11 +175,11 @@ class Message extends React.Component {
               <div className={tabClass(MESSAGE_KEY)} onClick={() => this.setState({currentTab: MESSAGE_KEY})}>
                 MESSAGE
               </div>
-              <div className={tabClass(SUPPLEMENT_KEY)} onClick={() => this.setState({currentTab: SUPPLEMENT_KEY})}>
-                SUPPLEMENT
-              </div>
               <div className={tabClass(STUDY_KEY)} onClick={() => this.setState({currentTab: STUDY_KEY})}>
                 STUDY GUIDE
+              </div>
+              <div className={tabClass(SUPPLEMENT_KEY)} onClick={() => this.setState({currentTab: SUPPLEMENT_KEY})}>
+                SUPPLEMENT
               </div>
               <div className={tabClass(SONGS_KEY)} onClick={() => this.setState({currentTab: SONGS_KEY})}>
                 SONGS
