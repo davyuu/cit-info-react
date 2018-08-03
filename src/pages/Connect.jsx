@@ -248,7 +248,6 @@ class Connect extends React.Component {
 
 	hideErrors() {
 		this.msg.removeAll()
-		// Alert.closeAll()
 	}
 
 	showError(msg) {
@@ -257,12 +256,6 @@ class Connect extends React.Component {
 				this.setState({loading: false});
 			}
 		})
-		// Alert.error(msg, {
-		// 	position: 'bottom-right',
-		//   effect: 'slide',
-		// 	offset: 100,
-		//   html: true
-		// })
 	}
 
 	showSuccess() {
@@ -272,13 +265,6 @@ class Connect extends React.Component {
 				this.props.history.push(routes.confirm);
 			}
 		})
-		// Alert.success(msg, {
-		// 	position: 'bottom-right',
-		//   effect: 'slide',
-		// 	offset: 100,
-		//   html: true,
-		// 	onClose
-		// });
 	}
 
 	render() {
@@ -289,7 +275,7 @@ class Connect extends React.Component {
 					goBack={this.props.history.goBack}
 					title={'Connect'}
 					color={themeColor}
-				/>
+    />
 				<div className='connect-container'>
 					<h1 className='connect-title'>Get connected with us</h1>
 					<p className='connect-description'>We know that it's important for you to find a church that really fits. We can connect you with one of our pastors to answer any questions you might have about our church's beliefs, community, and culture.</p>
@@ -302,7 +288,7 @@ class Connect extends React.Component {
 							placeholder='First name'
 							value={this.state.firstName}
 							onChange={(e) => this.setState({firstName: e.target.value})}
-						/>
+      />
 						<input
 							className='connect-form-input right'
 							type='text'
@@ -310,7 +296,7 @@ class Connect extends React.Component {
 							placeholder='Last name'
 							value={this.state.lastName}
 							onChange={(e) => this.setState({lastName: e.target.value})}
-						/>
+      />
 						<h2 className='connect-form-label'>Email</h2>
 						<input
 							className='connect-form-input'
@@ -319,7 +305,7 @@ class Connect extends React.Component {
 							placeholder='youremailaddress@example.com'
 							value={this.state.email}
 							onChange={(e) => this.setState({email: e.target.value})}
-						/>
+      />
 						<h2 className='connect-form-label'>Phone (Optional)</h2>
 						<input
 							className='connect-form-input'
@@ -328,7 +314,7 @@ class Connect extends React.Component {
 							placeholder='4161234567'
 							value={this.state.phone}
 							onChange={(e) => this.setState({phone: e.target.value})}
-						/>
+      />
 						<h2 className='connect-form-label'>Which best describes you?</h2>
 						<Select
 							className='connect-form-select'
@@ -341,7 +327,7 @@ class Connect extends React.Component {
 							clearable={false}
 							searchable={false}
 							placeholder='Choose one option'
-						/>
+      />
 						<h2 className='connect-form-label'>Message</h2>
 						<textarea
 							className='connect-form-input textarea'
@@ -350,12 +336,12 @@ class Connect extends React.Component {
 							placeholder='Add your message (optional)'
 							value={this.state.message}
 							onChange={(e) => this.setState({message: e.target.value})}
-						/>
+      />
 						<div
 							className='connect-form-submit'
 							style={{backgroundColor: themeColor}}
 							onClick={() => this.onConnectFormSubmit()}
-						>
+      >
 							Get Connected
 						</div>
 					</div>
@@ -363,11 +349,11 @@ class Connect extends React.Component {
 				<div
 					className='connect-loading'
 					style={{visibility: this.state.loading === true ? 'visible' : 'hidden'}}
-				>
+    >
 					<RingLoader
 						color={themeColor}
 						loading={true}
-					/>
+     />
 				</div>
         <Alert stack={true} timeout={1500}/>
 			</div>
