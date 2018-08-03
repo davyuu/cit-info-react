@@ -4,19 +4,20 @@
 
 .home-title-container-img {
   position: relative;
-  height: auto;
-  width: auto;
+  width: 100%;
+}
+
+.home-title-container-img path {
+  width: 100%;
+  max-height: 300px;
 }
 
 .home-title-logo-img {
   position: absolute;
-  display: block;
   width: 4.7em;
-  height: 4.7em;
-  left: 0;
-  right: 0;
-  top: 0;
-  margin: 1.5em auto 0;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .home-title-logo-img .cls-1 {

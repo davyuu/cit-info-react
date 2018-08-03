@@ -5,6 +5,7 @@ import Section from '../components/Section'
 import SectionSeparator from '../components/SectionSeparator'
 import './Home.css'
 
+const communityGroupsLink = 'https://churchintoronto.churchcenter.com/groups/community-groups'
 const Home = () => (
   <div className='home'>
     <div className='home-header'>
@@ -30,11 +31,13 @@ const Home = () => (
         linkTo={routes.giving}
       />
       <SectionSeparator/>
-      {/*<Section
+      <Section
         title={'Community Groups'}
-        image={images.giving}
-        linkTo={routes.groups}
-      />*/}
+        image={images.groups}
+        linkTo={communityGroupsLink}
+        external
+      />
+      <SectionSeparator/>
       <Section
         title={'Connect'}
         image={images.connect}
