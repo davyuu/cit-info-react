@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import DynamicLink from './DynamicLink'
 import './Section.css'
 
 class Section extends React.Component {
@@ -12,15 +12,16 @@ class Section extends React.Component {
 
   render() {
     return (
-      <Link
+      <DynamicLink
         className='section'
-        to={this.props.linkTo}
+        linkTo={this.props.linkTo}
+        external={this.props.external}
       >
 	      <div className='section-img' dangerouslySetInnerHTML={{__html: this.props.image}} />
         <h1 className='section-title'>
           {this.props.title}
         </h1>
-      </Link>
+      </DynamicLink>
     )
   }
 }
