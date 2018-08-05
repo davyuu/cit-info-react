@@ -2,11 +2,11 @@ import React from 'react'
 import Select from 'react-select'
 import AlertContainer from 'react-alert'
 import Alert from 'react-s-alert'
-import base64 from 'base-64'
 import {RingLoader} from 'react-spinners'
 
 import HeaderBar from '../components/HeaderBar'
 import routes from '../constants/routes'
+import * as NetworkUtils from '../utils/NetworkUtils'
 import * as Utils from '../utils/Utils'
 import * as colors from '../constants/colors'
 
@@ -37,13 +37,6 @@ const alertOptions = {
 	time: 1500,
 	transition: 'fade'
 };
-
-// const app_id = '309a52586fd38fc7ae18e4fcce41fdee6de813185b30c69cca599000fe5a81fb'
-// const secret = '8c1c905e0e31cfe9cb17bae68f803e6cd971a9d2feff1980390549d7267b35e7';
-const app_id = '8a253088577f90fe8abd972f3d0d8a7f215a09368606dd69ce2807e1286f11e5';
-const secret = '84c12963c49f42d6b2a226f73b36dead2e8157b0e61535e18dfa58df0d6256b3';
-const headers = new Headers();
-headers.append("Authorization", "Basic " + base64.encode(`${app_id}:${secret}`));
 
 class Connect extends React.Component {
 	constructor(props) {
@@ -100,80 +93,59 @@ class Connect extends React.Component {
 	}
 
 	createPerson() {
-	  const dataURL = 'https://api.planningcenteronline.com/people/v2/people';
-		const {firstName, lastName, description, message} = this.state;
+	  const url = 'https://api.planningcenteronline.com/people/v2/people';
 
-		const body = {
+		const body = JSON.stringify({
 			data: {
 				type: 'Person',
 				attributes: {
-					first_name: firstName,
-					last_name: lastName
+					first_name: this.state.firstName,
+					last_name: this.state.lastName
 				}
 			}
-		};
-    fetch(dataURL, {
-			headers: headers,
-			method: 'post',
-			body: JSON.stringify(body)
-		})
-  	.then(res => res.json())
-    .then(res => {
-			if (res.data && res.data.id) {
-				console.log('successfully created person');
-				this.createEmailForPerson(res.data.id)
-			} else {
-				console.log(res);
-				this.showError('An error occurred')
-			}
-    })
-		.catch(err => {
-			console.log(err);
-			this.showError('An error occurred')
-		})
+		});
+
+    const successHandler = (res) => {
+      this.createEmailForPerson(res.data.id)
+    };
+    const errorHandler = () => {
+      this.showError('An error occurred')
+    };
+
+    NetworkUtils.postRequest(url, successHandler, errorHandler, body)
 	}
 
 	createEmailForPerson(personId) {
-	  const dataURL = `https://api.planningcenteronline.com/people/v2/people/${personId}/emails`;
-		const {email} = this.state;
-		const body = {
+	  const url = `https://api.planningcenteronline.com/people/v2/people/${personId}/emails`;
+
+		const body = JSON.stringify({
 			data: {
 				type: 'Email',
 				attributes: {
-          address: email,
+          address: this.state.email,
 					location: "Home"
         },
 			}
-		};
-    fetch(dataURL, {
-			headers: headers,
-			method: 'post',
-			body: JSON.stringify(body)
-		})
-  	.then(res => res.json())
-    .then(res => {
-			if (res.data) {
-				console.log('successfully created email');
-				this.createPhoneNumberForPerson(personId);
-			} else {
-				console.log(res);
-				this.showError('An error occurred')
-			}
-    })
-		.catch(err => {
-			console.log(err);
-			this.showError('An error occurred')
-		})
+		});
+
+    const successHandler = () => {
+      this.createPhoneNumberForPerson(personId);
+    };
+    const errorHandler = () => {
+      this.showError('An error occurred')
+    };
+
+    NetworkUtils.postRequest(url, successHandler, errorHandler, body)
 	}
 
 	createPhoneNumberForPerson(personId) {
-	  const dataURL = `https://api.planningcenteronline.com/people/v2/people/${personId}/phone_numbers`;
+	  const url = `https://api.planningcenteronline.com/people/v2/people/${personId}/phone_numbers`;
 		const {phone} = this.state;
 		if (!phone && phone === '') {
 			this.sendToSheets();
 			return;
 		}
-		const body = {
+		const body = JSON.stringify({
 			data: {
 				type: 'PhoneNumber',
 				attributes: {
@@ -181,29 +153,20 @@ class Connect extends React.Component {
           location: "Mobile",
         },
 			}
-		};
-    fetch(dataURL, {
-			headers: headers,
-			method: 'post',
-			body: JSON.stringify(body)
-		})
-  	.then(res => res.json())
-    .then(res => {
-			if (res.data) {
-				console.log('successfully created phone');
-				this.sendToSheets();
-			} else {
-				console.log(res);
-				this.showError('An error occured')
-			}
-    })
-		.catch(err => {
-			console.log(err);
-			this.showError('An error occured')
-		})
+		});
+
+    const successHandler = () => {
+      this.sendToSheets();
+    };
+    const errorHandler = () => {
+      this.showError('An error occurred')
+    };
+
+    NetworkUtils.postRequest(url, successHandler, errorHandler, body)
 	}
 
 	sendToSheets() {
+    const url = `https://script.google.com/macros/s/AKfycbxuFGgV8bYE_6X0Hozof7mXLOJ0b2mDWJfhV7o_XTSa8t1_WcfI/exec`;
 		const {firstName, lastName, email, phone, description, message} = this.state;
 		const data = {
 			firstName,
@@ -223,27 +186,20 @@ class Connect extends React.Component {
 		];
 	  data.formDataNameOrder = JSON.stringify(fields);
 		data.formGoogleSheetName = "responses";
-		const encoded = Object.keys(data).map(function(k) {
+		const body = Object.keys(data).map(function(k) {
       return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
   	}).join('&');
 
-		fetch('https://script.google.com/macros/s/AKfycbxuFGgV8bYE_6X0Hozof7mXLOJ0b2mDWJfhV7o_XTSa8t1_WcfI/exec', {
-		  method: 'POST',
-		  headers: {
-		    'Content-Type': 'application/x-www-form-urlencoded',
-		  },
-		  body: encoded
-		}).then((res) => {
-			console.log(res);
-    	if (res.status === 200) {
-				this.showSuccess();
-      } else {
-				this.showError('An error occurred')
-      }
-    }).catch((err) => {
-      console.log(err);
-			this.showError('An error occurred')
-    });
+    const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
+
+    const successHandler = () => {
+      this.showSuccess();
+    };
+    const errorHandler = () => {
+      this.showError('An error occurred')
+    };
+
+    NetworkUtils.postRequest(url, successHandler, errorHandler, body, headers)
 	}
 
 	hideErrors() {
