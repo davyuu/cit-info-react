@@ -7,6 +7,7 @@ import {RingLoader} from 'react-spinners'
 
 import HeaderBar from '../components/HeaderBar'
 import routes from '../constants/routes'
+import * as NetworkUtils from '../utils/NetworkUtils'
 import * as Utils from '../utils/Utils'
 import * as colors from '../constants/colors'
 
@@ -74,7 +75,7 @@ class Volunteer extends React.Component {
 		if(this.isFormValid()) {
 			if(!this.state.loading) {
 				this.setState({loading: true});
-				// this.createPerson();
+          this.sendToSheets()
 			}
 		}
 	}
@@ -91,15 +92,11 @@ class Volunteer extends React.Component {
 			this.showError('Please enter your last name');
 			isValid = false;
 		}
-		if(email === '') {
-			this.showError('Please enter your email');
-			isValid = false;
-		}
-		else if(!Utils.isValidEmail(email)) {
+		if(!Utils.isValidEmail(email)) {
 			this.showError('Please enter a valid email');
 			isValid = false;
 		}
-		if(phone !== '' && !Utils.isValidPhoneNumber(phone)) {
+		if(!Utils.isValidPhoneNumber(phone)) {
 			this.showError('Please enter a valid phone number');
 			isValid = false;
 		}
@@ -109,6 +106,46 @@ class Volunteer extends React.Component {
 		}
 		return isValid;
 	}
+
+
+  sendToSheets() {
+    const url = `https://script.google.com/macros/s/AKfycbxuFGgV8bYE_6X0Hozof7mXLOJ0b2mDWJfhV7o_XTSa8t1_WcfI/exec`;
+    const {firstName, lastName, email, phone, description, message} = this.state;
+    const data = {
+      type: 'volunteer',
+      firstName,
+      lastName,
+      email,
+      phone,
+      description,
+      message
+    };
+    const fields = [
+      'type',
+      'firstName',
+      'lastName',
+      'email',
+      'phone',
+      'description',
+      'message',
+    ];
+    data.formDataNameOrder = JSON.stringify(fields);
+    data.formGoogleSheetName = "responses";
+    const body = Object.keys(data).map(function(k) {
+      return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+    }).join('&');
+
+    const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
+
+    const successHandler = () => {
+      this.showSuccess();
+    };
+    const errorHandler = () => {
+      this.showError('An error occurred')
+    };
+
+    NetworkUtils.postRequest(url, successHandler, errorHandler, body, headers)
+  }
 
   hideErrors() {
     this.msg.removeAll()
@@ -142,65 +179,75 @@ class Volunteer extends React.Component {
         />
         <div className='volunteer-container'>
           <h1 className='volunteer-title'>Join A Team</h1>
-          <p className='volunteer-description'>Our teams are dedicated to bringing our very best to our God. We would love for you to become part of a team and discover all that God has purposed for your life.</p>
+          <p className='volunteer-description'>Our descriptions are dedicated to bringing our very best to our God. We would love for you to become part of a description and discover all that God has purposed for your life.</p>
           <div className='volunteer-form'>
             <h2 className='volunteer-form-label'>Name</h2>
-            <input
-              className='volunteer-form-input left'
-              type='text'
-              name="first name"
-              placeholder='First name'
-              value={this.state.firstName}
-              onChange={(e) => this.setState({firstName: e.target.value})}
-            />
-            <input
-              className='volunteer-form-input right'
-              type='text'
-              name="last name"
-              placeholder='Last name'
-              value={this.state.lastName}
-              onChange={(e) => this.setState({lastName: e.target.value})}
-            />
+            <div className='connect-form-row'>
+              <input
+                className='volunteer-form-input left'
+                type='text'
+                name="first name"
+                placeholder='First name'
+                value={this.state.firstName}
+                onChange={(e) => this.setState({firstName: e.target.value})}
+              />
+              <input
+                className='volunteer-form-input right'
+                type='text'
+                name="last name"
+                placeholder='Last name'
+                value={this.state.lastName}
+                onChange={(e) => this.setState({lastName: e.target.value})}
+              />
+            </div>
             <h2 className='volunteer-form-label'>Email</h2>
-            <input
-              className='volunteer-form-input'
-              type='text'
-              name='email'
-              placeholder='youremailaddress@example.com'
-              value={this.state.email}
-              onChange={(e) => this.setState({email: e.target.value})}
-            />
+            <div className='connect-form-row'>
+              <input
+                className='volunteer-form-input'
+                type='text'
+                name='email'
+                placeholder='youremailaddress@example.com'
+                value={this.state.email}
+                onChange={(e) => this.setState({email: e.target.value})}
+              />
+            </div>
             <h2 className='volunteer-form-label'>Phone (Optional)</h2>
-            <input
-              className='volunteer-form-input'
-              type='number'
-              name='phone'
-              placeholder='4161234567'
-              value={this.state.phone}
-              onChange={(e) => this.setState({phone: e.target.value})}
-            />
-            <h2 className='volunteer-form-label'>Which team would you like to learn about</h2>
-            <Select
-              className='volunteer-form-select'
-              autoFocus
-              simpleValue
-              name="description"
-              options={options}
-              onChange={(value) => this.setState({description: value})}
-              value={this.state.description}
-              clearable={false}
-              searchable={false}
-              placeholder='Choose one option'
-            />
+            <div className='connect-form-row'>
+              <input
+                className='volunteer-form-input'
+                type='number'
+                name='phone'
+                placeholder='4161234567'
+                value={this.state.phone}
+                onChange={(e) => this.setState({phone: e.target.value})}
+              />
+            </div>
+            <h2 className='volunteer-form-label'>Which description would you like to learn about</h2>
+            <div className='connect-form-row'>
+              <Select
+                className='volunteer-form-select'
+                autoFocus
+                simpleValue
+                name="description"
+                options={options}
+                onChange={(value) => this.setState({description: value})}
+                value={this.state.description}
+                clearable={false}
+                searchable={false}
+                placeholder='Choose one option'
+              />
+            </div>
             <h2 className='volunteer-form-label'>Message</h2>
-            <textarea
-              className='volunteer-form-input textarea'
-              type='text'
-              name='message'
-              placeholder='Add your message (optional)'
-              value={this.state.message}
-              onChange={(e) => this.setState({message: e.target.value})}
-            />
+            <div className='connect-form-row'>
+              <textarea
+                className='volunteer-form-input textarea'
+                type='text'
+                name='message'
+                placeholder='Add your message (optional)'
+                value={this.state.message}
+                onChange={(e) => this.setState({message: e.target.value})}
+              />
+            </div>
             <div
               className='volunteer-form-submit'
               style={{backgroundColor: themeColor}}
