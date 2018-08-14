@@ -45,7 +45,7 @@ const Home = () => (
       />
       <SectionSeparator/>
       <Section
-        title={'Volunteer With Us'}
+        title={'Join a Team'}
         image={images.volunteer}
         linkTo={routes.volunteer}
       />
