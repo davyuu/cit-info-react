@@ -179,7 +179,7 @@ class Volunteer extends React.Component {
         />
         <div className='volunteer-container'>
           <h1 className='volunteer-title'>Join A Team</h1>
-          <p className='volunteer-description'>Our descriptions are dedicated to bringing our very best to our God. We would love for you to become part of a description and discover all that God has purposed for your life.</p>
+          <p className='volunteer-description'>Our teams are dedicated to bringing our very best to our God. We would love for you to become part of a team and discover all that God has purposed for your life.</p>
           <div className='volunteer-form'>
             <h2 className='volunteer-form-label'>Name</h2>
             <div className='connect-form-row'>
