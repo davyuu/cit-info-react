@@ -6,8 +6,10 @@
 }
 
 .section-img {
-  width: 2.7em;
+  height: 40px;
+  width: 40px;
   margin: 1em;
+  fill: #5938d9;
 }
 
 .section-title {

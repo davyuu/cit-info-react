@@ -5,7 +5,8 @@ const routes = {
 	giving: '/giving',
 	groups: '/groups',
 	connect: '/connect',
-	confirm: '/confirm'
-};	
+	confirm: '/confirm',
+	volunteer: '/volunteer'
+};
 
 export default routes;

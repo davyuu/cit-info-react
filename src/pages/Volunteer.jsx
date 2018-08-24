@@ -2,6 +2,7 @@ import React from 'react'
 import Select from 'react-select'
 import AlertContainer from 'react-alert'
 import Alert from 'react-s-alert'
+import base64 from 'base-64'
 import {RingLoader} from 'react-spinners'
 
 import HeaderBar from '../components/HeaderBar'
@@ -13,159 +14,105 @@ import * as colors from '../constants/colors'
 import 'react-select/dist/react-select.css'
 import 'react-s-alert/dist/s-alert-default.css'
 import 'react-s-alert/dist/s-alert-css-effects/slide.css'
-import './Connect.css'
+import './Volunteer.css'
 
-const themeColor = colors.CONNECT_THEME;
+const themeColor = colors.VOLUNTEER_THEME;
 const options = [{
-    value: 'new church',
-    label: 'I\'m looking for a new church'
-  }, {
-    value: 'new christian',
-    label: 'I\'m a new christian'
-  }, {
-    value: 'interested',
-    label: 'I\'m interested in knowing more about Christianity'
-  }, {
-    value: 'other',
-    label: 'Other'
-  }
-];
+  value: 'kids',
+  label: 'Kids'
+}, {
+  value: 'greeting',
+  label: 'Greeting'
+}, {
+  value: 'cafe',
+  label: 'Cafe'
+}, {
+  value: 'ushering',
+  label: 'Ushering'
+}, {
+  value: 'parking',
+  label: 'Parking'
+}, {
+  value: 'youth',
+  label: 'Youth'
+}, {
+  value: 'worship',
+  label: 'Worship'
+}, {
+  value: 'production',
+  label: 'Production'
+}, {
+  value: 'creative',
+  label: 'Creative'
+}, {
+  value: 'connections',
+  label: 'Connections'
+}];
+
 const alertOptions = {
-  offset: 25,
-  position: 'top right',
-  theme: 'light',
-  time: 1500,
-  transition: 'fade'
+	offset: 25,
+	position: 'top right',
+	theme: 'light',
+	time: 1500,
+	transition: 'fade'
 };
 
-class Connect extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      description: '',
-      message: '',
-      loading: false
-    }
-  }
+class Volunteer extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			firstName: '',
+			lastName: '',
+			email: '',
+			phone: '',
+			description: '',
+			message: '',
+			loading: false
+		}
+	}
 
-  onConnectFormSubmit() {
-    if(this.isFormValid()) {
-      if(!this.state.loading) {
-        this.setState({loading: true});
-        this.createPerson();
-      }
-    }
-  }
+	onConnectFormSubmit() {
+		if(this.isFormValid()) {
+			if(!this.state.loading) {
+				this.setState({loading: true});
+          this.sendToSheets()
+			}
+		}
+	}
 
-  isFormValid() {
-    const {firstName, lastName, email, phone, description} = this.state;
-    this.hideErrors();
-    let isValid = true;
-    if(firstName === '') {
-      this.showError('Please enter your first name');
-      isValid = false;
-    }
-    if(lastName === '') {
-      this.showError('Please enter your last name');
-      isValid = false;
-    }
-    if(!Utils.isValidEmail(email)) {
-      this.showError('Please enter a valid email');
-      isValid = false;
-    }
-    if(!Utils.isValidPhoneNumber(phone)) {
-      this.showError('Please enter a valid phone number');
-      isValid = false;
-    }
-    if(description === '') {
-      this.showError('Please select a description');
-      isValid = false;
-    }
-    return isValid;
-  }
+	isFormValid() {
+		const {firstName, lastName, email, phone, description} = this.state;
+		this.hideErrors();
+		let isValid = true;
+		if(firstName === '') {
+			this.showError('Please enter your first name');
+			isValid = false;
+		}
+		if(lastName === '') {
+			this.showError('Please enter your last name');
+			isValid = false;
+		}
+		if(!Utils.isValidEmail(email)) {
+			this.showError('Please enter a valid email');
+			isValid = false;
+		}
+		if(!Utils.isValidPhoneNumber(phone)) {
+			this.showError('Please enter a valid phone number');
+			isValid = false;
+		}
+		if(description === '') {
+			this.showError('Please select a description');
+			isValid = false;
+		}
+		return isValid;
+	}
 
-  createPerson() {
-    const url = 'https://api.planningcenteronline.com/people/v2/people';
-
-    const body = JSON.stringify({
-      data: {
-        type: 'Person',
-        attributes: {
-          first_name: this.state.firstName,
-          last_name: this.state.lastName
-        }
-      }
-    });
-
-    const successHandler = (res) => {
-      this.createEmailForPerson(res.data.id)
-    };
-    const errorHandler = () => {
-      this.showError('An error occurred')
-    };
-
-    NetworkUtils.postRequest(url, successHandler, errorHandler, body)
-  }
-
-  createEmailForPerson(personId) {
-    const url = `https://api.planningcenteronline.com/people/v2/people/${personId}/emails`;
-
-    const body = JSON.stringify({
-      data: {
-        type: 'Email',
-        attributes: {
-          address: this.state.email,
-          location: "Home"
-        },
-      }
-    });
-
-    const successHandler = () => {
-      this.createPhoneNumberForPerson(personId);
-    };
-    const errorHandler = () => {
-      this.showError('An error occurred')
-    };
-
-    NetworkUtils.postRequest(url, successHandler, errorHandler, body)
-  }
-
-  createPhoneNumberForPerson(personId) {
-    const url = `https://api.planningcenteronline.com/people/v2/people/${personId}/phone_numbers`;
-    const {phone} = this.state;
-    if (!phone && phone === '') {
-      this.sendToSheets();
-      return;
-    }
-    const body = JSON.stringify({
-      data: {
-        type: 'PhoneNumber',
-        attributes: {
-          number: phone,
-          location: "Mobile",
-        },
-      }
-    });
-
-    const successHandler = () => {
-      this.sendToSheets();
-    };
-    const errorHandler = () => {
-      this.showError('An error occurred')
-    };
-
-    NetworkUtils.postRequest(url, successHandler, errorHandler, body)
-  }
 
   sendToSheets() {
     const url = `https://script.google.com/macros/s/AKfycbxuFGgV8bYE_6X0Hozof7mXLOJ0b2mDWJfhV7o_XTSa8t1_WcfI/exec`;
     const {firstName, lastName, email, phone, description, message} = this.state;
     const data = {
-      type: 'connect',
+      type: 'volunteer',
       firstName,
       lastName,
       email,
@@ -223,21 +170,21 @@ class Connect extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="volunteer">
         <AlertContainer ref={a => this.msg = a} {...alertOptions} />
         <HeaderBar
           goBack={this.props.history.goBack}
-          title={'Connect'}
+          title={'Volunteer'}
           color={themeColor}
         />
-        <div className='connect-container'>
-          <h1 className='connect-title'>Get connected with us</h1>
-          <p className='connect-description'>We know that it's important for you to find a church that really fits. We can connect you with one of our pastors to answer any questions you might have about our church's beliefs, community, and culture.</p>
-          <div className='connect-form'>
-            <label className='connect-form-label'>Name</label>
+        <div className='volunteer-container'>
+          <h1 className='volunteer-title'>Join A Team</h1>
+          <p className='volunteer-description'>Our teams are dedicated to bringing our very best to our God. We would love for you to become part of a team and discover all that God has purposed for your life.</p>
+          <div className='volunteer-form'>
+            <h2 className='volunteer-form-label'>Name</h2>
             <div className='connect-form-row'>
               <input
-                className='connect-form-input left'
+                className='volunteer-form-input left'
                 type='text'
                 name="first name"
                 placeholder='First name'
@@ -245,7 +192,7 @@ class Connect extends React.Component {
                 onChange={(e) => this.setState({firstName: e.target.value})}
               />
               <input
-                className='connect-form-input right'
+                className='volunteer-form-input right'
                 type='text'
                 name="last name"
                 placeholder='Last name'
@@ -253,10 +200,10 @@ class Connect extends React.Component {
                 onChange={(e) => this.setState({lastName: e.target.value})}
               />
             </div>
-            <label className='connect-form-label'>Email</label>
+            <h2 className='volunteer-form-label'>Email</h2>
             <div className='connect-form-row'>
               <input
-                className='connect-form-input'
+                className='volunteer-form-input'
                 type='text'
                 name='email'
                 placeholder='youremailaddress@example.com'
@@ -264,10 +211,10 @@ class Connect extends React.Component {
                 onChange={(e) => this.setState({email: e.target.value})}
               />
             </div>
-            <label className='connect-form-label'>Phone</label>
+            <h2 className='volunteer-form-label'>Phone (Optional)</h2>
             <div className='connect-form-row'>
               <input
-                className='connect-form-input'
+                className='volunteer-form-input'
                 type='number'
                 name='phone'
                 placeholder='4161234567'
@@ -275,10 +222,10 @@ class Connect extends React.Component {
                 onChange={(e) => this.setState({phone: e.target.value})}
               />
             </div>
-            <label className='connect-form-label'>Which best describes you?</label>
+            <h2 className='volunteer-form-label'>Which description would you like to learn about</h2>
             <div className='connect-form-row'>
               <Select
-                className='connect-form-select'
+                className='volunteer-form-select'
                 autoFocus
                 simpleValue
                 name="description"
@@ -290,10 +237,10 @@ class Connect extends React.Component {
                 placeholder='Choose one option'
               />
             </div>
-            <label className='connect-form-label'>Message</label>
+            <h2 className='volunteer-form-label'>Message</h2>
             <div className='connect-form-row'>
               <textarea
-                className='connect-form-input textarea'
+                className='volunteer-form-input textarea'
                 type='text'
                 name='message'
                 placeholder='Add your message (optional)'
@@ -302,7 +249,7 @@ class Connect extends React.Component {
               />
             </div>
             <div
-              className='connect-form-submit'
+              className='volunteer-form-submit'
               style={{backgroundColor: themeColor}}
               onClick={() => this.onConnectFormSubmit()}
             >
@@ -311,7 +258,7 @@ class Connect extends React.Component {
           </div>
         </div>
         <div
-          className='connect-loading'
+          className='volunteer-loading'
           style={{visibility: this.state.loading === true ? 'visible' : 'hidden'}}
         >
           <RingLoader
@@ -325,4 +272,4 @@ class Connect extends React.Component {
   }
 }
 
-export default Connect
+export default Volunteer

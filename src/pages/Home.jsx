@@ -43,6 +43,12 @@ const Home = () => (
         image={images.connect}
         linkTo={routes.connect}
       />
+      <SectionSeparator/>
+      <Section
+        title={'Join a Team'}
+        image={images.volunteer}
+        linkTo={routes.volunteer}
+      />
     </div>
   </div>
 );

@@ -10,6 +10,7 @@ import Giving from './pages/Giving'
 import Groups from './pages/Groups'
 import Connect from './pages/Connect'
 import Confirm from './pages/Confirm'
+import Volunteer from './pages/Volunteer'
 import routes from './constants/routes'
 import './App.css'
 
@@ -31,6 +32,7 @@ class App extends React.Component {
           <Route path={routes.groups} component={Groups}/>
           <Route path={routes.connect} component={Connect}/>
           <Route path={routes.confirm} component={Confirm}/>
+          <Route path={routes.volunteer} component={Volunteer}/>
         </Switch>
       </Router>
     );

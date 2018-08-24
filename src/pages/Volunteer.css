@@ -1,39 +1,39 @@
-.connect {}
+.volunteer {}
 
-.connect-container {
+.volunteer-container {
   padding: 1.5em;
 }
 
-.connect-title {
+.volunteer-title {
   width: 70%;
   margin: 0;
   font-size: 2em;
   font-weight: 500;
 }
 
-.connect-description {
+.volunteer-description {
   font-size: 0.9em;
   font-weight: 500;
 }
 
-.connect-form {
+.volunteer-form {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
 }
 
-.connect-form-label {
+.volunteer-form-label {
   margin: 0;
   font-size: 0.8em;
 }
 
-.connect-form-row {
+.volunteer-form-row {
   width: 100%;
   display: flex;
 }
 
-.connect-form-input {
+.volunteer-form-input {
   width: 100%;
   margin: 0.5em 0 1em 0;
   padding: 8px;
@@ -47,19 +47,20 @@
   font-family: 'Lato', sans-serif;
 }
 
-.connect-form-input.left {
+
+.volunteer-form-input.left {
   margin-right: 4px;
 }
 
-.connect-form-input.right {
+.volunteer-form-input.right {
   margin-left: 4px;
 }
 
-.connect-form-input.textarea {
+.volunteer-form-input.textarea {
   height: 6em;
 }
 
-.connect-form-select {
+.volunteer-form-select {
   width: 100%;
   margin: 0.5em 0 1em 0;
   font-size: 0.8em;
@@ -67,7 +68,7 @@
   font-family: 'Lato', sans-serif;
 }
 
-.connect-form-submit {
+.volunteer-form-submit {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -79,7 +80,7 @@
   color: white;
 }
 
-.connect-loading {
+.volunteer-loading {
   position: fixed;
   height: 100%;
   width: 100%;
