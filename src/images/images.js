@@ -8,7 +8,7 @@ const images = {
   giving: require('./home/giving.svg'),
   groups: require('./home/community-groups.svg'),
   connect: require('./home/connect.svg'),
-  volunteer: require('./home/whats-happening.svg'),
+  volunteer: require('./home/join-team.svg'),
 
   arrowLeftWhite: require('./icons/arrow_left_white.png'),
   arrowRightWhite: require('./icons/arrow_right_white.png'),
