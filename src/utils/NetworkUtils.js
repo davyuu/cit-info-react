@@ -5,8 +5,8 @@ const dev_secret = '84c12963c49f42d6b2a226f73b36dead2e8157b0e61535e18dfa58df0d62
 const prod_app_id = '309a52586fd38fc7ae18e4fcce41fdee6de813185b30c69cca599000fe5a81fb';
 const prod_secret = '8c1c905e0e31cfe9cb17bae68f803e6cd971a9d2feff1980390549d7267b35e7';
 
-const app_id = dev_app_id;
-const secret = dev_secret;
+const app_id = prod_app_id;
+const secret = prod_secret;
 
 const planningCenterHeaders = new Headers();
 planningCenterHeaders.append("Authorization", "Basic " + base64.encode(`${app_id}:${secret}`));
