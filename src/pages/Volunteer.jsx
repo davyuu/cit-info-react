@@ -211,7 +211,7 @@ class Volunteer extends React.Component {
                 onChange={(e) => this.setState({email: e.target.value})}
               />
             </div>
-            <h2 className='volunteer-form-label'>Phone (Optional)</h2>
+            <h2 className='volunteer-form-label'>Phone</h2>
             <div className='connect-form-row'>
               <input
                 className='volunteer-form-input'
@@ -222,7 +222,7 @@ class Volunteer extends React.Component {
                 onChange={(e) => this.setState({phone: e.target.value})}
               />
             </div>
-            <h2 className='volunteer-form-label'>Which description would you like to learn about</h2>
+            <h2 className='volunteer-form-label'>Which team would you like to learn about</h2>
             <div className='connect-form-row'>
               <Select
                 className='volunteer-form-select'

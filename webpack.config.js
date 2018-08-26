@@ -17,6 +17,8 @@ module.exports = {
   devServer: {
     inline: true,
     contentBase: './public',
+    compress: true,
+    disableHostCheck: true,
     port: 8080
   },
   module: {
