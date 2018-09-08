@@ -33,6 +33,10 @@
   display: flex;
 }
 
+.connect-form-row.checkbox {
+  margin: 4px 0;
+}
+
 .connect-form-input {
   width: 100%;
   margin: 0.5em 0 1em 0;
@@ -62,6 +66,13 @@
 .connect-form-select {
   width: 100%;
   margin: 0.5em 0 1em 0;
+  font-size: 0.8em;
+  font-weight: 500;
+  font-family: 'Lato', sans-serif;
+}
+
+.connect-form-checkbox {
+  margin: 2px 8px;
   font-size: 0.8em;
   font-weight: 500;
   font-family: 'Lato', sans-serif;
