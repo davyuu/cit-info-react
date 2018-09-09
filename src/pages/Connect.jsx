@@ -243,14 +243,14 @@ class Connect extends React.Component {
         <div className='connect-container'>
           <h1 className='connect-title'>Get connected with us</h1>
           <p className='connect-description'>We know that it's important for you to find a church that really fits. We can connect you with one of our pastors to answer any questions you might have about our church's beliefs, community, and culture.</p>
-          <form className='connect-form' autocomplete='on'>
+          <form className='connect-form' autoComplete='on'>
             <label className='connect-form-label'>Name</label>
             <div className='connect-form-row'>
               <input
                 className='connect-form-input left'
                 type='text'
                 name="first name"
-                autocomplete="given-name"
+                autoComplete="given-name"
                 placeholder='First name'
                 value={this.state.firstName}
                 onChange={(e) => this.setState({firstName: e.target.value})}
@@ -259,7 +259,7 @@ class Connect extends React.Component {
                 className='connect-form-input right'
                 type='text'
                 name="last name"
-                autocomplete="family-name"
+                autoComplete="family-name"
                 placeholder='Last name'
                 value={this.state.lastName}
                 onChange={(e) => this.setState({lastName: e.target.value})}
@@ -271,7 +271,7 @@ class Connect extends React.Component {
                 className='connect-form-input'
                 type='text'
                 name='email'
-                autocomplete="email"
+                autoComplete="email"
                 placeholder='youremailaddress@example.com'
                 value={this.state.email}
                 onChange={(e) => this.setState({email: e.target.value})}
@@ -283,7 +283,7 @@ class Connect extends React.Component {
                 className='connect-form-input'
                 type='tel'
                 name='phone'
-                autocomplete="tel"
+                autoComplete="tel"
                 placeholder='4161234567'
                 value={this.state.phone}
                 onChange={(e) => this.setState({phone: e.target.value})}

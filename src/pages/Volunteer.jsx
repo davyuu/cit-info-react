@@ -182,13 +182,14 @@ class Volunteer extends React.Component {
         <div className='volunteer-container'>
           <h1 className='volunteer-title'>Join A Team</h1>
           <p className='volunteer-description'>Our teams are dedicated to bringing our very best to our God. We would love for you to become part of a team and discover all that God has purposed for your life.</p>
-          <div className='volunteer-form'>
+          <form className='volunteer-form' autoComplete='on'>
             <h2 className='volunteer-form-label'>Name</h2>
             <div className='connect-form-row'>
               <input
                 className='volunteer-form-input left'
                 type='text'
                 name="first name"
+                autoComplete="given-name"
                 placeholder='First name'
                 value={this.state.firstName}
                 onChange={(e) => this.setState({firstName: e.target.value})}
@@ -197,6 +198,7 @@ class Volunteer extends React.Component {
                 className='volunteer-form-input right'
                 type='text'
                 name="last name"
+                autoComplete="family-name"
                 placeholder='Last name'
                 value={this.state.lastName}
                 onChange={(e) => this.setState({lastName: e.target.value})}
@@ -208,6 +210,7 @@ class Volunteer extends React.Component {
                 className='volunteer-form-input'
                 type='text'
                 name='email'
+                autoComplete="email"
                 placeholder='youremailaddress@example.com'
                 value={this.state.email}
                 onChange={(e) => this.setState({email: e.target.value})}
@@ -219,6 +222,7 @@ class Volunteer extends React.Component {
                 className='volunteer-form-input'
                 type='number'
                 name='phone'
+                autoComplete="tel"
                 placeholder='4161234567'
                 value={this.state.phone}
                 onChange={(e) => this.setState({phone: e.target.value})}
@@ -256,7 +260,7 @@ class Volunteer extends React.Component {
             >
               Get Connected
             </div>
-          </div>
+          </form>
         </div>
         <div
           className='volunteer-loading'
