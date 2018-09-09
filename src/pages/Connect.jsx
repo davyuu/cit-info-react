@@ -101,13 +101,23 @@ class Connect extends React.Component {
     });
 
     const successHandler = (res) => {
-      this.createEmailForPerson(res.data.id)
-    };
-    const errorHandler = () => {
-      this.showError('An error occurred')
+      const personId = res.data.id
+
+      Promise.all([
+        this.createEmailForPerson(personId),
+        this.createPhoneNumberForPerson(personId),
+        this.postSubscribedForPerson(personId),
+        this.sendToSheets()
+      ]).then(([emailRes, numberRes, subRes, sheetRes]) => {
+        if(!(emailRes && numberRes && subRes && sheetRes)){
+          this.showSuccess();
+        } else {
+          this.showError('An error occurred')
+        }
+      })
     };
 
-    NetworkUtils.postRequest(url, successHandler, errorHandler, body)
+    NetworkUtils.postRequest(url, successHandler, this.errorHandler, body)
   }
 
   createEmailForPerson(personId) {
@@ -123,14 +133,7 @@ class Connect extends React.Component {
       }
     });
 
-    const successHandler = () => {
-      this.createPhoneNumberForPerson(personId);
-    };
-    const errorHandler = () => {
-      this.showError('An error occurred')
-    };
-
-    NetworkUtils.postRequest(url, successHandler, errorHandler, body)
+    NetworkUtils.postRequest(url, this.successHandler, this.errorHandler, body)
   }
 
   createPhoneNumberForPerson(personId) {
@@ -146,17 +149,10 @@ class Connect extends React.Component {
       }
     });
 
-    const successHandler = () => {
-      this.patchSubscribedForPerson(personId);
-    };
-    const errorHandler = () => {
-      this.showError('An error occurred')
-    };
-
-    NetworkUtils.postRequest(url, successHandler, errorHandler, body)
+    NetworkUtils.postRequest(url, this.successHandler, this.errorHandler, body)
   }
 
-  patchSubscribedForPerson(personId) {
+  postSubscribedForPerson(personId) {
     const url = `https://api.planningcenteronline.com/people/v2/people/${personId}/field_data`;
 
     const body = JSON.stringify({
@@ -169,14 +165,7 @@ class Connect extends React.Component {
       }
     });
 
-    const successHandler = () => {
-      this.sendToSheets();
-    };
-    const errorHandler = () => {
-      this.showError('An error occurred')
-    };
-
-    NetworkUtils.postRequest(url, successHandler, errorHandler, body)
+    NetworkUtils.postRequest(url, this.successHandler, this.errorHandler, body)
   }
 
   sendToSheets() {
@@ -210,15 +199,16 @@ class Connect extends React.Component {
 
     const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
 
-    const successHandler = () => {
-      this.showSuccess();
-    };
-    const errorHandler = () => {
-      this.showError('An error occurred')
-    };
-
-    NetworkUtils.postRequest(url, successHandler, errorHandler, body, headers)
+    NetworkUtils.postRequest(url, this.successHandler, this.errorHandler, body, headers)
   }
+
+  successHandler() {
+    return true
+  };
+
+  errorHandler() {
+    return false
+  };
 
   hideErrors() {
     this.msg.removeAll()
