@@ -48,16 +48,15 @@ class Connect extends React.Component {
       phone: '',
       description: '',
       message: '',
+      subscribe: false,
       loading: false
     }
   }
 
   onConnectFormSubmit() {
-    if(this.isFormValid()) {
-      if(!this.state.loading) {
-        this.setState({loading: true});
-        this.createPerson();
-      }
+    if(this.isFormValid() && !this.state.loading) {
+      this.setState({loading: true});
+      this.createPerson();
     }
   }
 
@@ -171,7 +170,8 @@ class Connect extends React.Component {
       email,
       phone,
       description,
-      message
+      message,
+      subscribe: subscribe ? 'yes' : 'no'
     };
     const fields = [
       'type',
@@ -181,6 +181,7 @@ class Connect extends React.Component {
       'phone',
       'description',
       'message',
+      'subscribe'
     ];
     data.formDataNameOrder = JSON.stringify(fields);
     data.formGoogleSheetName = "responses";
@@ -300,6 +301,18 @@ class Connect extends React.Component {
                 value={this.state.message}
                 onChange={(e) => this.setState({message: e.target.value})}
               />
+            </div>
+            <div className='connect-form-row checkbox'>
+              <input
+                className='connect-form-checkbox'
+                type='checkbox'
+                id='subscribe'
+                value={this.state.subscribe}
+                onChange={(e) => this.setState({subscribe: e.target.checked})}
+              />
+              <label className='connect-form-label' htmlFor="subscribe">
+                Keep me updated on CIT events
+              </label>
             </div>
             <div
               className='connect-form-submit'

@@ -6,8 +6,8 @@
   "license": "ISC",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack"
+    "start": "set NODE_ENV=dev&& webpack-dev-server",
+    "build": "set NODE_ENV=prod&& webpack"
   },
   "dependencies": {
     "base-64": "^0.1.0",
@@ -30,6 +30,7 @@
     "babel-preset-es2017": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.11",
+    "dotenv-webpack": "^1.5.7",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^2.30.1",
     "style-loader": "^0.19.1",
