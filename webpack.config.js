@@ -1,5 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+const env = process.env.NODE_ENV
+const pathToEnv = env === 'prod' ? './.env.prod' : './.env.dev'
 
 module.exports = {
   resolve: {
@@ -60,6 +63,9 @@ module.exports = {
       favicon: './src/images/favicon/favicon.ico',
       template: './src/index.html',
       hash: true
+    }),
+    new Dotenv({
+      path: pathToEnv
     })
   ]
 }

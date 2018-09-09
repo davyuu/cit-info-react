@@ -48,7 +48,7 @@ class Connect extends React.Component {
       phone: '',
       description: '',
       message: '',
-      email: false,
+      subscribe: false,
       loading: false
     }
   }
@@ -171,7 +171,7 @@ class Connect extends React.Component {
       phone,
       description,
       message,
-      email
+      subscribe: subscribe ? 'yes' : 'no'
     };
     const fields = [
       'type',
@@ -181,7 +181,7 @@ class Connect extends React.Component {
       'phone',
       'description',
       'message',
-      'email'
+      'subscribe'
     ];
     data.formDataNameOrder = JSON.stringify(fields);
     data.formGoogleSheetName = "responses";
@@ -306,11 +306,11 @@ class Connect extends React.Component {
               <input
                 className='connect-form-checkbox'
                 type='checkbox'
-                id='email'
-                value={this.state.email}
-                onChange={(e) => this.setState({email: e.target.checked})}
+                id='subscribe'
+                value={this.state.subscribe}
+                onChange={(e) => this.setState({subscribe: e.target.checked})}
               />
-              <label className='connect-form-label' htmlFor="email">
+              <label className='connect-form-label' htmlFor="subscribe">
                 Keep me updated on CIT events
               </label>
             </div>

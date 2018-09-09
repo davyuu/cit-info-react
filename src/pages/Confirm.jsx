@@ -15,7 +15,6 @@ class Confirm extends React.Component {
 			<div className='confirm'>
 				<HeaderBar
 					goBack={this.props.history.goBack}
-					title={strings.confirm_header}
 					color={themeColor}
 				/>
 				<div className='confirm-container'>
