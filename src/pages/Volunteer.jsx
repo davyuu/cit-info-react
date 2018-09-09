@@ -228,7 +228,6 @@ class Volunteer extends React.Component {
             <div className='connect-form-row'>
               <Select
                 className='volunteer-form-select'
-                autoFocus
                 simpleValue
                 name="description"
                 options={options}

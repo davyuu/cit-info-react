@@ -280,7 +280,6 @@ class Connect extends React.Component {
             <div className='connect-form-row'>
               <Select
                 className='connect-form-select'
-                autoFocus
                 simpleValue
                 name="description"
                 options={options}
