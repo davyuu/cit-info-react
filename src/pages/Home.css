@@ -27,3 +27,7 @@
 .home-content {
   padding: 0 1em;
 }
+
+.version-number {
+  display: none;
+}

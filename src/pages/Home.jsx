@@ -1,4 +1,5 @@
 import React from 'react'
+import {version} from '../../package.json'
 import routes from '../constants/routes'
 import images from '../images/images'
 import Section from '../components/Section'
@@ -8,6 +9,7 @@ import './Home.css'
 const communityGroupsLink = 'https://churchintoronto.churchcenter.com/groups/community-groups'
 const Home = () => (
   <div className='home'>
+    <span className="version-number">{version}</span>
     <div className='home-header'>
       <div className='home-title-container-img' dangerouslySetInnerHTML={{__html: images.banner}} />
       <div className='home-title-logo-img' dangerouslySetInnerHTML={{__html: images.logo}} />
