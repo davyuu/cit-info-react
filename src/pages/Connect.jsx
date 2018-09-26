@@ -72,11 +72,15 @@ class Connect extends React.Component {
       this.showError('Please enter your last name');
       isValid = false;
     }
-    if(!Utils.isValidEmail(email)) {
+    if(!email && !phone) {
+      this.showError('Please enter your email or phone number');
+      isValid = false
+    }
+    if(email && !Utils.isValidEmail(email)) {
       this.showError('Please enter a valid email');
       isValid = false;
     }
-    if(!Utils.isValidPhoneNumber(phone)) {
+    if(phone && !Utils.isValidPhoneNumber(phone)) {
       this.showError('Please enter a valid phone number');
       isValid = false;
     }
@@ -121,35 +125,39 @@ class Connect extends React.Component {
   }
 
   createEmailForPerson(personId) {
-    const url = `https://api.planningcenteronline.com/people/v2/people/${personId}/emails`;
+    if(this.state.email) {
+      const url = `https://api.planningcenteronline.com/people/v2/people/${personId}/emails`;
 
-    const body = JSON.stringify({
-      data: {
-        type: 'Email',
-        attributes: {
-          address: this.state.email,
-          location: "Home"
-        },
-      }
-    });
+      const body = JSON.stringify({
+        data: {
+          type: 'Email',
+          attributes: {
+            address: this.state.email,
+            location: "Home"
+          },
+        }
+      });
 
-    NetworkUtils.postRequest(url, this.successHandler, this.errorHandler, body)
+      NetworkUtils.postRequest(url, this.successHandler, this.errorHandler, body)
+    }
   }
 
   createPhoneNumberForPerson(personId) {
-    const url = `https://api.planningcenteronline.com/people/v2/people/${personId}/phone_numbers`;
+    if(this.state.phone) {
+      const url = `https://api.planningcenteronline.com/people/v2/people/${personId}/phone_numbers`;
 
-    const body = JSON.stringify({
-      data: {
-        type: 'PhoneNumber',
-        attributes: {
-          number: this.state.phone,
-          location: "Mobile",
-        },
-      }
-    });
+      const body = JSON.stringify({
+        data: {
+          type: 'PhoneNumber',
+          attributes: {
+            number: this.state.phone,
+            location: "Mobile",
+          },
+        }
+      });
 
-    NetworkUtils.postRequest(url, this.successHandler, this.errorHandler, body)
+      NetworkUtils.postRequest(url, this.successHandler, this.errorHandler, body)
+    }
   }
 
   postSubscribedForPerson(personId) {

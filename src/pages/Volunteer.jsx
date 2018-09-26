@@ -92,14 +92,18 @@ class Volunteer extends React.Component {
 			this.showError('Please enter your last name');
 			isValid = false;
 		}
-		if(!Utils.isValidEmail(email)) {
-			this.showError('Please enter a valid email');
-			isValid = false;
-		}
-		if(!Utils.isValidPhoneNumber(phone)) {
-			this.showError('Please enter a valid phone number');
-			isValid = false;
-		}
+    if(!email && !phone) {
+      this.showError('Please enter your email or phone number');
+      isValid = false
+    }
+    if(email && !Utils.isValidEmail(email)) {
+      this.showError('Please enter a valid email');
+      isValid = false;
+    }
+    if(phone && !Utils.isValidPhoneNumber(phone)) {
+      this.showError('Please enter a valid phone number');
+      isValid = false;
+    }
 		if(description === '') {
 			this.showError('Please select a description');
 			isValid = false;
