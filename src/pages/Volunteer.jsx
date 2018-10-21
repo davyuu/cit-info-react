@@ -122,8 +122,7 @@ class Volunteer extends React.Component {
       email,
       phone,
       description,
-      message,
-      subscribe: ''
+      message
     };
     const fields = [
       'type',
@@ -132,8 +131,7 @@ class Volunteer extends React.Component {
       'email',
       'phone',
       'description',
-      'message',
-      'subscribe'
+      'message'
     ];
     data.formDataNameOrder = JSON.stringify(fields);
     data.formGoogleSheetName = "responses";
