@@ -125,19 +125,21 @@ class Message extends React.Component {
 
       let tabContent;
       if(currentTab === MESSAGE_KEY) {
+        const verses = message.messageChapter ? `: ${message.messageChapter}` : null
         tabContent = (
           <div className='message-container'>
             <h1 className='message-title' style={{color: themeColor}}>{message.title}</h1>
             <p className='message-date'>{message.date.format('dddd MMMM DD, YYYY')}</p>
-            <p className='message-number-chapter'>#{message.messageNumber}: {message.messageChapter}</p>
+            <p className='message-number-chapter'>#{message.messageNumber}{verses}</p>
             <div className='message-html' dangerouslySetInnerHTML={{__html: message.outline}}/>
           </div>
         )
       } else if(currentTab === STUDY_KEY) {
+        const verses = message.messageChapter ? <p className='study-chapter'>Read: {message.studyChapter}</p> : null
         tabContent = (
           <div className='message-container'>
             <h1 className='study-title' style={{color: themeColor}}>Examining the text & our hearts:</h1>
-            <p className='study-chapter'>Read: {message.studyChapter}</p>
+            {verses}
             <div className='study-html' dangerouslySetInnerHTML={{__html: message.studyGuide}}/>
           </div>
         )
