@@ -125,12 +125,13 @@ class Message extends React.Component {
 
       let tabContent;
       if(currentTab === MESSAGE_KEY) {
+        const number = message.messageNumber ? `#${message.messageNumber}` : null
         const verses = message.messageChapter ? `: ${message.messageChapter}` : null
         tabContent = (
           <div className='message-container'>
             <h1 className='message-title' style={{color: themeColor}}>{message.title}</h1>
             <p className='message-date'>{message.date.format('dddd MMMM DD, YYYY')}</p>
-            <p className='message-number-chapter'>#{message.messageNumber}{verses}</p>
+            <p className='message-number-chapter'>{number}{verses}</p>
             <div className='message-html' dangerouslySetInnerHTML={{__html: message.outline}}/>
           </div>
         )
