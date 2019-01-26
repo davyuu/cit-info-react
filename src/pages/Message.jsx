@@ -170,6 +170,15 @@ class Message extends React.Component {
         )
       }
 
+      let studyGuideTab;
+      if(message.studyGuide) {
+        studyGuideTab = (
+          <div className={tabClass(STUDY_KEY)} onClick={() => this.setState({currentTab: STUDY_KEY})}>
+            STUDY GUIDE
+          </div>
+        )
+      }
+
       let supplementTab;
       if(message.supplementaryMaterial) {
         supplementTab = (
@@ -187,9 +196,7 @@ class Message extends React.Component {
               <div className={tabClass(MESSAGE_KEY)} onClick={() => this.setState({currentTab: MESSAGE_KEY})}>
                 MESSAGE
               </div>
-              <div className={tabClass(STUDY_KEY)} onClick={() => this.setState({currentTab: STUDY_KEY})}>
-                STUDY GUIDE
-              </div>
+              {studyGuideTab}
               {supplementTab}
               <div className={tabClass(SONGS_KEY)} onClick={() => this.setState({currentTab: SONGS_KEY})}>
                 SONGS
