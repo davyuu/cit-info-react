@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 import images from './../images/images'
-import './FloatingButtons.css'
+import './FloatingButtons.scss'
 
 const opacityClickable = 0.9;
 const opacityHidden = 0.1;
@@ -28,7 +28,6 @@ class FloatingButtons extends React.Component {
     return (
       <div className='floating-buttons'>
         <img
-          className='floating-btn-img'
           style={{opacity: leftOpacity}}
           src={images.arrowLeftWhite}
           onClick={() => this.props.leftClicked()}
@@ -36,7 +35,6 @@ class FloatingButtons extends React.Component {
           onTouchEnd={this.handleButtonRelease}
         />
         <img
-          className='floating-btn-img'
           style={{opacity: rightOpacity}}
           src={images.arrowRightWhite}
           onClick={() => this.props.rightClicked()}

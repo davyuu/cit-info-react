@@ -7,35 +7,12 @@ import HeaderBar from '../components/HeaderBar'
 import TitleSection from '../components/TitleSection'
 import routes from '../constants/routes'
 import strings from '../constants/strings'
+import * as colors from '../constants/colors'
+import * as options from '../constants/options'
 import * as NetworkUtils from '../utils/NetworkUtils'
 import * as Utils from '../utils/Utils'
-import * as colors from '../constants/colors'
 
 import 'react-select/dist/react-select.css'
-import './Connect.css'
-
-const themeColor = colors.CONNECT_THEME;
-const options = [{
-    value: 'new church',
-    label: 'I\'m looking for a new church'
-  }, {
-    value: 'new christian',
-    label: 'I\'m a new christian'
-  }, {
-    value: 'interested',
-    label: 'I\'m interested in knowing more about Christianity'
-  }, {
-    value: 'other',
-    label: 'Other'
-  }
-];
-const alertOptions = {
-  offset: 25,
-  position: 'top right',
-  theme: 'light',
-  time: 1500,
-  transition: 'fade'
-};
 
 class Connect extends React.Component {
   constructor(props) {
@@ -190,22 +167,22 @@ class Connect extends React.Component {
   render() {
     return (
       <div>
-        <AlertContainer ref={a => this.msg = a} {...alertOptions} />
+        <AlertContainer ref={a => this.msg = a} {...options.ALERT_OPTIONS} />
         <HeaderBar
           goBack={this.props.history.goBack}
           title={'Connect'}
-          color={themeColor}
+          color={colors.CONNECT_THEME}
         />
         <div className='page-wrapper'>
           <TitleSection
             title={strings.connectTitle}
             description={strings.connectDescription}
           />
-          <form className='connect-form' autoComplete='on'>
-            <label className='connect-form-label'>Name</label>
-            <div className='connect-form-row'>
+          <form autoComplete='on'>
+            <label>Name</label>
+            <div className='row'>
               <input
-                className='connect-form-input left'
+                className='left'
                 type='text'
                 name="first name"
                 autoComplete="given-name"
@@ -214,7 +191,7 @@ class Connect extends React.Component {
                 onChange={(e) => this.setState({firstName: e.target.value})}
               />
               <input
-                className='connect-form-input right'
+                className='right'
                 type='text'
                 name="last name"
                 autoComplete="family-name"
@@ -223,10 +200,9 @@ class Connect extends React.Component {
                 onChange={(e) => this.setState({lastName: e.target.value})}
               />
             </div>
-            <label className='connect-form-label'>Email</label>
-            <div className='connect-form-row'>
+            <label>Email</label>
+            <div className='row'>
               <input
-                className='connect-form-input'
                 type='text'
                 name='email'
                 autoComplete="email"
@@ -235,10 +211,9 @@ class Connect extends React.Component {
                 onChange={(e) => this.setState({email: e.target.value})}
               />
             </div>
-            <label className='connect-form-label'>Phone</label>
-            <div className='connect-form-row'>
+            <label>Phone</label>
+            <div className='row'>
               <input
-                className='connect-form-input'
                 type='tel'
                 name='phone'
                 autoComplete="tel"
@@ -247,13 +222,13 @@ class Connect extends React.Component {
                 onChange={(e) => this.setState({phone: e.target.value})}
               />
             </div>
-            <label className='connect-form-label'>Which best describes you?</label>
-            <div className='connect-form-row'>
+            <label>Which best describes you?</label>
+            <div className='row'>
               <Select
-                className='connect-form-select'
+                className='select'
                 simpleValue
                 name="description"
-                options={options}
+                options={options.CONNECT_OPTIONS}
                 onChange={(value) => this.setState({description: value})}
                 value={this.state.description}
                 clearable={false}
@@ -261,10 +236,9 @@ class Connect extends React.Component {
                 placeholder='Choose one option'
               />
             </div>
-            <label className='connect-form-label'>Message</label>
-            <div className='connect-form-row'>
+            <label>Message</label>
+            <div className='row'>
               <textarea
-                className='connect-form-input textarea'
                 type='text'
                 name='message'
                 placeholder='Add your message (optional)'
@@ -272,7 +246,7 @@ class Connect extends React.Component {
                 onChange={(e) => this.setState({message: e.target.value})}
               />
             </div>
-            <div className='connect-form-row checkbox'>
+            <div className='row checkbox'>
               <input
                 className='connect-form-checkbox'
                 type='checkbox'
@@ -280,11 +254,11 @@ class Connect extends React.Component {
                 value={this.state.subscribe}
                 onChange={(e) => this.setState({subscribe: e.target.checked})}
               />
-              <label className='connect-form-label' htmlFor="subscribe">
+              <label htmlFor="subscribe">
                 Keep me updated on CIT events
               </label>
             </div>
-            <div className='connect-form-row checkbox'>
+            <div className='row checkbox'>
               <input
                 className='connect-form-checkbox'
                 type='checkbox'
@@ -292,25 +266,25 @@ class Connect extends React.Component {
                 value={this.state.nextSteps}
                 onChange={(e) => this.setState({nextSteps: e.target.checked})}
               />
-              <label className='connect-form-label' htmlFor="nextSteps">
+              <label htmlFor="nextSteps">
                 Sign me up for a Next Steps Session
               </label>
             </div>
-            <div
-              className='connect-form-submit'
-              style={{backgroundColor: themeColor}}
+            <button
+              type='button'
+              style={{backgroundColor: colors.CONNECT_THEME}}
               onClick={() => this.onConnectFormSubmit()}
             >
               Get Connected
-            </div>
+            </button>
           </form>
         </div>
         <div
-          className='connect-loading'
+          className='loading-spinner'
           style={{visibility: this.state.loading === true ? 'visible' : 'hidden'}}
         >
           <RingLoader
-            color={themeColor}
+            color={colors.CONNECT_THEME}
             loading={true}
           />
         </div>

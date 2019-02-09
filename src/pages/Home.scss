@@ -1,0 +1,30 @@
+.home {
+  .version-number {
+    display: none;
+  }
+
+  .header {
+    position: relative;
+  }
+
+  .banner-img {
+    position: relative;
+    width: 100%;
+  }
+
+  .logo-img {
+    position: absolute;
+    width: 72px;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    .cls-1 {
+      fill: #f6f6f6;
+    }
+  }
+
+  .content {
+    padding: 0 16px;
+  }
+}

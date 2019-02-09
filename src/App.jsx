@@ -7,12 +7,11 @@ import Home from './pages/Home'
 import Message from './pages/Message'
 import News from './pages/News'
 import Giving from './pages/Giving'
-import Groups from './pages/Groups'
 import Connect from './pages/Connect'
 import Confirm from './pages/Confirm'
 import Volunteer from './pages/Volunteer'
 import routes from './constants/routes'
-import './App.css'
+import './App.scss'
 
 class App extends React.Component {
   render() {
@@ -29,7 +28,6 @@ class App extends React.Component {
           <Route path={routes.message} component={Message}/>
           <Route path={routes.news} component={News}/>
           <Route path={routes.giving} component={Giving}/>
-          <Route path={routes.groups} component={Groups}/>
           <Route path={routes.connect} component={Connect}/>
           <Route path={routes.confirm} component={Confirm}/>
           <Route path={routes.volunteer} component={Volunteer}/>

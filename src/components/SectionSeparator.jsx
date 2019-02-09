@@ -1,5 +1,5 @@
 import React from 'react'
-import './SectionSeparator.css'
+import './SectionSeparator.scss'
 
 const Separator = () => (
 	<div className='separator'/>

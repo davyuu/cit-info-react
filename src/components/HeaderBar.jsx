@@ -1,6 +1,6 @@
 import React from 'react'
 import images from './../images/images'
-import './HeaderBar.css'
+import './HeaderBar.scss'
 
 class HeaderBar extends React.Component {
 	render() {
@@ -10,12 +10,11 @@ class HeaderBar extends React.Component {
 				style={{backgroundColor: this.props.color}}
 			>
 				<img
-					className='header-bar-back-button'
 					src={images.arrowLeftWhite}
 					onClick={this.props.goBack}
 				/>
-				<div className='header-bar-title'>{this.props.title}</div>
-				<div className='header-bar-right'/>
+				<h1>{this.props.title}</h1>
+				<div className='right'/>
 			</div>
 		)
 	}
