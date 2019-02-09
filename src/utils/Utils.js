@@ -7,3 +7,34 @@ export const isValidEmail = (email) => {
     const emailRegex = /^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return !!email && emailRegex.test(email);
 };
+
+export const isFormValid = (fields) => {
+  const { firstName, lastName, email, phone, description } = fields
+  let isValid = true;
+  const errors = []
+  if(firstName === '') {
+    error.push('Please enter your first name');
+    isValid = false;
+  }
+  if(lastName === '') {
+    errors.push('Please enter your last name');
+    isValid = false;
+  }
+  if(!email && !phone) {
+    errors.push('Please enter your email or phone number');
+    isValid = false
+  }
+  if(email && !isValidEmail(email)) {
+    errors.push('Please enter a valid email');
+    isValid = false;
+  }
+  if(phone && !isValidPhoneNumber(phone)) {
+    errors.push('Please enter a valid phone number');
+    isValid = false;
+  }
+  if(description === '') {
+    errors.push('Please select a description');
+    isValid = false;
+  }
+  return { isValid, errors };
+}

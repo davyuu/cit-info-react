@@ -62,32 +62,10 @@ class Connect extends React.Component {
   }
 
   isFormValid() {
-    const {firstName, lastName, email, phone, description} = this.state;
     this.hideErrors();
-    let isValid = true;
-    if(firstName === '') {
-      this.showError('Please enter your first name');
-      isValid = false;
-    }
-    if(lastName === '') {
-      this.showError('Please enter your last name');
-      isValid = false;
-    }
-    if(!email && !phone) {
-      this.showError('Please enter your email or phone number');
-      isValid = false
-    }
-    if(email && !Utils.isValidEmail(email)) {
-      this.showError('Please enter a valid email');
-      isValid = false;
-    }
-    if(phone && !Utils.isValidPhoneNumber(phone)) {
-      this.showError('Please enter a valid phone number');
-      isValid = false;
-    }
-    if(description === '') {
-      this.showError('Please select a description');
-      isValid = false;
+    const { isValid, errors } = Utils.isFormValid(this.state)
+    if (!isValid) {
+      errors.forEach(error => this.showError(error))
     }
     return isValid;
   }
@@ -178,39 +156,7 @@ class Connect extends React.Component {
   }
 
   sendToSheets() {
-    const url = `https://script.google.com/macros/s/AKfycbxuFGgV8bYE_6X0Hozof7mXLOJ0b2mDWJfhV7o_XTSa8t1_WcfI/exec`;
-    const {firstName, lastName, email, phone, description, message, nextSteps} = this.state;
-    const data = {
-      type: 'connect',
-      firstName,
-      lastName,
-      email,
-      phone,
-      description,
-      message,
-      subscribe: subscribe ? 'yes' : 'no',
-      nextSteps: nextSteps ? 'yes' : 'no'
-    };
-    const fields = [
-      'type',
-      'firstName',
-      'lastName',
-      'email',
-      'phone',
-      'description',
-      'message',
-      'subscribe',
-      'nextSteps'
-    ];
-    data.formDataNameOrder = JSON.stringify(fields);
-    data.formGoogleSheetName = "responses";
-    const body = Object.keys(data).map(function(k) {
-      return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-    }).join('&');
-
-    const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
-
-    NetworkUtils.postRequest(url, this.successHandler, this.errorHandler, body, headers)
+    NetworkUtils.sendToSheets('connect', this.state, this.successHandler, this.errorHandler)
   }
 
   successHandler() {

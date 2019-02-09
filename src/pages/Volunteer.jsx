@@ -81,74 +81,23 @@ class Volunteer extends React.Component {
 	}
 
 	isFormValid() {
-		const {firstName, lastName, email, phone, description} = this.state;
-		this.hideErrors();
-		let isValid = true;
-		if(firstName === '') {
-			this.showError('Please enter your first name');
-			isValid = false;
-		}
-		if(lastName === '') {
-			this.showError('Please enter your last name');
-			isValid = false;
-		}
-    if(!email && !phone) {
-      this.showError('Please enter your email or phone number');
-      isValid = false
+    this.hideErrors();
+    const { isValid, errors } = Utils.isFormValid(this.state)
+    if (!isValid) {
+      errors.forEach(error => this.showError(error))
     }
-    if(email && !Utils.isValidEmail(email)) {
-      this.showError('Please enter a valid email');
-      isValid = false;
-    }
-    if(phone && !Utils.isValidPhoneNumber(phone)) {
-      this.showError('Please enter a valid phone number');
-      isValid = false;
-    }
-		if(description === '') {
-			this.showError('Please select a description');
-			isValid = false;
-		}
-		return isValid;
+    return isValid;
 	}
 
 
   sendToSheets() {
-    const url = `https://script.google.com/macros/s/AKfycbxuFGgV8bYE_6X0Hozof7mXLOJ0b2mDWJfhV7o_XTSa8t1_WcfI/exec`;
-    const {firstName, lastName, email, phone, description, message} = this.state;
-    const data = {
-      type: 'volunteer',
-      firstName,
-      lastName,
-      email,
-      phone,
-      description,
-      message
-    };
-    const fields = [
-      'type',
-      'firstName',
-      'lastName',
-      'email',
-      'phone',
-      'description',
-      'message'
-    ];
-    data.formDataNameOrder = JSON.stringify(fields);
-    data.formGoogleSheetName = "responses";
-    const body = Object.keys(data).map(function(k) {
-      return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-    }).join('&');
-
-    const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
-
     const successHandler = () => {
       this.showSuccess();
     };
     const errorHandler = () => {
       this.showError('An error occurred')
     };
-
-    NetworkUtils.postRequest(url, successHandler, errorHandler, body, headers)
+    NetworkUtils.sendToSheets('volunteer', this.state, successHandler, errorHandler)
   }
 
   hideErrors() {
