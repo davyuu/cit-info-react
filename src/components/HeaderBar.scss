@@ -1,0 +1,26 @@
+.header-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    height: 32px;
+    width: 32px;
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  h1 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: auto;
+    color: white;
+  }
+  
+  .right {
+    height: 32px;
+    width: 32px;
+    padding: 8px;
+  }
+}

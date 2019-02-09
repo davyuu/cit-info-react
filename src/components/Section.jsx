@@ -1,6 +1,6 @@
 import React from 'react'
 import DynamicLink from './DynamicLink'
-import './Section.css'
+import './Section.scss'
 
 class Section extends React.Component {
   constructor(props) {
@@ -17,10 +17,10 @@ class Section extends React.Component {
         linkTo={this.props.linkTo}
         external={this.props.external}
       >
-	      <div className='section-img' dangerouslySetInnerHTML={{__html: this.props.image}} />
-        <h1 className='section-title'>
+	      <div className='img' dangerouslySetInnerHTML={{__html: this.props.image}} />
+        <label>
           {this.props.title}
-        </h1>
+        </label>
       </DynamicLink>
     )
   }

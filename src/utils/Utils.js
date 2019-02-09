@@ -13,7 +13,7 @@ export const isFormValid = (fields) => {
   let isValid = true;
   const errors = []
   if(firstName === '') {
-    error.push('Please enter your first name');
+    errors.push('Please enter your first name');
     isValid = false;
   }
   if(lastName === '') {

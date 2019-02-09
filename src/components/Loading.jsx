@@ -1,9 +1,9 @@
 import React from 'react'
-import './Loading.css'
+import './Loading.scss'
 
 const Loading = () => (
 	<div className='loading'>
-		<h1 className='loading-text'>LOADING...</h1>
+		<p>LOADING...</p>
 	</div>
 );
 
