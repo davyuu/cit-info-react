@@ -6,3 +6,7 @@
   position: absolute;
   width: 100%;
 }
+
+.page-wrapper {
+  padding: 1.5em;
+}

@@ -5,3 +5,8 @@ body {
   background-color: #f6f6f6;
   -webkit-text-size-adjust: 100%;
 }
+
+hr {
+  border: 0.5px solid lightgrey;
+  margin: 2em 0;
+}

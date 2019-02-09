@@ -5,7 +5,9 @@ import Alert from 'react-s-alert'
 import {RingLoader} from 'react-spinners'
 
 import HeaderBar from '../components/HeaderBar'
+import TitleSection from '../components/TitleSection'
 import routes from '../constants/routes'
+import strings from '../constants/strings'
 import * as NetworkUtils from '../utils/NetworkUtils'
 import * as Utils from '../utils/Utils'
 import * as colors from '../constants/colors'
@@ -197,9 +199,11 @@ class Connect extends React.Component {
           title={'Connect'}
           color={themeColor}
         />
-        <div className='connect-container'>
-          <h1 className='connect-title'>Get connected with us</h1>
-          <p className='connect-description'>We know that it's important for you to find a church that really fits. We can connect you with one of our pastors to answer any questions you might have about our church's beliefs, community, and culture.</p>
+        <div className='page-wrapper'>
+          <TitleSection
+            title={strings.connectTitle}
+            description={strings.connectDescription}
+          />
           <form className='connect-form' autoComplete='on'>
             <label className='connect-form-label'>Name</label>
             <div className='connect-form-row'>

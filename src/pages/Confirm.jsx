@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 import HeaderBar from '../components/HeaderBar'
+import TitleSection from '../components/TitleSection'
 import routes from '../constants/routes'
 import strings from '../constants/strings'
 import * as colors from '../constants/colors'
@@ -12,14 +13,16 @@ const themeColor = colors.CONNECT_THEME;
 class Confirm extends React.Component {
 	render() {
 		return (
-			<div className='confirm'>
+			<div>
 				<HeaderBar
 					goBack={this.props.history.goBack}
 					color={themeColor}
 				/>
-				<div className='confirm-container'>
-					<h1 className='confirm-title'>{strings.confirm_title}</h1>
-					<p className='confirm-description'>{strings.confirm_description}</p>
+				<div className='page-wrapper'>
+          <TitleSection
+            title={strings.confirmTitle}
+            description={strings.confirmDescription}
+          />
 					<div>
 						<Link
 							className='confirm-btn'

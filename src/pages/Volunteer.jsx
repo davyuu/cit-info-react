@@ -2,14 +2,15 @@ import React from 'react'
 import Select from 'react-select'
 import AlertContainer from 'react-alert'
 import Alert from 'react-s-alert'
-import base64 from 'base-64'
 import {RingLoader} from 'react-spinners'
 
 import HeaderBar from '../components/HeaderBar'
+import TitleSection from '../components/TitleSection'
 import routes from '../constants/routes'
+import strings from '../constants/strings'
+import * as colors from '../constants/colors'
 import * as NetworkUtils from '../utils/NetworkUtils'
 import * as Utils from '../utils/Utils'
-import * as colors from '../constants/colors'
 
 import 'react-select/dist/react-select.css'
 import 'react-s-alert/dist/s-alert-default.css'
@@ -123,16 +124,18 @@ class Volunteer extends React.Component {
 
   render() {
     return (
-      <div className="volunteer">
+      <div>
         <AlertContainer ref={a => this.msg = a} {...alertOptions} />
         <HeaderBar
           goBack={this.props.history.goBack}
           title={'Volunteer'}
           color={themeColor}
         />
-        <div className='volunteer-container'>
-          <h1 className='volunteer-title'>Join A Team</h1>
-          <p className='volunteer-description'>Our teams are dedicated to bringing our very best to our God. We would love for you to become part of a team and discover all that God has purposed for your life.</p>
+        <div className='page-wrapper'>
+          <TitleSection
+            title={strings.volunteerTitle}
+            description={strings.volunteerDescription}
+          />
           <form className='volunteer-form' autoComplete='on'>
             <h2 className='volunteer-form-label'>Name</h2>
             <div className='connect-form-row'>

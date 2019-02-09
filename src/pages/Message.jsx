@@ -19,9 +19,9 @@ const SONGS_KEY = 3;
 Modal.setAppElement('#app')
 
 window.oncontextmenu = (event) => {
-     event.preventDefault();
-     event.stopPropagation();
-     return false;
+  event.preventDefault();
+  event.stopPropagation();
+  return false;
 };
 
 class Message extends React.Component {
@@ -209,12 +209,12 @@ class Message extends React.Component {
     }
 
     return (
-			<div className='message'>
+			<div>
 				<HeaderBar
 					goBack={this.props.history.goBack}
 					title={'Latest Message'}
 					color={themeColor}
-    />
+        />
         <FloatingButtons
           leftClicked={this.goPreviousWeek}
           rightClicked={this.goNextWeek}
@@ -228,7 +228,6 @@ class Message extends React.Component {
           overlayClassName='message-modal-overlay'
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
-          onClick={() => console.log('test')}
         >
           <Picker
             selectedValue={currentMessage}

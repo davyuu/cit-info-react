@@ -1,21 +1,3 @@
-.connect {}
-
-.connect-container {
-  padding: 1.5em;
-}
-
-.connect-title {
-  width: 70%;
-  margin: 0;
-  font-size: 2em;
-  font-weight: 500;
-}
-
-.connect-description {
-  font-size: 0.9em;
-  font-weight: 500;
-}
-
 .connect-form {
   display: flex;
   flex-direction: column;
