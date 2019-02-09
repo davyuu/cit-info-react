@@ -1,7 +1,6 @@
 import React from 'react'
 import Select from 'react-select'
 import AlertContainer from 'react-alert'
-import Alert from 'react-s-alert'
 import {RingLoader} from 'react-spinners'
 
 import HeaderBar from '../components/HeaderBar'
@@ -13,8 +12,6 @@ import * as NetworkUtils from '../utils/NetworkUtils'
 import * as Utils from '../utils/Utils'
 
 import 'react-select/dist/react-select.css'
-import 'react-s-alert/dist/s-alert-default.css'
-import 'react-s-alert/dist/s-alert-css-effects/slide.css'
 import './Volunteer.css'
 
 const themeColor = colors.VOLUNTEER_THEME;
@@ -225,7 +222,6 @@ class Volunteer extends React.Component {
             loading={true}
           />
         </div>
-        <Alert stack={true} timeout={1500}/>
       </div>
     )
   }
