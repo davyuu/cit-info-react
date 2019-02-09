@@ -2,7 +2,7 @@ import React from 'react';
 // import {AnimatedSwitch} from 'react-router-transition'
 import {HashRouter as Router, Route, Switch} from 'react-router-dom'
 
-import * as Transitions from './utils/Transitions'
+// import * as Transitions from './utils/Transitions'
 import Home from './pages/Home'
 import Message from './pages/Message'
 import News from './pages/News'

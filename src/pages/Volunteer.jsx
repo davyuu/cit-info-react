@@ -1,19 +1,17 @@
 import React from 'react'
 import Select from 'react-select'
 import AlertContainer from 'react-alert'
-import Alert from 'react-s-alert'
-import base64 from 'base-64'
 import {RingLoader} from 'react-spinners'
 
 import HeaderBar from '../components/HeaderBar'
+import TitleSection from '../components/TitleSection'
 import routes from '../constants/routes'
+import strings from '../constants/strings'
+import * as colors from '../constants/colors'
 import * as NetworkUtils from '../utils/NetworkUtils'
 import * as Utils from '../utils/Utils'
-import * as colors from '../constants/colors'
 
 import 'react-select/dist/react-select.css'
-import 'react-s-alert/dist/s-alert-default.css'
-import 'react-s-alert/dist/s-alert-css-effects/slide.css'
 import './Volunteer.css'
 
 const themeColor = colors.VOLUNTEER_THEME;
@@ -81,74 +79,23 @@ class Volunteer extends React.Component {
 	}
 
 	isFormValid() {
-		const {firstName, lastName, email, phone, description} = this.state;
-		this.hideErrors();
-		let isValid = true;
-		if(firstName === '') {
-			this.showError('Please enter your first name');
-			isValid = false;
-		}
-		if(lastName === '') {
-			this.showError('Please enter your last name');
-			isValid = false;
-		}
-    if(!email && !phone) {
-      this.showError('Please enter your email or phone number');
-      isValid = false
+    this.hideErrors();
+    const { isValid, errors } = Utils.isFormValid(this.state)
+    if (!isValid) {
+      errors.forEach(error => this.showError(error))
     }
-    if(email && !Utils.isValidEmail(email)) {
-      this.showError('Please enter a valid email');
-      isValid = false;
-    }
-    if(phone && !Utils.isValidPhoneNumber(phone)) {
-      this.showError('Please enter a valid phone number');
-      isValid = false;
-    }
-		if(description === '') {
-			this.showError('Please select a description');
-			isValid = false;
-		}
-		return isValid;
+    return isValid;
 	}
 
 
   sendToSheets() {
-    const url = `https://script.google.com/macros/s/AKfycbxuFGgV8bYE_6X0Hozof7mXLOJ0b2mDWJfhV7o_XTSa8t1_WcfI/exec`;
-    const {firstName, lastName, email, phone, description, message} = this.state;
-    const data = {
-      type: 'volunteer',
-      firstName,
-      lastName,
-      email,
-      phone,
-      description,
-      message
-    };
-    const fields = [
-      'type',
-      'firstName',
-      'lastName',
-      'email',
-      'phone',
-      'description',
-      'message'
-    ];
-    data.formDataNameOrder = JSON.stringify(fields);
-    data.formGoogleSheetName = "responses";
-    const body = Object.keys(data).map(function(k) {
-      return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-    }).join('&');
-
-    const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
-
     const successHandler = () => {
       this.showSuccess();
     };
     const errorHandler = () => {
       this.showError('An error occurred')
     };
-
-    NetworkUtils.postRequest(url, successHandler, errorHandler, body, headers)
+    NetworkUtils.sendToSheets('volunteer', this.state, successHandler, errorHandler)
   }
 
   hideErrors() {
@@ -174,16 +121,18 @@ class Volunteer extends React.Component {
 
   render() {
     return (
-      <div className="volunteer">
+      <div>
         <AlertContainer ref={a => this.msg = a} {...alertOptions} />
         <HeaderBar
           goBack={this.props.history.goBack}
           title={'Volunteer'}
           color={themeColor}
         />
-        <div className='volunteer-container'>
-          <h1 className='volunteer-title'>Join A Team</h1>
-          <p className='volunteer-description'>Our teams are dedicated to bringing our very best to our God. We would love for you to become part of a team and discover all that God has purposed for your life.</p>
+        <div className='page-wrapper'>
+          <TitleSection
+            title={strings.volunteerTitle}
+            description={strings.volunteerDescription}
+          />
           <form className='volunteer-form' autoComplete='on'>
             <h2 className='volunteer-form-label'>Name</h2>
             <div className='connect-form-row'>
@@ -273,7 +222,6 @@ class Volunteer extends React.Component {
             loading={true}
           />
         </div>
-        <Alert stack={true} timeout={1500}/>
       </div>
     )
   }

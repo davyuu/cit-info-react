@@ -1,18 +1,17 @@
 import React from 'react'
 import Select from 'react-select'
 import AlertContainer from 'react-alert'
-import Alert from 'react-s-alert'
 import {RingLoader} from 'react-spinners'
 
 import HeaderBar from '../components/HeaderBar'
+import TitleSection from '../components/TitleSection'
 import routes from '../constants/routes'
+import strings from '../constants/strings'
 import * as NetworkUtils from '../utils/NetworkUtils'
 import * as Utils from '../utils/Utils'
 import * as colors from '../constants/colors'
 
 import 'react-select/dist/react-select.css'
-import 'react-s-alert/dist/s-alert-default.css'
-import 'react-s-alert/dist/s-alert-css-effects/slide.css'
 import './Connect.css'
 
 const themeColor = colors.CONNECT_THEME;
@@ -62,32 +61,10 @@ class Connect extends React.Component {
   }
 
   isFormValid() {
-    const {firstName, lastName, email, phone, description} = this.state;
     this.hideErrors();
-    let isValid = true;
-    if(firstName === '') {
-      this.showError('Please enter your first name');
-      isValid = false;
-    }
-    if(lastName === '') {
-      this.showError('Please enter your last name');
-      isValid = false;
-    }
-    if(!email && !phone) {
-      this.showError('Please enter your email or phone number');
-      isValid = false
-    }
-    if(email && !Utils.isValidEmail(email)) {
-      this.showError('Please enter a valid email');
-      isValid = false;
-    }
-    if(phone && !Utils.isValidPhoneNumber(phone)) {
-      this.showError('Please enter a valid phone number');
-      isValid = false;
-    }
-    if(description === '') {
-      this.showError('Please select a description');
-      isValid = false;
+    const { isValid, errors } = Utils.isFormValid(this.state)
+    if (!isValid) {
+      errors.forEach(error => this.showError(error))
     }
     return isValid;
   }
@@ -178,39 +155,7 @@ class Connect extends React.Component {
   }
 
   sendToSheets() {
-    const url = `https://script.google.com/macros/s/AKfycbxuFGgV8bYE_6X0Hozof7mXLOJ0b2mDWJfhV7o_XTSa8t1_WcfI/exec`;
-    const {firstName, lastName, email, phone, description, message, nextSteps} = this.state;
-    const data = {
-      type: 'connect',
-      firstName,
-      lastName,
-      email,
-      phone,
-      description,
-      message,
-      subscribe: subscribe ? 'yes' : 'no',
-      nextSteps: nextSteps ? 'yes' : 'no'
-    };
-    const fields = [
-      'type',
-      'firstName',
-      'lastName',
-      'email',
-      'phone',
-      'description',
-      'message',
-      'subscribe',
-      'nextSteps'
-    ];
-    data.formDataNameOrder = JSON.stringify(fields);
-    data.formGoogleSheetName = "responses";
-    const body = Object.keys(data).map(function(k) {
-      return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-    }).join('&');
-
-    const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
-
-    NetworkUtils.postRequest(url, this.successHandler, this.errorHandler, body, headers)
+    NetworkUtils.sendToSheets('connect', this.state, this.successHandler, this.errorHandler)
   }
 
   successHandler() {
@@ -251,9 +196,11 @@ class Connect extends React.Component {
           title={'Connect'}
           color={themeColor}
         />
-        <div className='connect-container'>
-          <h1 className='connect-title'>Get connected with us</h1>
-          <p className='connect-description'>We know that it's important for you to find a church that really fits. We can connect you with one of our pastors to answer any questions you might have about our church's beliefs, community, and culture.</p>
+        <div className='page-wrapper'>
+          <TitleSection
+            title={strings.connectTitle}
+            description={strings.connectDescription}
+          />
           <form className='connect-form' autoComplete='on'>
             <label className='connect-form-label'>Name</label>
             <div className='connect-form-row'>
@@ -367,7 +314,6 @@ class Connect extends React.Component {
             loading={true}
           />
         </div>
-        <Alert stack={true} timeout={1500}/>
       </div>
     )
   }

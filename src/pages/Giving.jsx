@@ -1,5 +1,7 @@
 import React from 'react'
 import HeaderBar from '../components/HeaderBar'
+import TitleSection from '../components/TitleSection'
+import strings from '../constants/strings'
 import * as colors from '../constants/colors'
 import './Giving.css'
 
@@ -8,15 +10,17 @@ const themeColor = colors.GIVING_THEME;
 class Giving extends React.Component {
   render() {
     return (
-      <div className='giving'>
+      <div>
         <HeaderBar
           goBack={this.props.history.goBack}
           title={'Giving'}
           color={themeColor}
         />
-        <div className='giving-container'>
-          <h1>Give to our mission</h1>
-          <p>Thank you for deciding to give to CIT. Your donation helps us fulfill our mission as a church, to lead people into a life changing relationship with Jesus.</p>
+        <div className='page-wrapper'>
+          <TitleSection
+            title={strings.givingTitle}
+            description={strings.givingDescription}
+          />
           <a
             className='giving-btn'
             style={{backgroundColor: themeColor}}

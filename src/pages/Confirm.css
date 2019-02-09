@@ -1,21 +1,3 @@
-.confirm-container {
-  padding: 1.5em;
-}
-
-.confirm-title {
-  width: 70%;
-  margin: 0;
-  font-size: 2.2em;
-  font-weight: 500;
-}
-
-.confirm-description {
-  margin: 1em 0;
-  font-size: 0.9em;
-  font-weight: 500;
-  line-height: 1.5em;
-}
-
 .confirm-btn {
   display: flex;
   justify-content: center;

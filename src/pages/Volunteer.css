@@ -1,21 +1,3 @@
-.volunteer {}
-
-.volunteer-container {
-  padding: 1.5em;
-}
-
-.volunteer-title {
-  width: 70%;
-  margin: 0;
-  font-size: 2em;
-  font-weight: 500;
-}
-
-.volunteer-description {
-  font-size: 0.9em;
-  font-weight: 500;
-}
-
 .volunteer-form {
   display: flex;
   flex-direction: column;
