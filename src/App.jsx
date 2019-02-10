@@ -6,8 +6,9 @@ import {HashRouter as Router, Route, Switch} from 'react-router-dom'
 import Home from './pages/Home'
 import Message from './pages/Message'
 import News from './pages/News'
-import Giving from './pages/Giving'
 import Connect from './pages/Connect'
+import Next from './pages/Next'
+import Giving from './pages/Giving'
 import Confirm from './pages/Confirm'
 import Volunteer from './pages/Volunteer'
 import routes from './constants/routes'
@@ -27,8 +28,9 @@ class App extends React.Component {
           <Route exact path={routes.home} component={Home}/>
           <Route path={routes.message} component={Message}/>
           <Route path={routes.news} component={News}/>
-          <Route path={routes.giving} component={Giving}/>
           <Route path={routes.connect} component={Connect}/>
+          <Route path={routes.next} component={Next}/>
+          <Route path={routes.giving} component={Giving}/>
           <Route path={routes.confirm} component={Confirm}/>
           <Route path={routes.volunteer} component={Volunteer}/>
         </Switch>

@@ -86,21 +86,6 @@ form {
   }
 }
 
-button,
-.button {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 12px 0;
-  margin: 16px 0;
-  border: none;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 16px;
-  color: white;
-  font-family: 'Lato', sans-serif;
-}
-
 .loading-spinner {
   position: fixed;
   height: 100%;

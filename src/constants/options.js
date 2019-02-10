@@ -20,6 +20,17 @@ export const CONNECT_OPTIONS = [{
   label: 'Other'
 }]
 
+export const NEXT_OPTIONS = [{
+  value: 'new to CIT',
+  label: 'I\'m new to CIT'
+}, {
+  value: 'less than 1 year',
+  label: 'I\'ve been attending CIT less than 1 year'
+}, {
+  value: 'more than 1 year',
+  label: 'I\'ve been attending CIT more than 1 year'
+}]
+
 export const VOLUNTEER_OPTIONS = [{
   value: 'kids',
   label: 'Kids'
