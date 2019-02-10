@@ -2,7 +2,6 @@ import React from 'react'
 import Loading from '../components/Loading'
 import HeaderBar from '../components/HeaderBar'
 import FloatingButtons from '../components/FloatingButtons'
-import SectionSeparator from '../components/SectionSeparator'
 import * as colors from '../constants/colors'
 import images from '../images/images'
 import './News.css'
@@ -83,7 +82,7 @@ class News extends React.Component {
 								RVSP on Facebook
 							</a>
 						</div>
-						<SectionSeparator/>
+            <hr/>
 						<h1 className='news-title' style={{
 							color: themeColor
 						}}>Announcements</h1>

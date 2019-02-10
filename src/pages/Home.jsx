@@ -3,7 +3,6 @@ import {version} from '../../package.json'
 import routes from '../constants/routes'
 import images from '../images/images'
 import Section from '../components/Section'
-import SectionSeparator from '../components/SectionSeparator'
 import './Home.scss'
 
 const communityGroupsLink = 'https://churchintoronto.churchcenter.com/groups/community-groups'
@@ -20,32 +19,38 @@ const Home = () => (
         image={images.message}
         linkTo={routes.message}
       />
-      {/* <SectionSeparator/>
-        <Section
+      {/* <hr/>
+      <Section
         title={'What\'s Happening'}
         image={images.whatsHappening}
         linkTo={routes.news}
       /> */}
-      <SectionSeparator/>
+      <hr/>
+      <Section
+        title={'Connect'}
+        image={images.connect}
+        linkTo={routes.connect}
+      />
+      <hr/>
+      <Section
+        title={'Next Steps'}
+        image={images.nextSteps}
+        linkTo={routes.next}
+      />
+      <hr/>
       <Section
         title={'Giving'}
         image={images.giving}
         linkTo={routes.giving}
       />
-      <SectionSeparator/>
+      <hr/>
       <Section
         title={'Community Groups'}
         image={images.groups}
         linkTo={communityGroupsLink}
         external
       />
-      <SectionSeparator/>
-      <Section
-        title={'Connect'}
-        image={images.connect}
-        linkTo={routes.connect}
-      />
-      <SectionSeparator/>
+      <hr/>
       <Section
         title={'Join a Team'}
         image={images.volunteer}

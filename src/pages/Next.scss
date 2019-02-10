@@ -1,0 +1,34 @@
+.next {
+  hr {
+    margin: 16px 0;
+  }
+  
+
+  dl {
+    font-size: 15px;
+
+    > div {
+      display: flex;
+      align-items: center;
+      margin: 8px 0;
+    }
+
+    .img {
+      display: inline-block;
+      height: 24px;
+      width: 24px;
+      fill: grey;
+    }
+
+    dt {
+      display: inline;
+      margin: 0 8px;
+    }
+
+    dd {
+      display: inline;
+      margin: 0;
+      font-weight: 600;
+    }
+  }
+}
