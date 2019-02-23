@@ -4,7 +4,7 @@ const images = {
 
   // PAGES
   message: require('./home/latest-message.svg'),
-  whatsHappening: require('./home/whats-happening.svg'),
+  upcomingEvents: require('./home/upcoming-events.svg'),
   connect: require('./home/connect.svg'),
   nextSteps: require('./home/next-steps.svg'),
   giving: require('./home/giving.svg'),
@@ -16,8 +16,6 @@ const images = {
   calendar: require('./icons/calendar.svg'),
   clock: require('./icons/clock.svg'),
   info: require('./icons/info.svg'),
-
-  christmas: require('./christmas.png')
 };
 
 export default images;

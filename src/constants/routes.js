@@ -1,7 +1,7 @@
 const routes = {
 	home: '/',
 	message: '/message',
-	news: '/announcements',
+	news: '/news',
 	connect: '/connect',
 	next: '/next',
 	giving: '/giving',
