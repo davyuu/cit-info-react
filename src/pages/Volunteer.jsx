@@ -84,7 +84,7 @@ class Volunteer extends React.Component {
         <AlertContainer ref={a => this.msg = a} {...options.ALERT_OPTIONS} />
         <HeaderBar
           goBack={this.props.history.goBack}
-          title={'Volunteer'}
+          title={strings.volunteerHeader}
           color={colors.VOLUNTEER_THEME}
         />
         <div className='page-wrapper'>

@@ -11,7 +11,7 @@ class Giving extends React.Component {
       <div className='giving'>
         <HeaderBar
           goBack={this.props.history.goBack}
-          title={'Giving'}
+          title={strings.givingHeader}
           color={colors.GIVING_THEME}
         />
         <div className='page-wrapper'>

@@ -170,7 +170,7 @@ class Connect extends React.Component {
         <AlertContainer ref={a => this.msg = a} {...options.ALERT_OPTIONS} />
         <HeaderBar
           goBack={this.props.history.goBack}
-          title={'Connect'}
+          title={strings.connectHeader}
           color={colors.CONNECT_THEME}
         />
         <div className='page-wrapper'>

@@ -96,7 +96,7 @@ class Next extends React.Component {
         <AlertContainer ref={a => this.msg = a} {...options.ALERT_OPTIONS} />
         <HeaderBar
           goBack={this.props.history.goBack}
-          title={'Next'}
+          title={strings.nextHeader}
           color={colors.NEXT_THEME}
         />
         <div className='page-wrapper'>
