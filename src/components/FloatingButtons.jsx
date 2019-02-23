@@ -49,7 +49,7 @@ class FloatingButtons extends React.Component {
 FloatingButtons.propTypes = {
   leftClicked: PropTypes.func.isRequired,
   rightClicked: PropTypes.func.isRequired,
-  longClicked: PropTypes.func.isRequired,
+  longClicked: PropTypes.func,
   leftClickable: PropTypes.bool.isRequired,
   rightClickable: PropTypes.bool.isRequired,
 };

@@ -7,6 +7,7 @@ import Loading from '../components/Loading'
 import HeaderBar from '../components/HeaderBar'
 import FloatingButtons from '../components/FloatingButtons'
 import * as colors from '../constants/colors'
+import strings from '../constants/strings';
 import './Message.css'
 import 'rmc-picker/assets/index.css';
 
@@ -212,7 +213,7 @@ class Message extends React.Component {
 			<div>
 				<HeaderBar
 					goBack={this.props.history.goBack}
-					title={'Latest Message'}
+					title={strings.messageHeader}
 					color={themeColor}
         />
         <FloatingButtons

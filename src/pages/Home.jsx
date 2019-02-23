@@ -3,6 +3,7 @@ import {version} from '../../package.json'
 import routes from '../constants/routes'
 import images from '../images/images'
 import Section from '../components/Section'
+import strings from '../constants/strings.js';
 import './Home.scss'
 
 const communityGroupsLink = 'https://churchintoronto.churchcenter.com/groups/community-groups'
@@ -15,44 +16,44 @@ const Home = () => (
     </div>
     <div className='content'>
       <Section
-        title={'Latest Message'}
+        title={strings.messageHeader}
         image={images.message}
         linkTo={routes.message}
       />
-      {/* <hr/>
-      <Section
-        title={'What\'s Happening'}
-        image={images.whatsHappening}
-        linkTo={routes.news}
-      /> */}
       <hr/>
       <Section
-        title={'Connect'}
+        title={strings.newsHeader}
+        image={images.upcomingEvents}
+        linkTo={routes.news}
+      />
+      <hr/>
+      <Section
+        title={strings.connectHeader}
         image={images.connect}
         linkTo={routes.connect}
       />
       <hr/>
       <Section
-        title={'Next Steps'}
+        title={strings.nextHeader}
         image={images.nextSteps}
         linkTo={routes.next}
       />
       <hr/>
       <Section
-        title={'Giving'}
+        title={strings.givingHeader}
         image={images.giving}
         linkTo={routes.giving}
       />
       <hr/>
       <Section
-        title={'Community Groups'}
+        title={strings.groupsHeader}
         image={images.groups}
         linkTo={communityGroupsLink}
         external
       />
       <hr/>
       <Section
-        title={'Join a Team'}
+        title={strings.volunteerHome}
         image={images.volunteer}
         linkTo={routes.volunteer}
       />
