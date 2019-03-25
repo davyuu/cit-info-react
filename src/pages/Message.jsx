@@ -32,7 +32,7 @@ class Message extends React.Component {
       modalIsOpen: false,
       currentMessage: 0,
       currentTab: MESSAGE_KEY,
-      messages: []
+      messages: null
     };
     this.goNextWeek = this.goNextWeek.bind(this);
     this.goPreviousWeek = this.goPreviousWeek.bind(this);
@@ -45,26 +45,42 @@ class Message extends React.Component {
   componentWillMount() {
     let dataURL = 'https://mycit.info/wp-json/wp/v2/messages';
     fetch(dataURL)
-  	.then(res => res.json())
+    .then(res => res.json())
     .then(res => {
+      const messages = res.map(val => {
+        const message = val.acf;
+        return {
+          title: message.title,
+          seriesName: message.series_name,
+          seriesImage: message.series_image.url,
+          date: moment(message.date, 'YYYY/MM/DD'),
+          messageNumber: message.message_number,
+          messageChapter: message.message_chapter,
+          outline: message.outline,
+          studyChapter: message.study_chapter,
+          studyGuide: message.study_guide,
+          supplementaryMaterial: message.supplementary_material,
+          setList: message.set_list,
+          childrenSetList: message.children_set_list,
+        };
+      })
+      
+      let past = false
+      let currentMessage = 0
+      messages.forEach((message, i) => {
+        if (!past && message.date) {
+          const today = new Date()
+          const date = new Date(message.date)
+          if (date < today) {
+            past = true
+            currentMessage = i
+          }
+        }
+      })
+
       this.setState({
-        messages: res.map(val => {
-          const message = val.acf;
-          return {
-            title: message.title,
-            seriesName: message.series_name,
-            seriesImage: message.series_image.url,
-            date: moment(message.date, 'YYYY/MM/DD'),
-            messageNumber: message.message_number,
-            messageChapter: message.message_chapter,
-            outline: message.outline,
-            studyChapter: message.study_chapter,
-            studyGuide: message.study_guide,
-            supplementaryMaterial: message.supplementary_material,
-            setList: message.set_list,
-            childrenSetList: message.children_set_list,
-          };
-        })
+        messages,
+        currentMessage
       })
     })
   }
@@ -81,7 +97,7 @@ class Message extends React.Component {
   goNextWeek() {
     const currentMessage = this.state.currentMessage;
     if(!this.isFirstWeek()) {
-    	this.setState({currentMessage: currentMessage - 1})
+      this.setState({currentMessage: currentMessage - 1})
     }
   }
 
@@ -97,7 +113,8 @@ class Message extends React.Component {
   }
 
   isLastWeek() {
-    return this.state.currentMessage >= this.state.messages.length - 1;
+    const {currentMessage, messages} = this.state
+    return messages && currentMessage >= messages.length - 1;
   }
 
   selectWeek() {
@@ -111,7 +128,7 @@ class Message extends React.Component {
   render() {
     let content;
     const {messages, currentMessage, currentTab} = this.state
-    if (messages.length === 0) {
+    if (messages === null) {
       content = <Loading/>;
     } else {
       const message = messages[currentMessage];
@@ -209,21 +226,9 @@ class Message extends React.Component {
       )
     }
 
-    return (
-			<div>
-				<HeaderBar
-					goBack={this.props.history.goBack}
-					title={strings.messageHeader}
-					color={themeColor}
-        />
-        <FloatingButtons
-          leftClicked={this.goPreviousWeek}
-          rightClicked={this.goNextWeek}
-          longClicked={this.selectWeek}
-          leftClickable={!this.isLastWeek()}
-          rightClickable={!this.isFirstWeek()}
-        />
-				{content}
+    let modal
+    if (messages) {
+      modal = (
         <Modal
           className='message-modal'
           overlayClassName='message-modal-overlay'
@@ -247,8 +252,27 @@ class Message extends React.Component {
             })}
           </Picker>
         </Modal>
-			</div>
-		)
+      )
+    }
+
+    return (
+      <div>
+        <HeaderBar
+          goBack={this.props.history.goBack}
+          title={strings.messageHeader}
+          color={themeColor}
+        />
+        <FloatingButtons
+          leftClicked={this.goPreviousWeek}
+          rightClicked={this.goNextWeek}
+          longClicked={this.selectWeek}
+          leftClickable={!this.isLastWeek()}
+          rightClickable={!this.isFirstWeek()}
+        />
+        {content}
+        {modal}
+      </div>
+    )
   }
 }
 

@@ -3,6 +3,8 @@ const strings = {
   confirmDescription: 'One of our pastors will be in touch in the next few days to follow up with you and answer any questions you may have about our church.',
   messageHeader: 'Latest Message',
   newsHeader: 'Upcoming Events',
+  newsSorry: 'Sorry',
+  newsNoEvents: 'Looks like there are no upcoming events. Please check back later for more updates',
   connectHeader: 'Connect',
   connectTitle: 'Get connected with us',
   connectDescription: 'We know that it\'s important for you to find a church that really fits. We can connect you with one of our pastors to answer any questions you might have about our church\'s beliefs, community, and culture.',

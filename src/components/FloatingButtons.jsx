@@ -14,11 +14,15 @@ class FloatingButtons extends React.Component {
   }
 
   handleButtonPress () {
-    this.buttonPressTimer = setTimeout(() => this.props.longClicked(), 600);
+    if (this.props.longClicked) {
+      this.buttonPressTimer = setTimeout(() => this.props.longClicked(), 600);
+    }
   }
 
   handleButtonRelease () {
-    clearTimeout(this.buttonPressTimer);
+    if (this.buttonPressTimer) {
+      clearTimeout(this.buttonPressTimer);
+    }
   }
 
   render() {
