@@ -1,9 +1,9 @@
 import React from 'react'
+import moment from 'moment'
 import Loading from '../components/Loading'
 import HeaderBar from '../components/HeaderBar'
 import FloatingButtons from '../components/FloatingButtons'
 import * as colors from '../constants/colors'
-import images from '../images/images'
 import strings from '../constants/strings';
 import './News.scss'
 
@@ -11,8 +11,8 @@ class News extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentNews: 0,
-      news: []
+      currentIndex: 0,
+      news: null
     };
     this.goNextWeek = this.goNextWeek.bind(this);
     this.goPreviousWeek = this.goPreviousWeek.bind(this);
@@ -23,93 +23,135 @@ class News extends React.Component {
     fetch(dataURL)
     .then(res => res.json())
     .then(res => {
-      this.setState({
-        news: res.map(val => {
-          const item = val.acf;
-          return {
-            title: item.title,
-            image: item.image,
-            featured: item.featured,
-            linkLabel: item.link_label,
-            linkUrl: item.link_url,
-            announcements: item.announcements
-          };
+      const news = res.map((val, i) => {
+        const item = val.acf;
+        return {
+          title: item.title,
+          image: item.image,
+          date: moment(item.date, 'YYYY/MM/DD'),
+          featured: item.featured,
+          linkLabel: item.link_label,
+          linkUrl: item.link_url,
+          announcements: item.announcements
+        };
+      })
+
+      let currentIndex = -1
+      news.forEach((item, i) => {
+        if (item.date) {
+          const today = new Date()
+          const date = new Date(item.date)
+          if (today < date) {
+            currentIndex = i
+          }
+        }
+      })
+
+      if (currentIndex === -1) {
+        currentIndex = 0
+        news.unshift({
+          empty: true
         })
+      }
+
+      this.setState({
+        news,
+        currentIndex
       })
     })
   }
 
   goNextWeek() {
-    const currentNews = this.state.currentNews;
+    const currentIndex = this.state.currentIndex;
     if(!this.isFirstWeek()) {
-      this.setState({currentNews: currentNews - 1})
+      this.setState({currentIndex: currentIndex - 1})
     }
   }
 
   goPreviousWeek() {
-    const currentNews = this.state.currentNews;
+    const currentIndex = this.state.currentIndex;
     if(!this.isLastWeek()) {
-      this.setState({currentNews: currentNews + 1})
+      this.setState({currentIndex: currentIndex + 1})
     }
   }
 
   isFirstWeek() {
-    return this.state.currentNews === 0;
+    return this.state.currentIndex === 0;
   }
 
   isLastWeek() {
-    return this.state.currentNews >= this.state.news.length - 1;
+    const {currentIndex, news} = this.state
+    return news && currentIndex >= news.length - 1;
   }
 
   render() {
+    const {currentIndex, news} = this.state
+
     let content;
-    if (this.state.news.length === 0) {
+    if (news === null) {
       content = <Loading/>;
     } else {
-      const news = this.state.news[this.state.currentNews];
+      const currentNews = news[currentIndex];
 
-      let announcements;
-      if (news.announcements) {
-        announcements = (
-          <div>
-            <hr/>
-            <div className="announcements">
-              <h2 style={{color: colors.NEWS_THEME}}>Announcements</h2>
-              <div className='html' dangerouslySetInnerHTML={{__html: news.announcements}}/>
+      if (currentNews.empty) {
+        content = (
+          <div className='no-event'>
+            <h2>{strings.newsSorry}</h2>
+            <p>{strings.newsNoEvents}</p>
+          </div>
+        )
+      } else {
+        let image;
+        if (currentNews.image) {
+          image = (
+            <div className='header-container'>
+              <img className='header-img' src={currentNews.image}/>
+            </div>
+          )
+        }
+
+        let announcements;
+        if (currentNews.announcements) {
+          announcements = (
+            <div>
+              <hr/>
+              <div className="announcements">
+                <h2 style={{color: colors.NEWS_THEME}}>Announcements</h2>
+                <div className='html' dangerouslySetInnerHTML={{__html: currentNews.announcements}}/>
+              </div>
+            </div>
+          )
+        }
+
+        let link;
+        if (currentNews.linkLabel && currentNews.linkUrl) {
+          link = (
+            <div>
+              <a
+                className='button'
+                style={{backgroundColor: colors.NEWS_THEME}}
+                href={currentNews.linkUrl}
+              >
+                {currentNews.linkLabel}
+              </a>
+            </div>
+          )
+        }
+
+        content = (
+          <div className='content'>
+            {image}
+            <div className='page-wrapper'>
+              <h2 style={{color: colors.NEWS_THEME}}>{currentNews.title}</h2>
+              <p className='html' dangerouslySetInnerHTML={{__html: currentNews.featured}}/>
+              {link}
+              {announcements}
             </div>
           </div>
         )
       }
-
-      let link;
-      if (news.linkLabel && news.linkUrl) {
-        link = (
-          <div>
-            <a
-              className='button'
-              style={{backgroundColor: colors.NEWS_THEME}}
-              href={news.linkUrl}
-            >
-              {news.linkLabel}
-            </a>
-          </div>
-        )
-      }
-
-      content = (
-        <div className='content'>
-          <div className='header-container'>
-            <img className='header-img' src={news.image}/>
-          </div>
-          <div className='page-wrapper'>
-            <h2 style={{color: colors.NEWS_THEME}}>{news.title}</h2>
-            <p className='html' dangerouslySetInnerHTML={{__html: news.featured}}/>
-            {link}
-            {announcements}
-          </div>
-        </div>
-      )
     }
+
 
     return (
       <div className='news'>
