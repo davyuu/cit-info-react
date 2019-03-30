@@ -25,18 +25,10 @@ module.exports = {
     port: 8080
   },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.png$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 50000,
-              mimetype: 'image/png'
-            }
-          }
-        ]
+        test: /\.(png|jpe?g)$/,
+        loader: 'url-loader'
       },
       {
         test: /\.svg$/,
@@ -47,15 +39,10 @@ module.exports = {
         use:['style-loader','css-loader', 'sass-loader']
       },
 			{
-				test: /\.jsx$/,
+				test: /\.jsx?$/,
 				loader: 'babel-loader',
 				exclude: /node_modules/
-			},
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
-      }
+			}
     ]
   },
   plugins: [

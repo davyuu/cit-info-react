@@ -40,6 +40,12 @@ const Home = () => (
       />
       <hr/>
       <Section
+        title={strings.alphaHeader}
+        image={images.alpha}
+        linkTo={routes.alpha}
+      />
+      <hr/>
+      <Section
         title={strings.givingHeader}
         image={images.giving}
         linkTo={routes.giving}
