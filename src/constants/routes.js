@@ -4,6 +4,7 @@ const routes = {
 	news: '/news',
 	connect: '/connect',
 	next: '/next',
+	alpha: '/alpha',
 	giving: '/giving',
 	confirm: '/confirm',
 	volunteer: '/volunteer'

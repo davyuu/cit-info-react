@@ -8,6 +8,7 @@ class TitleSection extends React.Component {
       <div className='title-section'>
         <h2>{this.props.title}</h2>
         <p>{this.props.description}</p>
+        <p>{this.props.description2}</p>
       </div>
     )
   }
@@ -16,6 +17,7 @@ class TitleSection extends React.Component {
 TitleSection.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  description2: PropTypes.string
 };
 
 export default TitleSection
