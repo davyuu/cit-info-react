@@ -95,7 +95,7 @@ class Alpha extends React.Component {
 
           <hr/>
 
-          <div class='info'>
+          <div className='info'>
             <h3>NEXT SESSION</h3>
             <div>
               <div className='img' dangerouslySetInnerHTML={{__html: images.clock}} />
