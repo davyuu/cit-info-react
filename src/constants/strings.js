@@ -1,6 +1,6 @@
 const strings = {
-	confirmTitle: 'Thanks! We\'ll be in touch soon',
-  confirmDescription: 'One of our pastors will be in touch in the next few days to follow up with you and answer any questions you may have about our church.',
+	confirmTitle: 'Success!',
+  confirmDescription: 'Thanks for connecting with us at CIT. Someone will be in contact with you in the next week to follow up',
   messageHeader: 'Latest Message',
   newsHeader: 'Upcoming Events',
   newsSorry: 'Sorry',
