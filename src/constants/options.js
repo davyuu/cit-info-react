@@ -43,6 +43,9 @@ export const ALPHA_OPTIONS = [{
 }]
 
 export const VOLUNTEER_OPTIONS = [{
+  value: 'worship',
+  label: 'Worship'
+}, {
   value: 'kids',
   label: 'Kids'
 }, {
@@ -60,9 +63,6 @@ export const VOLUNTEER_OPTIONS = [{
 }, {
   value: 'youth',
   label: 'Youth'
-}, {
-  value: 'worship',
-  label: 'Worship'
 }, {
   value: 'production',
   label: 'Production'
