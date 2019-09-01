@@ -81,11 +81,12 @@ class Next extends React.Component {
     })
   }
 
-  firstSunday() {
+  nextSession() {
     const d = new moment()
     while (!(d.date() <= 7 && d.day() == 0)) {
-      d.add(1, 'days')
+      d.add(1, 'd')
     }
+    d.add(1, 'w');
 
     return d.format("MMMM Do, YYYY");
   }
@@ -113,7 +114,7 @@ class Next extends React.Component {
               <div>
 	              <div className='img' dangerouslySetInnerHTML={{__html: images.calendar}} />
                 <dt>Date:</dt>
-                <dd>{this.firstSunday()}</dd>
+                <dd>{this.nextSession()}</dd>
               </div>
               <div>
 	              <div className='img' dangerouslySetInnerHTML={{__html: images.clock}} />
