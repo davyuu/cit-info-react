@@ -7,15 +7,20 @@ import * as colors from '../constants/colors'
 import strings from '../constants/strings';
 import './News.scss'
 
+const UPCOMING = 0;
+const PAST = 1;
+
 class News extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentIndex: 0,
-      news: null
+      current: UPCOMING,
+      news: null,
+      upcomingNews: [],
+      pastNews: []
     };
-    this.goNextWeek = this.goNextWeek.bind(this);
-    this.goPreviousWeek = this.goPreviousWeek.bind(this);
+    this.goUpcoming = this.goUpcoming.bind(this);
+    this.goPast = this.goPast.bind(this);
   }
 
   componentWillMount() {
@@ -23,77 +28,87 @@ class News extends React.Component {
     fetch(dataURL)
     .then(res => res.json())
     .then(res => {
-      const news = res.map((val, i) => {
-        const item = val.acf;
-        return {
-          title: item.title,
-          image: item.image,
-          date: moment(item.date, 'YYYY/MM/DD'),
-          featured: item.featured,
-          linkLabel: item.link_label,
-          linkUrl: item.link_url,
-          announcements: item.announcements
-        };
-      })
+      const news = res
+        .map((val, i) => ({
+          id: val.id,
+          title: val.acf.title,
+          image: val.acf.image,
+          date: moment(val.acf.date, 'YYYY/MM/DD'),
+          content: val.acf.content,
+          isFeatured: val.acf.is_featured,
+          linkLabel: val.acf.link_label,
+          linkUrl: val.acf.link_url,
+        }));
 
-      let currentIndex = -1
-      news.forEach((item, i) => {
-        if (item.date) {
-          const today = new Date()
-          const date = new Date(item.date)
-          if (today < date) {
-            currentIndex = i
-          }
-        }
-      })
-
-      if (currentIndex === -1) {
-        currentIndex = 0
-        news.unshift({
-          empty: true
-        })
-      }
+      const today = moment();
+      const upcomingNews = news
+        .filter(val => !val.date.isBefore(today))
+        .sort((a, b) => b.isFeatured - a.isFeatured || a.date - b.date);
+      const pastNews = news
+      .filter(val => val.date.isBefore(today))
+        .sort((a, b) => b.date - a.date);
 
       this.setState({
         news,
-        currentIndex
+        upcomingNews,
+        pastNews
       })
     })
   }
 
-  goNextWeek() {
-    const currentIndex = this.state.currentIndex;
-    if(!this.isFirstWeek()) {
-      this.setState({currentIndex: currentIndex - 1})
+  goUpcoming() {
+    if (this.isPast()) {
+      this.setState({current: UPCOMING})
     }
   }
 
-  goPreviousWeek() {
-    const currentIndex = this.state.currentIndex;
-    if(!this.isLastWeek()) {
-      this.setState({currentIndex: currentIndex + 1})
+  goPast() {
+    if (this.hasPast()) {
+      this.setState({current: PAST})
     }
   }
 
-  isFirstWeek() {
-    return this.state.currentIndex === 0;
+  isPast() {
+    return this.state.current === PAST;
   }
 
-  isLastWeek() {
-    const {currentIndex, news} = this.state
-    return news && currentIndex >= news.length - 1;
+  hasPast() {
+    return this.state.current === UPCOMING && this.state.pastNews.length > 0;
+  }
+
+  renderContent(news) {
+    return (
+      <div className='content'>
+        {news.image &&
+          <div className='header-container'>
+            <img className='header-img' src={news.image}/>
+          </div>
+        }
+        <div className='page-wrapper'>
+          <h2 style={{color: colors.NEWS_THEME}}>{news.title}</h2>
+          <p className='html' dangerouslySetInnerHTML={{__html: news.content}}/>
+        </div>
+      </div>
+    )
   }
 
   render() {
-    const {currentIndex, news} = this.state
+    const {current, news, upcomingNews, pastNews} = this.state
 
     let content;
     if (news === null) {
       content = <Loading/>;
+    } else if (news.length === 0) {
+      content = (
+        <div className='no-event'>
+          <h2>{strings.newsSorry}</h2>
+          <p>{strings.newsNoEvents}</p>
+        </div>
+      )
     } else {
-      const currentNews = news[currentIndex];
+      const currentNews = current === UPCOMING ? upcomingNews : pastNews;
 
-      if (currentNews.empty) {
+      if (currentNews.lenght === 0) {
         content = (
           <div className='no-event'>
             <h2>{strings.newsSorry}</h2>
@@ -101,57 +116,27 @@ class News extends React.Component {
           </div>
         )
       } else {
-        let image;
-        if (currentNews.image) {
-          image = (
-            <div className='header-container'>
-              <img className='header-img' src={currentNews.image}/>
-            </div>
-          )
-        }
+        content = currentNews.map(currentNewsItem => (
+          <div className='content-wrapper' key={currentNewsItem.id}>
+            {currentNewsItem.image &&
+              <img className='img' src={currentNewsItem.image}/>
+            }
+            <div className="content">
+              <h2 style={{color: colors.NEWS_THEME}}>{currentNewsItem.title}</h2>
+              <p className='html' dangerouslySetInnerHTML={{__html: currentNewsItem.content}}/>
 
-        let announcements;
-        if (currentNews.announcements) {
-          announcements = (
-            <div>
-              <hr/>
-              <div className="announcements">
-                <h2 style={{color: colors.NEWS_THEME}}>Announcements</h2>
-                <div className='html' dangerouslySetInnerHTML={{__html: currentNews.announcements}}/>
-              </div>
-            </div>
-          )
-        }
-
-        let link;
-        if (currentNews.linkLabel && currentNews.linkUrl) {
-          link = (
-            <div>
-              <a
-                className='button'
-                style={{backgroundColor: colors.NEWS_THEME}}
-                href={currentNews.linkUrl}
-              >
-                {currentNews.linkLabel}
-              </a>
-            </div>
-          )
-        }
-
-        content = (
-          <div className='content'>
-            {image}
-            <div className='page-wrapper'>
-              <h2 style={{color: colors.NEWS_THEME}}>{currentNews.title}</h2>
-              <p className='html' dangerouslySetInnerHTML={{__html: currentNews.featured}}/>
-              {link}
-              {announcements}
-            </div>
+              {currentNewsItem.linkUrl &&
+                <a
+                  className='button'
+                  style={{backgroundColor: colors.NEWS_THEME}}
+                  href={currentNewsItem.linkUrl}
+                >{currentNewsItem.linkLabel}</a>
+              }
+            </div> 
           </div>
-        )
+        ));
       }
     }
-
 
     return (
       <div className='news'>
@@ -161,12 +146,14 @@ class News extends React.Component {
           color={colors.NEWS_THEME}
         />
         <FloatingButtons
-          leftClicked={this.goPreviousWeek}
-          rightClicked={this.goNextWeek}
-          leftClickable={!this.isLastWeek()}
-          rightClickable={!this.isFirstWeek()}
+          leftClicked={this.goPast}
+          rightClicked={this.goUpcoming}
+          leftClickable={this.hasPast()}
+          rightClickable={this.isPast()}
         />
-        {content}
+        <div className="wrapper">
+          {content}
+        </div>
       </div>
     )
   }
