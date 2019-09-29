@@ -66,9 +66,10 @@ class Connect extends React.Component {
         this.createEmailForPerson(personId),
         this.createPhoneNumberForPerson(personId),
         this.postSubscribedForPerson(personId),
+        this.postTypeForPerson(personId),
         this.sendToSheets()
-      ]).then(([emailRes, numberRes, subRes, sheetRes]) => {
-        if(!(emailRes && numberRes && subRes && sheetRes)){
+      ]).then(([emailRes, numberRes, subRes, typeRes, sheetRes]) => {
+        if(!(emailRes && numberRes && subRes && typeRes && sheetRes)){
           this.showSuccess();
         } else {
           this.showError('An error occurred')
@@ -124,6 +125,22 @@ class Connect extends React.Component {
         attributes: {
           field_definition_id: process.env.SUBSCRIBE_FIELD_ID,
           value: this.state.subscribe,
+        },
+      }
+    });
+
+    NetworkUtils.postRequest(url, this.successHandler, this.errorHandler, body)
+  }
+
+  postTypeForPerson(personId) {
+    const url = `https://api.planningcenteronline.com/people/v2/people/${personId}/field_data`;
+
+    const body = JSON.stringify({
+      data: {
+        type: 'FieldDatum',
+        attributes: {
+          field_definition_id: process.env.CONNECT_FIELD_ID,
+          value: true,
         },
       }
     });
