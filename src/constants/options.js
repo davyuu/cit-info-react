@@ -72,4 +72,7 @@ export const VOLUNTEER_OPTIONS = [{
 }, {
   value: 'connections',
   label: 'Connections'
+}, {
+	value: 'compassion',
+	label: 'Compassion'
 }]
