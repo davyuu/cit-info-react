@@ -108,7 +108,7 @@ class News extends React.Component {
     } else {
       const currentNews = current === UPCOMING ? upcomingNews : pastNews;
 
-      if (currentNews.lenght === 0) {
+      if (currentNews.length === 0) {
         content = (
           <div className='no-event'>
             <h2>{strings.newsSorry}</h2>
