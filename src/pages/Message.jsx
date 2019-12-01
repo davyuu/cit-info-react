@@ -14,8 +14,9 @@ import 'rmc-picker/assets/index.css';
 const themeColor = colors.MESSAGE_THEME;
 const MESSAGE_KEY = 0;
 const STUDY_KEY = 1;
-const SUPPLEMENT_KEY = 2;
-const SONGS_KEY = 3;
+const GROUP_MATERIAL_KEY = 2;
+const SUPPLEMENT_KEY = 3;
+const SONGS_KEY = 4;
 
 Modal.setAppElement('#app')
 
@@ -59,6 +60,7 @@ class Message extends React.Component {
           outline: message.outline,
           studyChapter: message.study_chapter,
           studyGuide: message.study_guide,
+          groupMaterial: message.group_material,
           supplementaryMaterial: message.supplementary_material,
           setList: message.set_list,
           childrenSetList: message.children_set_list,
@@ -162,6 +164,13 @@ class Message extends React.Component {
             <div className='study-html' dangerouslySetInnerHTML={{__html: message.studyGuide}}/>
           </div>
         )
+      } else if(currentTab === GROUP_MATERIAL_KEY) {
+        tabContent = (
+          <div className='message-container'>
+            <h1 className='study-title' style={{color: themeColor}}>Community Group Material:</h1>
+            <div className='study-html' dangerouslySetInnerHTML={{__html: message.groupMaterial}}/>
+          </div>
+        )
       } else if(currentTab === SUPPLEMENT_KEY) {
         tabContent = (
           <div className='message-container'>
@@ -197,6 +206,15 @@ class Message extends React.Component {
         )
       }
 
+      let groupMaterialTab;
+      if(message.groupMaterial) {
+        groupMaterialTab = (
+          <div className={tabClass(GROUP_MATERIAL_KEY)} onClick={() => this.setState({currentTab: GROUP_MATERIAL_KEY})}>
+            GROUP MATERIAL
+          </div>
+        )
+      }
+
       let supplementTab;
       if(message.supplementaryMaterial) {
         supplementTab = (
@@ -215,6 +233,7 @@ class Message extends React.Component {
                 MESSAGE
               </div>
               {studyGuideTab}
+              {groupMaterialTab}
               {supplementTab}
               <div className={tabClass(SONGS_KEY)} onClick={() => this.setState({currentTab: SONGS_KEY})}>
                 SONGS
