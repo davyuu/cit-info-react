@@ -50,6 +50,7 @@ class Message extends React.Component {
     .then(res => {
       const messages = res.map(val => {
         const message = val.acf;
+
         return {
           title: message.title,
           seriesName: message.series_name,
@@ -79,6 +80,12 @@ class Message extends React.Component {
           }
         }
       })
+
+      for(let i = messages.length - 1; i >=0; i--) {
+        if (i < messages.length - 1 && !messages[i].childrenSetList) {
+          messages[i].childrenSetList = messages[i + 1].childrenSetList;
+        }
+      }
 
       this.setState({
         messages,
