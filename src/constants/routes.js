@@ -9,7 +9,8 @@ const routes = {
 	alpha: '/alpha',
 	giving: '/giving',
 	confirm: '/confirm',
-	volunteer: '/volunteer'
+	volunteer: '/volunteer',
+	stats: '/stats'
 };
 
 export default routes;

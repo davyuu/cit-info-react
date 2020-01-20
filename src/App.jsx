@@ -14,6 +14,7 @@ import Alpha from './pages/Alpha'
 import Giving from './pages/Giving'
 import Confirm from './pages/Confirm'
 import Volunteer from './pages/Volunteer'
+//import Stats from './pages/Stats'
 import routes from './constants/routes'
 import './App.scss'
 
