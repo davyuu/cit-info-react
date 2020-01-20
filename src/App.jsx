@@ -14,7 +14,7 @@ import Alpha from './pages/Alpha'
 import Giving from './pages/Giving'
 import Confirm from './pages/Confirm'
 import Volunteer from './pages/Volunteer'
-//import Stats from './pages/Stats'
+import Stats from './pages/Stats'
 import routes from './constants/routes'
 import './App.scss'
 
@@ -40,6 +40,7 @@ class App extends React.Component {
           <Route path={routes.giving} component={Giving}/>
           <Route path={routes.confirm} component={Confirm}/>
           <Route path={routes.volunteer} component={Volunteer}/>
+          <Route path={routes.stats} component={Stats}/>
         </Switch>
       </Router>
     );

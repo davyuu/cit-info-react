@@ -75,6 +75,12 @@ const Home = () => (
         image={images.volunteer}
         linkTo={routes.volunteer}
       />
+      <hr/>
+      <Section
+        title={strings.statsHeader}
+        //image={images.stats}
+        linkTo={routes.stats}
+      />
     </div>
   </div>
 );
