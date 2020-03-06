@@ -99,11 +99,11 @@ class Alpha extends React.Component {
             <h3>NEXT SESSION</h3>
             <div>
               <div className='img' dangerouslySetInnerHTML={{__html: images.clock}} />
-              <p>Thursday, September 5th at 7:30pm</p>
+              <p>Tuesday, April 14th from 7:00pm-9:15pm</p>
             </div>
             <div>
               <div className='img' dangerouslySetInnerHTML={{__html: images.location}} />
-              <p>24 Saint Germain Avenue, Toronto</p>
+              <p>CIT: 671 Sheppard Ave. East, Toronto</p>
             </div>
           </div>
 
