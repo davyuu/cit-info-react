@@ -78,7 +78,7 @@ const Home = () => (
       <hr/>
       <Section
         title={strings.statsHeader}
-        //image={images.stats}
+        image={images.stats}
         linkTo={routes.stats}
       />
     </div>
