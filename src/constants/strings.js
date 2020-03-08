@@ -23,7 +23,9 @@ const strings = {
   volunteerHeader: 'Volunteer',
   volunteerTitle: 'Join A Team',
   volunteerDescription: 'Our teams are dedicated to bringing our very best to our God. We would love for you to become part of a team and discover all that God has purposed for your life.',
-	statsHeader: 'Stats'
+	statsTitle: 'Stats',
+	statsHeader: 'Stats',
+	statsDescription: 'Please login as an Admin to be able to view this page.'
 };
 
 export default strings;

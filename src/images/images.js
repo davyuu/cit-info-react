@@ -12,6 +12,7 @@ const images = {
   giving: require('./home/giving.svg'),
   groups: require('./home/community-groups.svg'),
   volunteer: require('./home/join-team.svg'),
+  stats: require('./home/stats.svg'),
 
   // Headers
   alphaHeader: require('./headers/alpha.jpg'),

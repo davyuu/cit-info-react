@@ -1,12 +1,20 @@
 import React from 'react'
+import Select from 'react-select'
+import AlertContainer from 'react-alert'
+import {RingLoader} from 'react-spinners'
 import moment from 'moment'
+
 import HeaderBar from '../components/HeaderBar'
 import TitleSection from '../components/TitleSection'
-import FloatingButtons from '../components/FloatingButtons'
-import * as colors from '../constants/colors'
-import strings from '../constants/strings';
 import routes from '../constants/routes'
+import strings from '../constants/strings'
+import images from '../images/images'
+import * as options from '../constants/options'
+import * as colors from '../constants/colors'
+import * as NetworkUtils from '../utils/NetworkUtils'
+import * as Utils from '../utils/Utils'
 
+import 'react-select/dist/react-select.css'
 import './Stats.scss'
 
 
@@ -16,7 +24,7 @@ class Stats extends React.Component {
     this.state = {
       schedules: []
     }
-  
+
     this.weeklySchedule = this.weeklySchedule.bind(this);
   };
 
@@ -47,21 +55,21 @@ class Stats extends React.Component {
             createdAt: val.createdAt,
             updatedAt: val.updatedAt
           }));
-        
+
       })
-    
+
     Promise.all([confirmedPromise, declinedPromise]).then(values => {
       console.log(values);
       let confirmed = values[0];
       let declined = values[1];
       this.weeklySchedule(values)
 
-      this.setState({
-        confirmed: values[0],
-        declined: values[1],
-      });
-    }); 
-    
+      // this.setState({
+      //   confirmed: values[0],
+      //   declined: values[1],
+      // });
+    });
+
   }
 
   weeklySchedule(values) {
@@ -91,7 +99,7 @@ class Stats extends React.Component {
 
             volunteers[obj['_id']] = {
               'name': obj['name'],
-              'schedule': [{ 
+              'schedule': [{
                  'updatedAt': data['updatedAt'],
                  'type': data['type']
               }]
@@ -103,9 +111,9 @@ class Stats extends React.Component {
         })
       }
     }
-    console.log('volunteers function')
+    //console.log('volunteers function')
     console.log(volunteers)
-    
+
 
     // sorting schedule by updatedAt timestamp
 
@@ -123,55 +131,93 @@ class Stats extends React.Component {
     // returning volunteers and # of declines in their last 4 sessions
     for (var key of Object.keys(volunteers)) {
     person = volunteers[key]
-      
+
       //excluding volunteers who have not volunteered at least 4 times
-      if(person['schedule'].length > 3) {
-        if(!(person['name'] in myCount)) {
-          myCount[person['name']] = 0;
+      if(person.schedule.length > 3) {
+        if(!(key in myCount)) {
+          myCount[key] = 0;
         }
-        
+
         for (var iKey = 0; iKey < 4; iKey++) {
 
           if(person['schedule'][iKey]['type'] === 'DECLINED')
-            myCount[person['name']] += 1;
+            myCount[key] += 1;
         }
       }
     }
-    console.log(myCount);
+    console.log('myCount:', myCount);
 
 
     // return list of volunteers who declined 3 times out of last 4
     let final = []
-    
-    for (var name of Object.keys(myCount)) {
-      if((!(myCount[name]===0)) && myCount[name]>2) {
-        final.push(name);
+
+    for (var key of Object.keys(myCount)) {
+      if((!(myCount[key]===0)) && myCount[key]>2) {
+        const test = {
+          name: volunteers[key].name,
+          dates: volunteers[key].schedule.filter(s => s.type === 'DECLINED')
+        }
+        final.push(test);
       }
     }
-    console.log(final)
+    console.log('final:', final)
+
+    this.setState({
+      ...this.state,
+      schedules: final
+    });
+
+
+    /*
+      declined: [
+        {
+          name: 'aasdf',
+          declined: ['date1', 'date2']
+      }
+    ]
+    */
 
   }
-  
+
 
   render() {
 
-    return <div>
-      {final.toString()}
-    </div>
-
-    // return <div><table>
-    //   {this.state.schedules.map((val, i) => {
-    //     return (
-    //       <tbody key={i}>
-    //         <tr>
-    //           <td>{JSON.stringify(val.people)}</td>
-    //           <td>{val.type}</td>
-    //           <td>{val.createdAt}</td>
-    //           <td>{val.updatedAt}</td>
-    //         </tr>
-    //       </tbody>
-    //     );
-    //   })}</table></div>
+    return (
+      <div className='stats'>
+        <AlertContainer ref={a => this.msg = a} {...options.ALERT_OPTIONS} />
+        <HeaderBar
+          goBack={this.props.history.goBack}
+          title={strings.statsHeader}
+          color={colors.STATS_THEME}
+        />
+        <div className='page-wrapper'>
+          <TitleSection
+            title={strings.statsTitle}
+            description={strings.statsDescription}
+          />
+          <div>
+            <table>
+              {this.state.schedules.map((val, i) => {
+                return (
+                  <tbody key={i}>
+                    <tr>
+                      <td>{val.name}</td>
+                      <td>{val.dates.map((date, dateindex) => {
+                        return (
+                          <div key={dateindex}>
+                            {moment(date.updatedAt).format("MMMM Do, YYYY")}
+                          </div>
+                        )
+                      })}</td>
+                    </tr>
+                  </tbody>
+                );
+              })}
+            </table>
+          </div>
+        </div>
+      </div>
+    )
   }
 }
 
