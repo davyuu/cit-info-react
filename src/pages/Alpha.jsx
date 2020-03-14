@@ -22,6 +22,7 @@ class Alpha extends React.Component {
       lastName: '',
       email: '',
       phone: '',
+      volunteer: false,
       loading: false
     }
   }
@@ -52,7 +53,11 @@ class Alpha extends React.Component {
     const errorHandler = () => {
       this.showError('An error occurred')
     };
-    NetworkUtils.sendToSheets('alpha', this.state, successHandler, errorHandler)
+    const { firstName, lastName, email, phone, volunteer } = this.state;
+    const fields = { firstName, lastName, email, phone,
+      description: volunteer ? 'I’m interested in volunteering' : ''
+    }
+    NetworkUtils.sendToSheets('alpha', fields, successHandler, errorHandler)
   }
 
   hideErrors() {
@@ -153,6 +158,18 @@ class Alpha extends React.Component {
                 value={this.state.phone}
                 onChange={(e) => this.setState({phone: e.target.value})}
               />
+            </div>
+            <div className='row checkbox'>
+              <input
+                className='connect-form-checkbox'
+                type='checkbox'
+                id='volunteer'
+                value={this.state.volunteer}
+                onChange={(e) => this.setState({volunteer: e.target.checked})}
+              />
+              <label htmlFor="volunteer">
+                I’m interested in volunteering
+              </label>
             </div>
             <button
               type='button'
