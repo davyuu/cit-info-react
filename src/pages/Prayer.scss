@@ -1,0 +1,21 @@
+.prayer {
+  hr {
+    margin: 16px 0;
+  }
+
+  .page-width {
+    padding: 0 24px;
+    &.top-section {
+      padding-bottom: 0;
+    }
+    &.form-section {
+      padding-top: 0;
+      padding-bottom: 0;
+      background-color: #41434b;
+    }
+    &.disclaimer-section {
+      padding-top: 0;
+      background-color: #41434b;
+    }
+  }
+}

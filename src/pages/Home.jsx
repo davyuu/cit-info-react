@@ -1,63 +1,76 @@
-import React from 'react'
-import {version} from '../../package.json'
-import routes from '../constants/routes'
-import images from '../images/images'
-import Section from '../components/Section'
-import strings from '../constants/strings.js';
-import './Home.scss'
+import React from "react";
+import { version } from "../../package.json";
+import routes from "../constants/routes";
+import images from "../images/images";
+import Section from "../components/Section";
+import strings from "../constants/strings.js";
+import "./Home.scss";
 
-const communityGroupsLink = 'https://churchintoronto.churchcenter.com/groups/community-groups'
+const communityGroupsLink =
+  "https://churchintoronto.churchcenter.com/groups/community-groups";
 const Home = () => (
-  <div className='home'>
+  <div className="home">
     <span className="version-number">{version}</span>
-    <div className='header'>
-      <div className='banner-img' dangerouslySetInnerHTML={{__html: images.banner}} />
-      <div className='logo-img' dangerouslySetInnerHTML={{__html: images.logo}} />
+    <div className="header">
+      <div
+        className="banner-img"
+        dangerouslySetInnerHTML={{ __html: images.banner }}
+      />
+      <div
+        className="logo-img"
+        dangerouslySetInnerHTML={{ __html: images.logo }}
+      />
     </div>
-    <div className='content'>
+    <div className="content">
       <Section
         title={strings.messageHeader}
         image={images.message}
         linkTo={routes.message}
       />
-      <hr/>
+      <hr />
       <Section
         title={strings.newsHeader}
         image={images.upcomingEvents}
         linkTo={routes.news}
       />
-      <hr/>
+      <hr />
       <Section
         title={strings.connectHeader}
         image={images.connect}
         linkTo={routes.connect}
       />
-      <hr/>
+      <hr />
+      <Section
+        title={strings.prayerHeader}
+        // image={images.connect}
+        linkTo={routes.prayer}
+      />
+      <hr />
       <Section
         title={strings.nextHeader}
         image={images.nextSteps}
         linkTo={routes.next}
       />
-      <hr/>
+      <hr />
       <Section
         title={strings.alphaHeader}
         image={images.alpha}
         linkTo={routes.alpha}
       />
-      <hr/>
+      <hr />
       <Section
         title={strings.givingHeader}
         image={images.giving}
         linkTo={routes.giving}
       />
-      <hr/>
+      <hr />
       <Section
         title={strings.groupsHeader}
         image={images.groups}
         linkTo={communityGroupsLink}
         external
       />
-      <hr/>
+      <hr />
       <Section
         title={strings.volunteerHome}
         image={images.volunteer}
@@ -67,4 +80,4 @@ const Home = () => (
   </div>
 );
 
-export default Home
+export default Home;
