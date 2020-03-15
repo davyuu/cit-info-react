@@ -5,17 +5,33 @@
 
   .page-width {
     padding: 0 24px;
-    &.top-section {
-      padding-bottom: 0;
+  }
+  .top-section {
+    padding-bottom: 0;
+    padding-top: 24px;
+  }
+  .form-section {
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .prayer-section {
+    background-color: #41434b;
+    padding-top: 24px;
+    padding-bottom: 24px;
+
+    color: white;
+    & > label {
+      font-size: 1rem;
+      text-transform: uppercase;
     }
-    &.form-section {
-      padding-top: 0;
-      padding-bottom: 0;
-      background-color: #41434b;
+    textarea {
+      margin-top: 24px;
     }
-    &.disclaimer-section {
-      padding-top: 0;
-      background-color: #41434b;
+    .disclaimer-section {
+      font-size: 0.8rem;
+      font-weight: 100;
     }
   }
 }

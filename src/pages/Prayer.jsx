@@ -110,8 +110,8 @@ class Next extends React.Component {
 
           <hr />
         </div>
-        <div className="form-section page-width">
-          <form autoComplete="on">
+        <form autoComplete="on">
+          <div className="form-section page-width">
             <h3>CONTACT INFO</h3>
             <label>Name (optional)</label>
             <div className="row">
@@ -136,8 +136,9 @@ class Next extends React.Component {
                 onChange={e => this.setState({ phone: e.target.value })}
               />
             </div>
-            <hr />
+          </div>
 
+          <div className="prayer-section page-width">
             <label>How can we pray for you?</label>
             <div className="row">
               <textarea type="text" name="prayer request" />
@@ -149,14 +150,16 @@ class Next extends React.Component {
             >
               Sign Me Up For Next Steps
             </button>
-          </form>
-        </div>
-        <div className="disclaimer-section page-width">
-          <p>
-            Privacy: All prayer requests will only be shared with individuals on
-            the prayer team and/or the church leadership team.
-          </p>
-        </div>
+            <div className="disclaimer-section">
+              <p>
+                Privacy: All prayer requests will only be shared with
+                individuals on the prayer team and/or the church leadership
+                team.
+              </p>
+            </div>
+          </div>
+        </form>
+
         <div
           className="loading-spinner"
           style={{
