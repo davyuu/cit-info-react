@@ -162,7 +162,7 @@ class Next extends React.Component {
               style={{ backgroundColor: colors.NEXT_THEME }}
               onClick={() => this.onConnectFormSubmit()}
             >
-              Sign Me Up For Next Steps
+              Submit my Prayer Request
             </button>
             <div className="disclaimer-section">
               <p>
