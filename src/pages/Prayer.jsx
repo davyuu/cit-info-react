@@ -23,9 +23,9 @@ class Next extends React.Component {
     this.state = {
       fullName: "",
       phone: "",
-      description: "",
-      nextSteps: true,
-      loading: false
+      loading: false,
+      contact: false,
+      prayer: ""
     };
   }
 
@@ -40,7 +40,15 @@ class Next extends React.Component {
 
   isFormValid() {
     this.hideErrors();
-    const { isValid, errors } = Utils.isFormValid(this.state);
+    let checkStates;
+    if (this.state.contact) {
+      checkStates = this.state;
+    } else {
+      checkStates = { dontCheckContact: true, prayer: this.state.prayer };
+      console.log(checkStates);
+    }
+    const { isValid, errors } = Utils.isFormValid(checkStates);
+
     if (!isValid) {
       errors.forEach(error => this.showError(error));
     }
@@ -81,16 +89,6 @@ class Next extends React.Component {
         this.props.history.push(routes.confirm);
       }
     });
-  }
-
-  nextSession() {
-    const d = new moment();
-    while (!(d.date() <= 7 && d.day() == 0)) {
-      d.add(1, "d");
-    }
-    d.add(1, "w");
-
-    return d.format("MMMM Do, YYYY");
   }
 
   render() {
@@ -136,12 +134,28 @@ class Next extends React.Component {
                 onChange={e => this.setState({ phone: e.target.value })}
               />
             </div>
+            <div className="row checkbox">
+              <input
+                className="prayer-form-checkbox"
+                type="checkbox"
+                id="contact"
+                value={this.state.contact}
+                onChange={e => this.setState({ contact: e.target.checked })}
+              />
+              <label htmlFor="contact">Please follow up with me</label>
+            </div>
           </div>
 
           <div className="prayer-section page-width">
             <label>How can we pray for you?</label>
             <div className="row">
-              <textarea type="text" name="prayer request" />
+              <textarea
+                type="text"
+                name="prayer request"
+                placeholder="Add your prayer request"
+                value={this.state.message}
+                onChange={e => this.setState({ message: e.target.value })}
+              />
             </div>
             <button
               type="button"

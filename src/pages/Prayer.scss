@@ -15,6 +15,7 @@
     padding-bottom: 0;
     width: 100%;
     box-sizing: border-box;
+    padding-bottom: 24px;
   }
   .prayer-section {
     background-color: #41434b;
@@ -27,7 +28,9 @@
       text-transform: uppercase;
     }
     textarea {
-      margin-top: 24px;
+      margin-top: 16px;
+      height: 150px;
+      font-size: 1rem;
     }
     .disclaimer-section {
       font-size: 0.8rem;
