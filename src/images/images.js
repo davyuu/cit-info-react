@@ -16,7 +16,7 @@ const images = {
 
   // Headers
   alphaHeader: require('./headers/alpha.jpg'),
-  kidsHeader: require('./headers/kids.png'),
+  kidsHeader: require('./headers/citKids.png'),
 
   // Icons
   arrowLeftWhite: require('./icons/arrow_left_white.png'),
