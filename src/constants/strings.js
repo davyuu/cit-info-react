@@ -2,6 +2,7 @@ const strings = {
 	confirmTitle: 'Success!',
   confirmDescription: 'Thanks for connecting with us at CIT. Someone will be in contact with you in the next week to follow up',
   messageHeader: 'Latest Message',
+  kidsHeader: 'citKids',
   newsHeader: 'Upcoming Events',
   newsSorry: 'Sorry',
   newsNoEvents: 'Looks like there are no upcoming events. Please check back later for more updates',

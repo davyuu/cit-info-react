@@ -22,6 +22,12 @@ const Home = () => (
       />
       <hr/>
       <Section
+        title={strings.kidsHeader}
+        image={images.kids}
+        linkTo={routes.kids}
+      />
+      <hr/>
+      <Section
         title={strings.newsHeader}
         image={images.upcomingEvents}
         linkTo={routes.news}

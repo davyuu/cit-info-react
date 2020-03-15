@@ -5,6 +5,7 @@ import {HashRouter as Router, Route, Switch} from 'react-router-dom'
 // import * as Transitions from './utils/Transitions'
 import Home from './pages/Home'
 import Message from './pages/Message'
+import Kids from './pages/Kids'
 import News from './pages/News'
 import Connect from './pages/Connect'
 import Next from './pages/Next'
@@ -28,6 +29,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path={routes.home} component={Home}/>
           <Route path={routes.message} component={Message}/>
+          <Route path={routes.kids} component={Kids}/>
           <Route path={routes.news} component={News}/>
           <Route path={routes.connect} component={Connect}/>
           <Route path={routes.next} component={Next}/>

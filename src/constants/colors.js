@@ -1,4 +1,5 @@
 export const MESSAGE_THEME = '#4A275D';
+export const KIDS_THEME = '#4A275D';
 export const NEWS_THEME = '#551A8B';
 export const CONNECT_THEME = '#3852FF';
 export const NEXT_THEME = '#000099';
