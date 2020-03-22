@@ -8,6 +8,7 @@
   "scripts": {
     "start": "set NODE_ENV=dev&& webpack-dev-server",
     "prod": "set NODE_ENV=prod&& webpack-dev-server",
+    "build-dev": "set NODE_ENV=dev&& webpack",
     "build": "set NODE_ENV=prod&& webpack",
     "f-serve": "firebase serve",
     "f-deploy": "firebase deploy"

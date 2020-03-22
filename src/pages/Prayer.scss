@@ -1,40 +1,25 @@
 .prayer {
-  hr {
-    margin: 16px 0;
-  }
+  .prayer-wrapper {
+    margin: 12px -24px;
+    padding: 24px;
+    background-color: #41434B;
 
-  .page-width {
-    padding: 0 24px;
-  }
-  .top-section {
-    padding-bottom: 0;
-    padding-top: 24px;
-  }
-  .form-section {
-    padding-top: 0;
-    padding-bottom: 0;
-    width: 100%;
-    box-sizing: border-box;
-    padding-bottom: 24px;
-  }
-  .prayer-section {
-    background-color: #41434b;
-    padding-top: 24px;
-    padding-bottom: 24px;
-
-    color: white;
-    & > label {
-      font-size: 1rem;
+    label {
+      color: white;
       text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
     }
+
     textarea {
-      margin-top: 16px;
-      height: 150px;
-      font-size: 1rem;
+      margin-top: 8px;
+      height: 100px;
     }
-    .disclaimer-section {
-      font-size: 0.8rem;
-      font-weight: 100;
+
+    p {
+      color: lightgray;
+      font-size: 11px;
     }
   }
 }

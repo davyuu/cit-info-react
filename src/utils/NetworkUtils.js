@@ -29,17 +29,20 @@ export const postRequest = (url, successHandler, errorHandler, body, headers) =>
   })
 }
 
-const SHEETS_URL = process.env.SHEETS_URL;
+const SHEETS_URL = process.env.FORM_SHEETS_URL;
 const RESPONSE_KEYS = [
   'type',
   'firstName',
   'lastName',
+  'fullName',
   'email',
   'phone',
   'description',
   'message',
   'subscribe',
-  'nextSteps'
+  'nextSteps',
+  'contact',
+  'prayer',
 ]
 const SHEETS_HEADERS = { 'Content-Type': 'application/x-www-form-urlencoded' }
 const SHEETS_DATA = {
@@ -47,7 +50,7 @@ const SHEETS_DATA = {
   formGoogleSheetName: 'responses'
 }
 
-export const sendToSheets = (type, fields, successHandler, errorHandler) => {
+export const sendToSheets = (type, fields, successHandler, errorHandler, url = SHEETS_URL) => {
   const dataFields = RESPONSE_KEYS.reduce((obj, key) => {
     if (typeof fields[key] === 'boolean') {
       obj[key] = fields[key] ? 'yes' : 'no'
@@ -65,5 +68,5 @@ export const sendToSheets = (type, fields, successHandler, errorHandler) => {
     return encodeURIComponent(key) + '=' + encodeURIComponent(value)
   }).join('&');
 
-  postRequest(SHEETS_URL, successHandler, errorHandler, body, SHEETS_HEADERS)
+  postRequest(url, successHandler, errorHandler, body, SHEETS_HEADERS)
 }

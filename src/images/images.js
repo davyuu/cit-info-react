@@ -8,6 +8,7 @@ const images = {
   kids: require('./home/kids.svg'),
   upcomingEvents: require('./home/upcoming-events.svg'),
   connect: require('./home/connect.svg'),
+  prayer: require('./home/prayer.svg'),
   nextSteps: require('./home/next-steps.svg'),
   alpha: require('./home/alpha.svg'),
   giving: require('./home/giving.svg'),

@@ -41,10 +41,10 @@ const Home = () => (
       <hr/>
       <Section
         title={strings.prayerHeader}
-        // image={images.connect}
+        image={images.prayer}
         linkTo={routes.prayer}
       />
-      <hr />
+      <hr/>
       <Section
         title={strings.nextHeader}
         image={images.nextSteps}

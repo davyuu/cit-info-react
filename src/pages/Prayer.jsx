@@ -1,20 +1,14 @@
 import React from "react";
-import Select from "react-select";
 import AlertContainer from "react-alert";
 import { RingLoader } from "react-spinners";
-import moment from "moment";
 
 import HeaderBar from "../components/HeaderBar";
 import TitleSection from "../components/TitleSection";
 import routes from "../constants/routes";
 import strings from "../constants/strings";
-import images from "../images/images";
 import * as colors from "../constants/colors";
 import * as options from "../constants/options";
 import * as NetworkUtils from "../utils/NetworkUtils";
-import * as Utils from "../utils/Utils";
-
-import "react-select/dist/react-select.css";
 import "./Prayer.scss";
 
 class Next extends React.Component {
@@ -23,13 +17,13 @@ class Next extends React.Component {
     this.state = {
       fullName: "",
       phone: "",
-      loading: false,
       contact: false,
-      prayer: ""
+      prayer: "",
+      loading: false
     };
   }
 
-  onConnectFormSubmit() {
+  onFormSubmit() {
     if (this.isFormValid()) {
       if (!this.state.loading) {
         this.setState({ loading: true });
@@ -40,19 +34,11 @@ class Next extends React.Component {
 
   isFormValid() {
     this.hideErrors();
-    let checkStates;
-    if (this.state.contact) {
-      checkStates = this.state;
-    } else {
-      checkStates = { dontCheckContact: true, prayer: this.state.prayer };
-      console.log(checkStates);
+    if(this.state.prayer === '') {
+      this.showError('Please enter a prayer prayer');
+      return false;
     }
-    const { isValid, errors } = Utils.isFormValid(checkStates);
-
-    if (!isValid) {
-      errors.forEach(error => this.showError(error));
-    }
-    return isValid;
+    return true;
   }
 
   sendToSheets() {
@@ -63,10 +49,11 @@ class Next extends React.Component {
       this.showError("An error occurred");
     };
     NetworkUtils.sendToSheets(
-      "nextsteps",
+      "prayer",
       this.state,
       successHandler,
-      errorHandler
+      errorHandler,
+      process.env.PRAYER_SHEETS_URL
     );
   }
 
@@ -100,16 +87,12 @@ class Next extends React.Component {
           title={strings.prayerHeader}
           color={colors.PRAYER_THEME}
         />
-        <div className="page-width top-section">
+        <div className="page-wrapper">
           <TitleSection
             title={strings.prayerTitle}
             description={strings.prayerDescription}
           />
-
-          <hr />
-        </div>
-        <form autoComplete="on">
-          <div className="form-section page-width">
+          <form autoComplete="on">
             <h3>CONTACT INFO</h3>
             <label>Name (optional)</label>
             <div className="row">
@@ -134,53 +117,49 @@ class Next extends React.Component {
                 onChange={e => this.setState({ phone: e.target.value })}
               />
             </div>
-            <div className="row checkbox">
+            <div className='row checkbox'>
               <input
-                className="prayer-form-checkbox"
-                type="checkbox"
-                id="contact"
+                type='checkbox'
+                id='follow-up'
                 value={this.state.contact}
-                onChange={e => this.setState({ contact: e.target.checked })}
+                onChange={(e) => this.setState({contact: e.target.checked})}
               />
-              <label htmlFor="contact">Please follow up with me</label>
+              <label htmlFor="follow-up">
+                Please follow up with me
+              </label>
             </div>
-          </div>
 
-          <div className="prayer-section page-width">
-            <label>How can we pray for you?</label>
-            <div className="row">
-              <textarea
-                type="text"
-                name="prayer request"
-                placeholder="Add your prayer request"
-                value={this.state.message}
-                onChange={e => this.setState({ message: e.target.value })}
-              />
+            <div className="prayer-wrapper">
+              <label>How can we pray for you?</label>
+              <div className="row">
+                <textarea
+                  type="text"
+                  name="prayer"
+                  placeholder="Add your prayer request"
+                  cols="10" 
+                  value={this.state.prayer}
+                  onChange={e => this.setState({ prayer: e.target.value })}
+                />
+              </div>
+              <p className="disclaimer">
+                Privacy: All prayer prayers will only be shared with individuals on
+                the prayer team and/or the church leadership team.
+              </p>
             </div>
             <button
               type="button"
-              style={{ backgroundColor: colors.NEXT_THEME }}
-              onClick={() => this.onConnectFormSubmit()}
+              style={{ backgroundColor: colors.PRAYER_THEME }}
+              onClick={() => this.onFormSubmit()}
             >
-              Submit my Prayer Request
+              Submit Prayer Request
             </button>
-            <div className="disclaimer-section">
-              <p>
-                Privacy: All prayer requests will only be shared with
-                individuals on the prayer team and/or the church leadership
-                team.
-              </p>
-            </div>
-          </div>
-        </form>
-
+          </form>
+        </div>
         <div
           className="loading-spinner"
-          style={{
-            visibility: this.state.loading === true ? "visible" : "hidden"
-          }}
+          style={{ visibility: this.state.loading ? "visible" : "hidden" }}
         >
-          <RingLoader color={colors.NEXT_THEME} loading={true} />
+          <RingLoader color={colors.PRAYER_THEME} loading={true} />
         </div>
       </div>
     );
