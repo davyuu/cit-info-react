@@ -47,7 +47,7 @@ class Next extends React.Component {
       checkStates = { dontCheckContact: true, prayer: this.state.prayer };
       console.log(checkStates);
     }
-    const { isValid, errors } = Utils.isFormValid(checkStates);
+    const { isValid, errors } = Utils.isFormValid(checkStates, "prayerRequest");
 
     if (!isValid) {
       errors.forEach(error => this.showError(error));
@@ -59,11 +59,11 @@ class Next extends React.Component {
     const successHandler = () => {
       this.showSuccess();
     };
-    const errorHandler = () => {
-      this.showError("An error occurred");
+    const errorHandler = (err) => {
+      this.showError("An error occurred" + err);
     };
     NetworkUtils.sendToSheets(
-      "nextsteps",
+      "prayer",
       this.state,
       successHandler,
       errorHandler
@@ -153,8 +153,8 @@ class Next extends React.Component {
                 type="text"
                 name="prayer request"
                 placeholder="Add your prayer request"
-                value={this.state.message}
-                onChange={e => this.setState({ message: e.target.value })}
+                value={this.state.prayer}
+                onChange={e => this.setState({ prayer: e.target.value })}
               />
             </div>
             <button

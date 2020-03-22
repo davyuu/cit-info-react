@@ -1,12 +1,41 @@
 
 import base64 from 'base-64'
 
-const APP_ID = process.env.APP_ID;
-const APP_SECRET = process.env.APP_SECRET;
-
-const PLANNING_CENTER_HEADERS = new Headers();
-PLANNING_CENTER_HEADERS.append("Authorization", "Basic " + base64.encode(`${APP_ID}:${APP_SECRET}`));
-
+const APP_ID = process.env.APP_ID,
+      APP_SECRET = process.env.APP_SECRET,
+      SHEETS_URL = process.env.SHEETS_URL,
+      PRAYER_REQUEST_SHEETS_URL = process.env.PRAYER_REQUEST_SHEETS_URL,
+      SHEETS_HEADERS = { 'Content-Type': 'application/x-www-form-urlencoded' },
+      // SHEETS_DATA = {
+      //   formDataNameOrder: JSON.stringify(RESPONSE_KEYS),
+      //   formGoogleSheetName: 'responses'
+      // },
+      RESPONSE_KEYS = [
+        'type',
+        'firstName',
+        'lastName',
+        'email',
+        'phone',
+        'description',
+        'message',
+        'subscribe',
+        'nextSteps'
+      ],
+      PRAYER_REQUEST_RESPONSE_KEYS = [
+        'type',
+        "fullName",
+        "phone",
+        "contact",
+        "prayer"
+      ],
+      PLANNING_CENTER_HEADERS = new Headers();
+      PLANNING_CENTER_HEADERS.append("Authorization", "Basic " + base64.encode(`${APP_ID}:${APP_SECRET}`));
+const getSheetData = responseKeys=> {
+  return {
+    formDataNameOrder: JSON.stringify(responseKeys),
+    formGoogleSheetName: 'responses'
+  }
+}
 export const postRequest = (url, successHandler, errorHandler, body, headers) => {
   fetch(url, {
     headers: headers ? headers : PLANNING_CENTER_HEADERS,
@@ -29,26 +58,11 @@ export const postRequest = (url, successHandler, errorHandler, body, headers) =>
   })
 }
 
-const SHEETS_URL = process.env.SHEETS_URL;
-const RESPONSE_KEYS = [
-  'type',
-  'firstName',
-  'lastName',
-  'email',
-  'phone',
-  'description',
-  'message',
-  'subscribe',
-  'nextSteps'
-]
-const SHEETS_HEADERS = { 'Content-Type': 'application/x-www-form-urlencoded' }
-const SHEETS_DATA = {
-  formDataNameOrder: JSON.stringify(RESPONSE_KEYS),
-  formGoogleSheetName: 'responses'
-}
-
 export const sendToSheets = (type, fields, successHandler, errorHandler) => {
-  const dataFields = RESPONSE_KEYS.reduce((obj, key) => {
+  const PRAYER_REQUEST = type === "prayer",
+        KEYS = (PRAYER_REQUEST) ? PRAYER_REQUEST_RESPONSE_KEYS : RESPONSE_KEYS,
+        URL = (PRAYER_REQUEST) ? PRAYER_REQUEST_SHEETS_URL : SHEETS_URL;
+  let dataFields = KEYS.reduce((obj, key) => {
     if (typeof fields[key] === 'boolean') {
       obj[key] = fields[key] ? 'yes' : 'no'
     } else {
@@ -58,12 +72,12 @@ export const sendToSheets = (type, fields, successHandler, errorHandler) => {
   }, {})
   const data = {
     ...dataFields,
-    ...SHEETS_DATA,
+    ...getSheetData(KEYS),
     type
   }
   const body = Object.entries(data).map(([key, value]) => {
     return encodeURIComponent(key) + '=' + encodeURIComponent(value)
   }).join('&');
 
-  postRequest(SHEETS_URL, successHandler, errorHandler, body, SHEETS_HEADERS)
+  postRequest(URL, successHandler, errorHandler, body, SHEETS_HEADERS)
 }

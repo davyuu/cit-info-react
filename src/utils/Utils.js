@@ -8,7 +8,7 @@ export const isValidEmail = email => {
   return !!email && emailRegex.test(email);
 };
 
-export const isFormValid = fields => {
+export const isFormValid = (fields, formType) => {
   const dontCheckContact = fields.dontCheckContact || false;
   const {
     firstName,
@@ -16,11 +16,18 @@ export const isFormValid = fields => {
     email,
     phone,
     description,
-    prayer,
-    fullName
+    prayer
   } = fields;
-  let isValid = true;
-  const errors = [];
+  let isValid = true,
+      errors = [],
+      ret = {isValid, errors};
+  if (formType === "prayerRequest") {
+    if (!prayer) {
+      errors.push("Please enter a prayer request");
+      isValid = false;
+    }
+    return ret;
+  }
   if (firstName === "") {
     errors.push("Please enter your first name");
     isValid = false;
@@ -46,14 +53,6 @@ export const isFormValid = fields => {
   }
   if (description === "") {
     errors.push("Please select a description");
-    isValid = false;
-  }
-  if (prayer === "") {
-    errors.push("Please enter a prayer request");
-    isValid = false;
-  }
-  if (fullName === "") {
-    errors.push("Please enter your name");
     isValid = false;
   }
   return { isValid, errors };
