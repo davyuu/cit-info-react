@@ -1,5 +1,8 @@
 import React from 'react'
+import moment from 'moment'
+import Loading from '../components/Loading'
 import HeaderBar from '../components/HeaderBar'
+import FloatingButtons from '../components/FloatingButtons'
 import * as colors from '../constants/colors'
 import strings from '../constants/strings';
 import images from '../images/images';
@@ -10,9 +13,87 @@ const themeColor = colors.KIDS_THEME;
 class Kids extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      currentService: 0,
+      services: null
+    };
+    this.goNextWeek = this.goNextWeek.bind(this);
+    this.goPreviousWeek = this.goPreviousWeek.bind(this);
+  }
+
+  componentWillMount() {
+    let dataURL = 'https://mycit.info/wp-json/wp/v2/childrenservices';
+    fetch(dataURL)
+    .then(res => res.json())
+    .then(res => {
+      const services = res.map(val => {
+        const service = val.acf;
+
+        return {
+          date: moment(service.date, 'YYYY/MM/DD'),
+          outline: service.outline,
+        };
+      })
+      
+      let past = false
+      let currentService = 0
+      services.forEach((service, i) => {
+        if (!past && service.date) {
+          const today = new Date()
+          const date = new Date(service.date)
+          if (date < today) {
+            past = true
+            currentService = i
+          }
+        }
+      })
+
+      this.setState({
+        services,
+        currentService
+      })
+    })
+  }
+
+  goNextWeek() {
+    const currentService = this.state.currentService;
+    if(!this.isFirstWeek()) {
+      this.setState({currentService: currentService - 1})
+    }
+  }
+
+  goPreviousWeek() {
+    const currentService = this.state.currentService;
+    if(!this.isLastWeek()) {
+      this.setState({currentService: currentService + 1})
+    }
+  }
+
+  isFirstWeek() {
+    return this.state.currentService === 0;
+  }
+
+  isLastWeek() {
+    const {currentService, services} = this.state
+    return services && currentService >= services.length - 1;
   }
 
   render() {
+    const {services, currentService} = this.state
+
+    let content;
+    if (services === null) {
+      content = <Loading/>;
+    } else {
+      const service = services[currentService];
+      content = (
+        <div className="page-wrapper">
+          <p className='date'>{service.date.format('dddd MMMM DD, YYYY')}</p>
+          <div className='html' dangerouslySetInnerHTML={{__html: service.outline}}/>
+        </div>
+      );
+    }
+
     return (
       <div className="kids">
         <HeaderBar
@@ -20,37 +101,14 @@ class Kids extends React.Component {
           title={strings.kidsHeader}
           color={themeColor}
         />
+        <FloatingButtons
+          leftClicked={this.goPreviousWeek}
+          rightClicked={this.goNextWeek}
+          leftClickable={!this.isLastWeek()}
+          rightClickable={!this.isFirstWeek()}
+        />
         <img className='header-img' src={images.kidsHeader}/>
-        <div className="page-wrapper">
-          <p>Parents, we know that the spiritual health of your kids is at the top of your mind. Weare committed to making sure that you have the resources at home to provide continuity of the kids ministry curriculum.</p>
-          <p>What you can do:</p>
-          <ol>
-            <li>
-              <p>Download the free <a target="_blank" href="https://theparentcue.org/app">Parent Cue</a> app on the App Store or Google Play. When it asks for church name, type “Church in Toronto” (not CIT).</p>
-              <p>Highlights of this app include:</p>
-              <ul>
-                <li>Weekly videos of the Bible stories that we have been going through</li>
-                <li>Weekly cues to help you make the most of the time you spend with your kid</li>
-              </ul>
-            </li>
-            <li>
-              <p>Use the following conversation guides to help kids navigate what they're feeling during this time</p>
-              <ul>
-                <li><a target="_blank" href="https://drive.google.com/open?id=1x0TMI86xMSfnZFF7w7CcqnUJ6hqa1T7Q">Crisis Conversation Guide Preschool</a></li>
-                <li><a target="_blank" href="https://drive.google.com/open?id=1mNhryVPfHeSQNkhJm3tW5nnMB-bvTPuB">Crisis Conversation Guide Elementary</a></li>
-              </ul>
-
-            </li>
-            <li>
-              <p>Encourage your kids to follow this week’s God Time card, a take-home devotional:</p>
-              <ul>            
-                <li><a target="_blank" href="https://drive.google.com/open?id=1E5DSJ39F6vG3GtAio0_20gTmwTdWplei">March 15 God Time Card SK Grade 1</a></li>
-                <li><a target="_blank" href="https://drive.google.com/open?id=12DyOIMaDQ4uKmZKK1nuSoiwHIo9n3m5P">March 15 God Time Card Grade 2-3</a></li>
-                <li><a target="_blank" href="https://drive.google.com/open?id=1Y5pvADap7vEaHkS6-q-6JYQUo3jnJvSd">March 15 God Time Card Grade 4-5</a></li>
-              </ul>
-            </li>
-          </ol>
-        </div>
+        {content}
       </div>
     )
   }
