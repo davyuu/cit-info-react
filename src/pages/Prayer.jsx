@@ -73,7 +73,7 @@ class Next extends React.Component {
     this.setState({ loading: false });
     this.msg.success("Successfully sent", {
       onClose: () => {
-        this.props.history.push(routes.confirm);
+        this.props.history.push(routes.home);
       }
     });
   }
