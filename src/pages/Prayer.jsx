@@ -97,7 +97,6 @@ class Next extends React.Component {
             <label>Name (optional)</label>
             <div className="row">
               <input
-                className="left"
                 type="text"
                 name="full name"
                 autoComplete="given-name"

@@ -1,60 +1,40 @@
-export const isValidPhoneNumber = phoneNumber => {
-  const phoneNumberRegex = /^[2-9]\d{9}$/;
-  return !!phoneNumber && phoneNumberRegex.test(phoneNumber);
+export const isValidPhoneNumber = (phoneNumber) => {
+    const phoneNumberRegex = /^[2-9]\d{9}$/;
+    return !!phoneNumber && phoneNumberRegex.test(phoneNumber);
 };
 
-export const isValidEmail = email => {
-  const emailRegex = /^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return !!email && emailRegex.test(email);
+export const isValidEmail = (email) => {
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return !!email && emailRegex.test(email);
 };
 
-export const isFormValid = fields => {
-  const dontCheckContact = fields.dontCheckContact || false;
-  const {
-    firstName,
-    lastName,
-    email,
-    phone,
-    description,
-    prayer,
-    fullName
-  } = fields;
+export const isFormValid = (fields) => {
+  const { firstName, lastName, email, phone, description } = fields
   let isValid = true;
-  const errors = [];
-  if (firstName === "") {
-    errors.push("Please enter your first name");
+  const errors = []
+  if(firstName === '') {
+    errors.push('Please enter your first name');
     isValid = false;
   }
-  if (lastName === "") {
-    errors.push("Please enter your last name");
+  if(lastName === '') {
+    errors.push('Please enter your last name');
     isValid = false;
   }
-  if (!dontCheckContact) {
-    if (!email && !phone) {
-      errors.push("Please enter your email or phone number");
-      isValid = false;
-    }
-    if (email && !isValidEmail(email)) {
-      errors.push("Please enter a valid email");
-      isValid = false;
-    }
-
-    if (phone && !isValidPhoneNumber(phone)) {
-      errors.push("Please enter a valid phone number");
-      isValid = false;
-    }
+  if(!email && !phone) {
+    errors.push('Please enter your email or phone number');
+    isValid = false
   }
-  if (description === "") {
-    errors.push("Please select a description");
+  if(email && !isValidEmail(email)) {
+    errors.push('Please enter a valid email');
     isValid = false;
   }
-  if (prayer === "") {
-    errors.push("Please enter a prayer request");
+  if(phone && !isValidPhoneNumber(phone)) {
+    errors.push('Please enter a valid phone number');
     isValid = false;
   }
-  if (fullName === "") {
-    errors.push("Please enter your name");
+  if(description === '') {
+    errors.push('Please select a description');
     isValid = false;
   }
   return { isValid, errors };
-};
+}

@@ -28,21 +28,27 @@ const Home = () => (
       />
       <hr/>
       <Section
+        title={strings.givingHeader}
+        image={images.giving}
+        linkTo={routes.giving}
+      />
+      <hr/>
+      <Section
         title={strings.newsHeader}
         image={images.upcomingEvents}
         linkTo={routes.news}
       />
       <hr/>
       <Section
-        title={strings.connectHeader}
-        image={images.connect}
-        linkTo={routes.connect}
-      />
-      <hr/>
-      <Section
         title={strings.prayerHeader}
         image={images.prayer}
         linkTo={routes.prayer}
+      />
+      <hr/>
+      <Section
+        title={strings.connectHeader}
+        image={images.connect}
+        linkTo={routes.connect}
       />
       <hr/>
       <Section
@@ -55,12 +61,6 @@ const Home = () => (
         title={strings.alphaHeader}
         image={images.alpha}
         linkTo={routes.alpha}
-      />
-      <hr/>
-      <Section
-        title={strings.givingHeader}
-        image={images.giving}
-        linkTo={routes.giving}
       />
       <hr/>
       <Section
