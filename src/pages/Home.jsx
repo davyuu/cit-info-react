@@ -40,6 +40,12 @@ const Home = () => (
       />
       <hr/>
       <Section
+        title={strings.prayerHeader}
+        // image={images.connect}
+        linkTo={routes.prayer}
+      />
+      <hr />
+      <Section
         title={strings.nextHeader}
         image={images.nextSteps}
         linkTo={routes.next}
