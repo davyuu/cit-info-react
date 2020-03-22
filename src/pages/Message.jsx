@@ -64,7 +64,6 @@ class Message extends React.Component {
           groupMaterial: message.group_material,
           supplementaryMaterial: message.supplementary_material,
           setList: message.set_list,
-          childrenSetList: message.children_set_list,
         };
       })
       
@@ -80,12 +79,6 @@ class Message extends React.Component {
           }
         }
       })
-
-      for(let i = messages.length - 1; i >=0; i--) {
-        if (i < messages.length - 1 && !messages[i].childrenSetList) {
-          messages[i].childrenSetList = messages[i + 1].childrenSetList;
-        }
-      }
 
       this.setState({
         messages,
@@ -185,21 +178,10 @@ class Message extends React.Component {
           </div>
         )
       } else if(currentTab === SONGS_KEY) {
-        let childrenSetList;
-        if(message.childrenSetList) {
-          childrenSetList = (
-            <div>
-              <div className='song-divider'/>
-              <h1 className='song-title' style={{color: themeColor}}>Children's set list:</h1>
-              <div className='song-html' dangerouslySetInnerHTML={{__html: message.childrenSetList}}/>
-            </div>
-          )
-        }
         tabContent = (
           <div className='message-container'>
             <h1 className='song-title' style={{color: themeColor}}>This week's set list:</h1>
             <div className='song-html' dangerouslySetInnerHTML={{__html: message.setList}}/>
-            {childrenSetList}
           </div>
         )
       }
