@@ -8,6 +8,7 @@ import Message from './pages/Message'
 import Kids from './pages/Kids'
 import News from './pages/News'
 import Connect from './pages/Connect'
+import Prayer from "./pages/Prayer";
 import Next from './pages/Next'
 import Alpha from './pages/Alpha'
 import Giving from './pages/Giving'
@@ -32,6 +33,7 @@ class App extends React.Component {
           <Route path={routes.kids} component={Kids}/>
           <Route path={routes.news} component={News}/>
           <Route path={routes.connect} component={Connect}/>
+          <Route path={routes.prayer} component={Prayer} />
           <Route path={routes.next} component={Next}/>
           <Route path={routes.alpha} component={Alpha}/>
           <Route path={routes.giving} component={Giving}/>

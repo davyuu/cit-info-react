@@ -1,0 +1,25 @@
+.prayer {
+  .prayer-wrapper {
+    margin: 12px -24px;
+    padding: 24px;
+    background-color: #41434B;
+
+    label {
+      color: white;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    textarea {
+      margin-top: 8px;
+      height: 100px;
+    }
+
+    p {
+      color: lightgray;
+      font-size: 11px;
+    }
+  }
+}

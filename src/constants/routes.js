@@ -4,6 +4,7 @@ const routes = {
 	kids: '/kids',
 	news: '/news',
 	connect: '/connect',
+  	prayer: "/prayer",
 	next: '/next',
 	alpha: '/alpha',
 	giving: '/giving',
