@@ -11,6 +11,7 @@ import strings from '../constants/strings'
 import images from '../images/images'
 import * as options from '../constants/options'
 import * as colors from '../constants/colors'
+import Loading from '../components/Loading'
 import * as NetworkUtils from '../utils/NetworkUtils'
 import * as Utils from '../utils/Utils'
 
@@ -195,7 +196,7 @@ class Stats extends React.Component {
             title={strings.statsTitle}
             description={strings.statsDescription}
           />
-          <div>
+          <div >
             <table>
               {this.state.schedules.map((val, i) => {
                 return (
@@ -205,7 +206,7 @@ class Stats extends React.Component {
                       <td>{val.dates.map((date, dateindex) => {
                         return (
                           <div key={dateindex}>
-                            {moment(date.updatedAt).format("MMMM Do, YYYY")}
+                            {moment(date.updatedAt).format("MMM D, YYYY")}
                           </div>
                         )
                       })}</td>
