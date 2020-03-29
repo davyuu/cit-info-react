@@ -3,6 +3,63 @@
     margin: 16px 0;
   }
 
+  table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    font-family: 'Lato', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid #ddd;
+  }
+
+  .table th,
+.table td {
+padding: 0.75rem;
+vertical-align: top;
+border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+  }
+
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+    }
+
+  table.Volunteers th, td, tr {
+    border: 1px solid #ddd;
+    padding: 8px;
+    font-family: 'Lato', sans-serif;
+  }
+
+  table.Volunteers tbody, th {
+    text-align: left;
+  }
+
+  table.Volunteers tr.even {
+    background-color: #F0F0F0
+  }
+
+  .table-hover .table-success:hover > td,
+.table-hover .table-success:hover > th {
+  background-color: #d0e9c6;
+}
+
+
+  // td, th, tr, tbody {
+  //   border: 1px solid #ddd;
+  //   padding: 8px;
+  //   font-family: 'Lato', sans-serif;
+  // }
+
+  // id tr: nth-child(even) {
+  //   background-color: #f2f2f2;
+  //   font-family: 'Lato', sans-serif;
+  // }
+
 
   dl {
     > div {

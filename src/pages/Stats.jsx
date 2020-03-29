@@ -23,7 +23,7 @@ class Stats extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      schedules: []
+      schedules: null
     }
 
     this.weeklySchedule = this.weeklySchedule.bind(this);
@@ -156,7 +156,8 @@ class Stats extends React.Component {
       if((!(myCount[key]===0)) && myCount[key]>2) {
         const test = {
           name: volunteers[key].name,
-          dates: volunteers[key].schedule.filter(s => s.type === 'DECLINED')
+          //returning only the 3 most recent declined dates
+          dates: volunteers[key].schedule.filter(s => s.type === 'DECLINED').splice(0,3)
         }
         final.push(test);
       }
@@ -183,43 +184,64 @@ class Stats extends React.Component {
 
   render() {
 
+    let content;
+    const {schedules} = this.state
+    if (schedules === null) {
+      content = (<Loading/>);
+    } else {
+
+      content = (
+        <div className='stats'>
+          {/* <AlertContainer ref={a => this.msg = a} {...options.ALERT_OPTIONS} /> */}
+          <div className='page-wrapper'>
+            <TitleSection
+              title={strings.statsTitle}
+              description={strings.statsDescription}
+            />
+            <div>
+              <table className='Volunteers'>
+                <thead>
+                  <tr>
+                    <th>Volunteer Name</th>
+                    <th>Declined 3</th>
+                    <th>Declined 2</th>
+                    <th>Declined 1</th>
+                  </tr>
+                </thead>
+                {this.state.schedules.map((val, i) => {
+                  return (
+                    <tbody key={i}>
+                      <tr>
+                        <td>{val.name}</td>
+                        {val.dates.map((date, dateindex) => {
+                          return (
+                            <td key={dateindex}>
+                              {moment(date['updatedAt']).format("MMM D, YYYY")}
+                            </td>
+                          )
+                        })}
+                      </tr>
+                    </tbody>
+                  );
+                })}
+              </table>
+            </div>
+          </div>
+        </div>
+      )
+    }
     return (
-      <div className='stats'>
-        <AlertContainer ref={a => this.msg = a} {...options.ALERT_OPTIONS} />
+      <div>
         <HeaderBar
           goBack={this.props.history.goBack}
           title={strings.statsHeader}
           color={colors.STATS_THEME}
         />
-        <div className='page-wrapper'>
-          <TitleSection
-            title={strings.statsTitle}
-            description={strings.statsDescription}
-          />
-          <div >
-            <table>
-              {this.state.schedules.map((val, i) => {
-                return (
-                  <tbody key={i}>
-                    <tr>
-                      <td>{val.name}</td>
-                      <td>{val.dates.map((date, dateindex) => {
-                        return (
-                          <div key={dateindex}>
-                            {moment(date.updatedAt).format("MMM D, YYYY")}
-                          </div>
-                        )
-                      })}</td>
-                    </tr>
-                  </tbody>
-                );
-              })}
-            </table>
-          </div>
-        </div>
+        {content}
+        {/* {modal} */}
       </div>
     )
-  }
+  } 
 }
 
 
