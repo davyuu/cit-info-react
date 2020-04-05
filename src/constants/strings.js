@@ -9,7 +9,7 @@ const strings = {
   connectHeader: 'Connect',
   connectTitle: 'Get connected with us',
   connectDescription: 'We know that it\'s important for you to find a church that really fits. We can connect you with one of our pastors to answer any questions you might have about our church\'s beliefs, community, and culture.',
-  prayerHeader: "Prayer Form",
+  prayerHeader: "Prayer Requests",
   prayerTitle: "Prayer Request",
   prayerDescription: "Our prayer team would love to pray for you and your prayer request. We could pray for you annonymously, or if you would like for us to pray for you by name, please put in your contact information.",
   nextHeader: 'Next Steps',
