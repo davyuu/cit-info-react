@@ -23,7 +23,8 @@ class Stats extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      schedules: null
+      schedules: null,
+      search: ''
     }
 
     this.weeklySchedule = this.weeklySchedule.bind(this);
@@ -44,6 +45,7 @@ class Stats extends React.Component {
           }));
       })
 
+
     let declinedURL = 'https://cit-stats.herokuapp.com/services/declined';
     let declinedPromise = fetch(declinedURL)
       .then(res => res.json())
@@ -58,12 +60,14 @@ class Stats extends React.Component {
           }));
 
       })
+    
 
     Promise.all([confirmedPromise, declinedPromise]).then(values => {
-      console.log(values);
+      //console.log(values);
       let confirmed = values[0];
       let declined = values[1];
-      this.weeklySchedule(values)
+      this.weeklySchedule(values);
+      
 
       // this.setState({
       //   confirmed: values[0],
@@ -113,7 +117,7 @@ class Stats extends React.Component {
       }
     }
     //console.log('volunteers function')
-    console.log(volunteers)
+    //console.log(volunteers)
 
 
     // sorting schedule by updatedAt timestamp
@@ -146,7 +150,7 @@ class Stats extends React.Component {
         }
       }
     }
-    console.log('myCount:', myCount);
+    //console.log('myCount:', myCount);
 
 
     // return list of volunteers who declined 3 times out of last 4
@@ -162,24 +166,39 @@ class Stats extends React.Component {
         final.push(test);
       }
     }
-    console.log('final:', final)
+    //console.log('final:', final)
 
     this.setState({
       ...this.state,
       schedules: final
     });
-
-
-    /*
-      declined: [
-        {
-          name: 'aasdf',
-          declined: ['date1', 'date2']
-      }
-    ]
-    */
-
   }
+
+  //searching for volunteer names in table
+  searchVolunteers() {
+
+    var input, filter, table, tr, td, i, txtValue;
+    table = document.getElementById("myTable");
+    tr = document.getElementsByTagName("tr");
+    input = document.getElementById("myInput")
+    filter = this.state.search.toUpperCase();
+    
+    //filtering table based on characters inputted in search in real-time
+    if(this.state.search != null) {
+      for (var char = 0; char < tr.length; char++) {
+        td = tr[char].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[char].style.display = "";
+          } else {
+            tr[char].style.display = "none";
+          }
+        }
+      }
+    }
+  }
+
 
 
   render() {
@@ -199,7 +218,21 @@ class Stats extends React.Component {
               description={strings.statsDescription}
             />
             <div>
-              <table className='Volunteers'>
+              {/* <div> */}
+                <input type="text" 
+                id="myInput"
+                placeholder="Search a name..."
+                name="search"
+                value={this.state.search}
+                onInput={(e) => {
+                  this.setState({search: e.currentTarget.value})
+                  //console.log(e.currentTarget.value)
+                }}
+              />
+              {/* calling search function */}
+              {this.searchVolunteers()}
+              {/* </div> */}
+              <table className='Volunteers' id="myTable">
                 <thead>
                   <tr>
                     <th>Volunteer Name</th>

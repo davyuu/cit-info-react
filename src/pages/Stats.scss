@@ -44,9 +44,17 @@ border-top: 1px solid #dee2e6;
   }
 
   .table-hover .table-success:hover > td,
-.table-hover .table-success:hover > th {
+  .table-hover .table-success:hover > th {
   background-color: #d0e9c6;
 }
+
+  #myInput {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 0.5rem;
+    vertical-align: bottom;
+    
+  }
 
 
   // td, th, tr, tbody {
@@ -61,32 +69,32 @@ border-top: 1px solid #dee2e6;
   // }
 
 
-  dl {
-    > div {
-      display: flex;
-      align-items: center;
-      margin: 8px 0;
-    }
+  // dl {
+  //   > div {
+  //     display: flex;
+  //     align-items: center;
+  //     margin: 8px 0;
+  //   }
 
-    .img {
-      display: inline-block;
-      height: 24px;
-      width: 24px;
-      fill: grey;
-    }
+  //   .img {
+  //     display: inline-block;
+  //     height: 24px;
+  //     width: 24px;
+  //     fill: grey;
+  //   }
 
-    dt {
-      display: inline;
-      margin: 0 8px;
-      font-size: 15px;
-    }
+  //   dt {
+  //     display: inline;
+  //     margin: 0 8px;
+  //     font-size: 15px;
+  //   }
 
-    dd {
-      display: inline;
-      margin: 0;
-      font-size: 14px;
-      font-weight: 600;
-    }
-  }
+  //   dd {
+  //     display: inline;
+  //     margin: 0;
+  //     font-size: 14px;
+  //     font-weight: 600;
+  //   }
+  // }
   
 }
