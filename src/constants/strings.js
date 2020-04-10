@@ -29,7 +29,8 @@ const strings = {
   volunteerDescription: 'Our teams are dedicated to bringing our very best to our God. We would love for you to become part of a team and discover all that God has purposed for your life.',
 	statsTitle: 'Stats',
 	statsHeader: 'Stats',
-	statsDescription: 'Please login as an Admin to be able to view this page.'
+  statsDescription: 'Please login as an Admin to be able to view this page.',
+  loginHeader: 'Login'
 };
 
 export default strings;

@@ -10,7 +10,8 @@ const routes = {
 	giving: '/giving',
 	confirm: '/confirm',
 	volunteer: '/volunteer',
-	stats: '/stats'
+	stats: '/stats',
+	login: '/login'
 };
 
 export default routes;

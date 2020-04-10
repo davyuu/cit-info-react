@@ -46,7 +46,7 @@ border-top: 1px solid #dee2e6;
   .table-hover .table-success:hover > td,
   .table-hover .table-success:hover > th {
   background-color: #d0e9c6;
-}
+  }
 
   #myInput {
     width: 100%;
@@ -56,45 +56,60 @@ border-top: 1px solid #dee2e6;
     
   }
 
+  .form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #fff;
+    width: 285px;
+    margin: -140px 0 0 -182px;
+    padding: 40px;
+    margin: 16px 0;
+    padding-left: 40px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    h2 {
+      margin: 0 0 20px;
+      line-height: 1;
+      color: #44c4e7;
+      font-size: 18px;
+      font-weight: 400;
+    }
+    input {
+      outline: none;
+      display: block;
+      width: 100%;
+      margin: 0 0 20px;
+      padding: 10px 15px;
+      border: 1px solid #ccc;
+      color: #ccc;
+      font-family: 'Lato', sans-serif;
+      box-sizing: border-box;
+      font-size: 14px;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: 0.2s linear;
+      &input:focus {
+        color: #333;
+        border: 1px solid #44c4e7;
+      }
+    }
+    button {
+      cursor: pointer;
+      background: #44c4e7;
+      width: 100%;
+      padding: 10px 15px;
+      border: 0;
+      color: #fff;
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      &:hover {
+        background: #369cb8;
+      }
+    }
+  }
 
-  // td, th, tr, tbody {
-  //   border: 1px solid #ddd;
-  //   padding: 8px;
-  //   font-family: 'Lato', sans-serif;
-  // }
-
-  // id tr: nth-child(even) {
-  //   background-color: #f2f2f2;
-  //   font-family: 'Lato', sans-serif;
-  // }
+  }
 
 
-  // dl {
-  //   > div {
-  //     display: flex;
-  //     align-items: center;
-  //     margin: 8px 0;
-  //   }
-
-  //   .img {
-  //     display: inline-block;
-  //     height: 24px;
-  //     width: 24px;
-  //     fill: grey;
-  //   }
-
-  //   dt {
-  //     display: inline;
-  //     margin: 0 8px;
-  //     font-size: 15px;
-  //   }
-
-  //   dd {
-  //     display: inline;
-  //     margin: 0;
-  //     font-size: 14px;
-  //     font-weight: 600;
-  //   }
-  // }
-  
-}

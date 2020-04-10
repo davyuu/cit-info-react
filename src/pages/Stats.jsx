@@ -8,7 +8,6 @@ import HeaderBar from '../components/HeaderBar'
 import TitleSection from '../components/TitleSection'
 import routes from '../constants/routes'
 import strings from '../constants/strings'
-import images from '../images/images'
 import * as options from '../constants/options'
 import * as colors from '../constants/colors'
 import Loading from '../components/Loading'
@@ -66,7 +65,9 @@ class Stats extends React.Component {
       //console.log(values);
       let confirmed = values[0];
       let declined = values[1];
-      this.weeklySchedule(values);
+      let volunteers = this.weeklySchedule(values);
+      this.badEggs(volunteers);
+      // this.validateLogin();
       
 
       // this.setState({
@@ -117,9 +118,6 @@ class Stats extends React.Component {
       }
     }
     //console.log('volunteers function')
-    //console.log(volunteers)
-
-
     // sorting schedule by updatedAt timestamp
 
     for (var key of Object.keys(volunteers)) {
@@ -129,6 +127,13 @@ class Stats extends React.Component {
         return bTimeStamp - aTimeStamp;
       })
     }
+    // console.log(volunteers)
+    // console.log(this.state)
+    return volunteers;
+  }
+
+  badEggs(volunteers) {
+
 
     var myCount = {} // myCount of # of declines per person
     var person = [] // each person in my object of volunteers
@@ -200,11 +205,12 @@ class Stats extends React.Component {
   }
 
 
-
   render() {
+
 
     let content;
     const {schedules} = this.state
+
     if (schedules === null) {
       content = (<Loading/>);
     } else {
@@ -263,6 +269,7 @@ class Stats extends React.Component {
         </div>
       )
     }
+
     return (
       <div>
         <HeaderBar
