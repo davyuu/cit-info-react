@@ -18,8 +18,14 @@ import Stats from './pages/Stats'
 import Login from './pages/Login'
 import routes from './constants/routes'
 import './App.scss'
+import {Redirect} from 'react-router-dom'
 
 class App extends React.Component {
+
+  isLoggedIn() {
+    return localStorage.getItem('LoggedIn')
+  }
+
   render() {
     return (
       <Router>
@@ -41,7 +47,13 @@ class App extends React.Component {
           <Route path={routes.giving} component={Giving}/>
           <Route path={routes.confirm} component={Confirm}/>
           <Route path={routes.volunteer} component={Volunteer}/>
-          <Route path={routes.stats} component={Stats}/>
+          <Route path={routes.stats} render={() => (
+              this.isLoggedIn() ? (
+                <Stats/>
+              ) : (
+                <Redirect to="../stats"/>
+              )
+          )}/>
           <Route path={routes.login} component={Login}/>
         </Switch>
       </Router>

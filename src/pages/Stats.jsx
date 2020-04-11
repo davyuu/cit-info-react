@@ -1,19 +1,11 @@
 import React from 'react'
-import Select from 'react-select'
 import AlertContainer from 'react-alert'
-import {RingLoader} from 'react-spinners'
 import moment from 'moment'
-
 import HeaderBar from '../components/HeaderBar'
 import TitleSection from '../components/TitleSection'
-import routes from '../constants/routes'
 import strings from '../constants/strings'
-import * as options from '../constants/options'
 import * as colors from '../constants/colors'
 import Loading from '../components/Loading'
-import * as NetworkUtils from '../utils/NetworkUtils'
-import * as Utils from '../utils/Utils'
-
 import 'react-select/dist/react-select.css'
 import './Stats.scss'
 
@@ -44,7 +36,6 @@ class Stats extends React.Component {
           }));
       })
 
-
     let declinedURL = 'https://cit-stats.herokuapp.com/services/declined';
     let declinedPromise = fetch(declinedURL)
       .then(res => res.json())
@@ -59,7 +50,6 @@ class Stats extends React.Component {
           }));
 
       })
-    
 
     Promise.all([confirmedPromise, declinedPromise]).then(values => {
       //console.log(values);
@@ -67,13 +57,7 @@ class Stats extends React.Component {
       let declined = values[1];
       let volunteers = this.weeklySchedule(values);
       this.badEggs(volunteers);
-      // this.validateLogin();
-      
 
-      // this.setState({
-      //   confirmed: values[0],
-      //   declined: values[1],
-      // });
     });
 
   }
@@ -117,9 +101,8 @@ class Stats extends React.Component {
         })
       }
     }
-    //console.log('volunteers function')
-    // sorting schedule by updatedAt timestamp
 
+    // sorting schedule by updatedAt timestamp
     for (var key of Object.keys(volunteers)) {
       volunteers[key]['schedule'].sort(function(a,b){
         var aTimeStamp = (new Date(a['updatedAt']).getTime()/1000)
@@ -127,13 +110,10 @@ class Stats extends React.Component {
         return bTimeStamp - aTimeStamp;
       })
     }
-    // console.log(volunteers)
-    // console.log(this.state)
     return volunteers;
   }
 
   badEggs(volunteers) {
-
 
     var myCount = {} // myCount of # of declines per person
     var person = [] // each person in my object of volunteers
@@ -155,8 +135,6 @@ class Stats extends React.Component {
         }
       }
     }
-    //console.log('myCount:', myCount);
-
 
     // return list of volunteers who declined 3 times out of last 4
     let final = []
@@ -172,6 +150,7 @@ class Stats extends React.Component {
       }
     }
     //console.log('final:', final)
+    //need to add code to sort volunteer names alphabetically
 
     this.setState({
       ...this.state,
@@ -204,9 +183,7 @@ class Stats extends React.Component {
     }
   }
 
-
   render() {
-
 
     let content;
     const {schedules} = this.state
@@ -217,14 +194,12 @@ class Stats extends React.Component {
 
       content = (
         <div className='stats'>
-          {/* <AlertContainer ref={a => this.msg = a} {...options.ALERT_OPTIONS} /> */}
           <div className='page-wrapper'>
             <TitleSection
               title={strings.statsTitle}
               description={strings.statsDescription}
             />
             <div>
-              {/* <div> */}
                 <input type="text" 
                 id="myInput"
                 placeholder="Search a name..."
@@ -232,12 +207,10 @@ class Stats extends React.Component {
                 value={this.state.search}
                 onInput={(e) => {
                   this.setState({search: e.currentTarget.value})
-                  //console.log(e.currentTarget.value)
                 }}
               />
               {/* calling search function */}
               {this.searchVolunteers()}
-              {/* </div> */}
               <table className='Volunteers' id="myTable">
                 <thead>
                   <tr>
@@ -273,12 +246,11 @@ class Stats extends React.Component {
     return (
       <div>
         <HeaderBar
-          goBack={this.props.history.goBack}
+          // goBack={this.props.history.goBack}
           title={strings.statsHeader}
           color={colors.STATS_THEME}
         />
         {content}
-        {/* {modal} */}
       </div>
     )
   } 
