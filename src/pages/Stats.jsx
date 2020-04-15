@@ -63,48 +63,43 @@ class Stats extends React.Component {
   }
 
   weeklySchedule(values) {
-    let weekly = []
+    let schedule = []
     let confirmed = values[0]
     let declined = values[1]
     // returning daily data to weekly
     for (var i = 0; i<confirmed.length; i=i+7) {
-      weekly.push(confirmed[i])
+      schedule.push(confirmed[i])
     }
 
     for (var i = 0; i<declined.length; i=i+7) {
-        weekly.push(declined[i])
+      schedule.push(declined[i])
     }
 
     // returning schedule by volunteer ID
-    var data = []
     let volunteers = {}
 
-    for (var ind = 0; ind<weekly.length; ind++) {
-      data = weekly[ind]
+    schedule.forEach(data => {
 
-      for (var index = 0, l = data['people'].length; index < l; index++) {
-        var obj = data['people'][index];
-
-          if (!(obj['_id'] in volunteers)) {
-
-            volunteers[obj['_id']] = {
-              'name': obj['name'],
-              'schedule': [{
-                 'updatedAt': data['updatedAt'],
-                 'type': data['type']
-              }]
-            }
+      data.people.forEach(obj => {
+        if (!(obj['_id'] in volunteers)) {
+          volunteers[obj['_id']] = {
+            'name': obj['name'],
+            'schedule': [{
+                'updatedAt': data['updatedAt'],
+                'type': data['type']
+            }]
           }
+        }
         volunteers[obj['_id']]['schedule'].push({
           'updatedAt': data['updatedAt'],
           'type': data['type']
         })
-      }
-    }
+      })
+    })
 
     // sorting schedule by updatedAt timestamp
     for (var key of Object.keys(volunteers)) {
-      volunteers[key]['schedule'].sort(function(a,b){
+      volunteers[key]['schedule'].sort((a,b) => {
         var aTimeStamp = (new Date(a['updatedAt']).getTime()/1000)
         var bTimeStamp = (new Date(b['updatedAt']).getTime()/1000)
         return bTimeStamp - aTimeStamp;
@@ -114,25 +109,21 @@ class Stats extends React.Component {
   }
 
   badEggs(volunteers) {
+    console.log('volunteers',volunteers)
 
     var myCount = {} // myCount of # of declines per person
     var person = [] // each person in my object of volunteers
 
     // returning volunteers and # of declines in their last 4 sessions
+    
     for (var key of Object.keys(volunteers)) {
     person = volunteers[key]
+    
+      const lastFourServices = person.schedule.slice(0,4)
+      const numDeclines = lastFourServices.filter(service => service.type === 'DECLINED').length
 
-      //excluding volunteers who have not volunteered at least 4 times
-      if(person.schedule.length > 3) {
-        if(!(key in myCount)) {
-          myCount[key] = 0;
-        }
-
-        for (var iKey = 0; iKey < 4; iKey++) {
-
-          if(person['schedule'][iKey]['type'] === 'DECLINED')
-            myCount[key] += 1;
-        }
+      if(!(key in myCount)) {
+        myCount[key] = numDeclines
       }
     }
 
@@ -144,12 +135,12 @@ class Stats extends React.Component {
         const test = {
           name: volunteers[key].name,
           //returning only the 3 most recent declined dates
-          dates: volunteers[key].schedule.filter(s => s.type === 'DECLINED').splice(0,3)
+          dates: volunteers[key].schedule.filter(s => s.type === 'DECLINED').slice(0,3)
         }
         final.push(test);
       }
     }
-    //console.log('final:', final)
+    
     //need to add code to sort volunteer names alphabetically
 
     this.setState({
@@ -195,19 +186,19 @@ class Stats extends React.Component {
       content = (
         <div className='stats'>
           <div className='page-wrapper'>
-            <TitleSection
+            {/* <TitleSection
               title={strings.statsTitle}
               description={strings.statsDescription}
-            />
+            /> */}
             <div>
-                <input type="text" 
-                id="myInput"
-                placeholder="Search a name..."
-                name="search"
-                value={this.state.search}
-                onInput={(e) => {
-                  this.setState({search: e.currentTarget.value})
-                }}
+              <input type="text" 
+              id="myInput"
+              placeholder="Search a name..."
+              name="search"
+              value={this.state.search}
+              onInput={(e) => {
+                this.setState({search: e.currentTarget.value})
+              }}
               />
               {/* calling search function */}
               {this.searchVolunteers()}

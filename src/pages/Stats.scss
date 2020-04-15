@@ -14,20 +14,20 @@
   }
 
   .table th,
-.table td {
-padding: 0.75rem;
-vertical-align: top;
-border-top: 1px solid #dee2e6;
-}
+  .table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+  }
 
-.table thead th {
-  vertical-align: bottom;
-  border-bottom: 2px solid #dee2e6;
+  .table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
   }
 
   .table-striped tbody tr:nth-of-type(odd) {
     background-color: rgba(0, 0, 0, 0.05);
-    }
+  }
 
   table.Volunteers th, td, tr {
     border: 1px solid #ddd;
@@ -45,7 +45,7 @@ border-top: 1px solid #dee2e6;
 
   .table-hover .table-success:hover > td,
   .table-hover .table-success:hover > th {
-  background-color: #d0e9c6;
+    background-color: #d0e9c6;
   }
 
   #myInput {
@@ -53,7 +53,6 @@ border-top: 1px solid #dee2e6;
     margin-bottom: 12px;
     padding: 0.5rem;
     vertical-align: bottom;
-    
   }
 
   .form {
@@ -110,6 +109,6 @@ border-top: 1px solid #dee2e6;
     }
   }
 
-  }
+}
 
 
