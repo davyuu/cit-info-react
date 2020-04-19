@@ -32,6 +32,14 @@ class Kids extends React.Component {
         return {
           date: moment(service.date, 'YYYY/MM/DD'),
           outline: service.outline,
+          intro: service.intro,
+          preschoolLessonVimeoId: service.preschool_lesson_vimeo_id,
+          elementaryLessonVimeoId: service.elementary_lesson_vimeo_id,
+          preschoolPlaylistYoutubeId: service.preschool_playlist_youtube_id,
+          elementaryPlaylistYoutubeId: service.elementary_playlist_youtube_id,
+          devotionalSkgrade1: service.devotional_skgrade_1,
+          devotionalGrade23: service.devotional_grade_2_3,
+          devotionalGrade45: service.devotional_grade_4_5,
         };
       })
       
@@ -89,7 +97,49 @@ class Kids extends React.Component {
       content = (
         <div className="page-wrapper">
           <p className='date'>{service.date.format('dddd MMMM DD, YYYY')}</p>
-          <div className='html' dangerouslySetInnerHTML={{__html: service.outline}}/>
+          {/* deprecate for now */}
+          {/* <div className='html' dangerouslySetInnerHTML={{__html: service.outline}}/> */}
+          <div className="content">
+            <div className='html' dangerouslySetInnerHTML={{__html: service.intro}}/>
+            <p>What you can do:</p>
+            <ol>
+              <li>
+                <p>Download the free <a href="https://theparentcue.org/app" target="_blank" rel="noopener">Parent Cue</a> app on the App Store or Google Play. When it asks for church name, type “Church in Toronto” (not CIT).</p>
+                <p>Highlights of this app include:</p>
+                <ul>
+                    <li>Weekly videos of the Bible stories that we have been going through</li>
+                    <li>Weekly cues to help make the most of your time together</li>
+                </ul>
+              </li>
+              <li>Engage your kids in this week’s Bible story
+                <p>Preschool:</p>
+                <div className="video">
+                  <iframe src={`https://player.vimeo.com/video/${service.preschoolLessonVimeoId}`}></iframe>
+                </div>
+                <p>Elementary:</p>
+                <div className="video">
+                  <iframe src={`https://player.vimeo.com/video/${service.elementaryLessonVimeoId}`}></iframe>
+                </div>
+              </li>
+              <li>Sing along to these worship songs throughout the week
+                <p>Preschool:</p>
+                <div className="video">
+                  <iframe src={`https://www.youtube.com/embed/videoseries?list=${service.preschoolPlaylistYoutubeId}`}></iframe>
+                </div>
+                <p>Elementary:</p>
+                <div className="video">
+                  <iframe src={`https://www.youtube.com/embed/videoseries?list=${service.elementaryPlaylistYoutubeId}`}></iframe>
+                </div>
+              </li>
+              <li>Encourage your kids to follow this week’s God Time card, a take-home devotional:
+                <ul>
+                  <li><a href={service.devotionalSkgrade1} target="_blank" rel="noopener">God Time Card SK Grade 1</a></li>
+                  <li><a href={service.devotionalGrade23} target="_blank" rel="noopener">God Time Card Grade 2-3</a></li>
+                  <li><a href={service.devotionalGrade45} target="_blank" rel="noopener">God Time Card Grade 4-5</a></li>
+                </ul>
+              </li>
+            </ol>
+          </div>
         </div>
       );
     }
