@@ -112,14 +112,8 @@ class Kids extends React.Component {
                 </ul>
               </li>
               <li>Engage your kids in this week’s Bible story
-                <p>Preschool:</p>
-                <div className="video">
-                  <iframe src={`https://player.vimeo.com/video/${service.preschoolLessonVimeoId}`}></iframe>
-                </div>
-                <p>Elementary:</p>
-                <div className="video">
-                  <iframe src={`https://player.vimeo.com/video/${service.elementaryLessonVimeoId}`}></iframe>
-                </div>
+                <p>Preschool: <a href={`https://vimeo.com/${service.preschoolLessonVimeoId}`} target="_blank" rel="noopener">https://vimeo.com/{service.preschoolLessonVimeoId}</a></p>
+                <p>Elementary: <a href={`https://vimeo.com/${service.elementaryLessonVimeoId}`} target="_blank" rel="noopener">https://vimeo.com/{service.elementaryLessonVimeoId}</a></p>
               </li>
               <li>Sing along to these worship songs throughout the week
                 <p>Preschool:</p>
