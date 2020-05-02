@@ -94,11 +94,11 @@ class Kids extends React.Component {
       content = <Loading/>;
     } else {
       const service = services[currentService];
-      content = (
-        <div className="page-wrapper">
-          <p className='date'>{service.date.format('dddd MMMM DD, YYYY')}</p>
-          {/* deprecate for now */}
-          {/* <div className='html' dangerouslySetInnerHTML={{__html: service.outline}}/> */}
+      let outline;
+      if (service.outline) {
+        outline = <div className='html' dangerouslySetInnerHTML={{__html: service.outline}}/>
+      } else {
+        outline = (
           <div className="content">
             <div className='html' dangerouslySetInnerHTML={{__html: service.intro}}/>
             <p>What you can do:</p>
@@ -134,6 +134,12 @@ class Kids extends React.Component {
               </li>
             </ol>
           </div>
+        )
+      }
+      content = (
+        <div className="page-wrapper">
+          <p className='date'>{service.date.format('dddd MMMM DD, YYYY')}</p>
+          {outline}
         </div>
       );
     }
