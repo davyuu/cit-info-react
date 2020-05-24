@@ -35,6 +35,8 @@ const RESPONSE_KEYS = [
   'firstName',
   'lastName',
   'fullName',
+  'parentsName',
+  'kidsName',
   'email',
   'phone',
   'description',
