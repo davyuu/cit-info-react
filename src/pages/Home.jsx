@@ -28,27 +28,34 @@ const Home = () => (
       />
       <hr/>
       <Section
-        title={strings.givingHeader}
-        image={images.giving}
-        linkTo={routes.giving}
-      />
-      <hr/>
-      <Section
-        title={strings.newsHeader}
-        image={images.upcomingEvents}
-        linkTo={routes.news}
-      />
-      <hr/>
-      <Section
         title={strings.prayerHeader}
         image={images.prayer}
         linkTo={routes.prayer}
       />
       <hr/>
       <Section
+        title={strings.givingHeader}
+        image={images.giving}
+        linkTo={routes.giving}
+      />
+      <hr/>
+      <Section
         title={strings.connectHeader}
         image={images.connect}
         linkTo={routes.connect}
+      />
+      <hr/>
+      <Section
+        title={strings.groupsHeader}
+        image={images.groups}
+        linkTo={communityGroupsLink}
+        external
+      />
+      {/* <hr/>
+      <Section
+        title={strings.newsHeader}
+        image={images.upcomingEvents}
+        linkTo={routes.news}
       />
       <hr/>
       <Section
@@ -64,17 +71,10 @@ const Home = () => (
       />
       <hr/>
       <Section
-        title={strings.groupsHeader}
-        image={images.groups}
-        linkTo={communityGroupsLink}
-        external
-      />
-      <hr/>
-      <Section
         title={strings.volunteerHome}
         image={images.volunteer}
         linkTo={routes.volunteer}
-      />
+      /> */}
     </div>
   </div>
 );
