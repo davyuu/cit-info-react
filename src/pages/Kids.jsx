@@ -56,18 +56,7 @@ class Kids extends React.Component {
         };
       })
       
-      let past = false
       let currentService = 0
-      services.forEach((service, i) => {
-        if (!past && service.date) {
-          const today = new Date()
-          const date = new Date(service.date)
-          if (date < today) {
-            past = true
-            currentService = i
-          }
-        }
-      })
 
       this.setState({
         services,
