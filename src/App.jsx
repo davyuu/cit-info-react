@@ -11,6 +11,7 @@ import Connect from './pages/Connect'
 import Prayer from "./pages/Prayer";
 import Next from './pages/Next'
 import Alpha from './pages/Alpha'
+import Christmas from './pages/Christmas'
 import Giving from './pages/Giving'
 import Confirm from './pages/Confirm'
 import Volunteer from './pages/Volunteer'
@@ -44,6 +45,7 @@ class App extends React.Component {
           <Route path={routes.prayer} component={Prayer} />
           <Route path={routes.next} component={Next}/>
           <Route path={routes.alpha} component={Alpha}/>
+          <Route path={routes.christmas} component={Christmas}/>
           <Route path={routes.giving} component={Giving}/>
           <Route path={routes.confirm} component={Confirm}/>
           <Route path={routes.volunteer} component={Volunteer}/>

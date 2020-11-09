@@ -28,6 +28,12 @@ const Home = () => (
       />
       <hr/>
       <Section
+        title={strings.christmasHeader}
+        image={images.gift}
+        linkTo={routes.christmas}
+      />
+      <hr/>
+      <Section
         title={strings.prayerHeader}
         image={images.prayer}
         linkTo={routes.prayer}

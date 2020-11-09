@@ -6,5 +6,6 @@ export const PRAYER_THEME = "#41434B";
 export const NEXT_THEME = '#000099';
 export const ALPHA_THEME = '#ED3024';
 export const GIVING_THEME = '#15C340';
+export const CHRISTMAS_THEME = '#0B9C50';
 export const VOLUNTEER_THEME = '#FF4545';
 export const STATS_THEME = '#E78736';

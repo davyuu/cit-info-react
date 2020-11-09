@@ -11,6 +11,7 @@ const images = {
   prayer: require('./home/prayer.svg'),
   nextSteps: require('./home/next-steps.svg'),
   alpha: require('./home/alpha.svg'),
+  gift: require('./home/gift.svg'),
   giving: require('./home/giving.svg'),
   groups: require('./home/community-groups.svg'),
   volunteer: require('./home/join-team.svg'),
