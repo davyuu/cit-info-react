@@ -43,6 +43,7 @@ const RESPONSE_KEYS = [
   'message',
   'subscribe',
   'nextSteps',
+  'book',
   'contact',
   'prayer',
 ]

@@ -26,6 +26,7 @@ class Connect extends React.Component {
       message: '',
       subscribe: false,
       nextSteps: false,
+      book: false,
       loading: false
     }
   }
@@ -275,7 +276,7 @@ class Connect extends React.Component {
                 Keep me updated on CIT events
               </label>
             </div>
-            <div className='row checkbox'>
+            {/* <div className='row checkbox'>
               <input
                 className='connect-form-checkbox'
                 type='checkbox'
@@ -285,6 +286,18 @@ class Connect extends React.Component {
               />
               <label htmlFor="nextSteps">
                 Sign me up for a Next Steps Session
+              </label>
+            </div> */}
+            <div className='row checkbox'>
+              <input
+                className='connect-form-checkbox'
+                type='checkbox'
+                id='book'
+                value={this.state.book}
+                onChange={(e) => this.setState({book: e.target.checked})}
+              />
+              <label htmlFor="book">
+                I'm new! I'd like a copy of "The Case for Christmas" by Lee Strobel
               </label>
             </div>
             <button
