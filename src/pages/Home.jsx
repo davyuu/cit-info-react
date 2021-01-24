@@ -27,10 +27,15 @@ const Home = () => (
         linkTo={routes.kids}
       />
       <hr/>
-      <Section
+      {/* <Section
         title={strings.christmasHeader}
         image={images.gift}
         linkTo={routes.christmas}
+      /> */}
+      <Section
+        title="The Marriage Course"
+        image={images.marriage}
+        linkTo={routes.marriage}
       />
       <hr/>
       <Section
