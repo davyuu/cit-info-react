@@ -33,6 +33,12 @@ const Home = () => (
         linkTo={routes.christmas}
       /> */}
       <Section
+        title={strings.alphaHeader}
+        image={images.alpha}
+        linkTo={routes.alpha}
+      />
+      <hr/>
+      <Section
         title="The Marriage Course"
         image={images.marriage}
         linkTo={routes.marriage}
@@ -73,12 +79,6 @@ const Home = () => (
         title={strings.nextHeader}
         image={images.nextSteps}
         linkTo={routes.next}
-      />
-      <hr/>
-      <Section
-        title={strings.alphaHeader}
-        image={images.alpha}
-        linkTo={routes.alpha}
       />
       <hr/>
       <Section

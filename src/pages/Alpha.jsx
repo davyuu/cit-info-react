@@ -104,12 +104,13 @@ class Alpha extends React.Component {
             <h3>NEXT SESSION</h3>
             <div>
               <div className='img' dangerouslySetInnerHTML={{__html: images.clock}} />
-              <p>Tuesday, April 14th from 7:00pm-9:15pm</p>
+              <p>Wednesday, April 14th from 7:00pm-8:40pm</p>
             </div>
-            <div>
+            {/* <div>
               <div className='img' dangerouslySetInnerHTML={{__html: images.location}} />
               <p>CIT: 671 Sheppard Ave. East, Toronto</p>
-            </div>
+            </div> */}
+            <p>If you have any questions, feel free to contact teaching pastor Ian for more information: ibrinksman@hotmail.com</p>
           </div>
 
           <hr/>
