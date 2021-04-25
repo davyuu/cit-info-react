@@ -192,6 +192,7 @@ class Next extends React.Component {
               />
             </div>
             <button
+              className='button'
               type='button'
               style={{backgroundColor: colors.NEXT_THEME}}
               onClick={() => this.onConnectFormSubmit()}

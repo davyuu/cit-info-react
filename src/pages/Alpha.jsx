@@ -173,6 +173,7 @@ class Alpha extends React.Component {
               </label>
             </div>
             <button
+              className='button'
               type='button'
               style={{backgroundColor: colors.ALPHA_THEME}}
               onClick={() => this.onConnectFormSubmit()}

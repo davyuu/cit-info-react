@@ -1,0 +1,43 @@
+.pages {
+}
+
+.page-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .page-modal {
+    align-self: flex-end;
+    border: none;
+    background-color: white;
+    transform: translateY(100%);
+    transition: all 500ms;
+
+    &.ReactModal__Content--after-open {
+      transform: translateY(0px);
+    }
+
+    &.ReactModal__Content--before-close {
+      transform: translateY(100%);
+    }
+
+    .page-modal-content {
+      .title {
+        h2 {
+          text-align: center;
+          padding: 12px;
+        }
+      }
+
+      .page-content {
+        padding: 24px;
+      }
+    }
+  }
+}

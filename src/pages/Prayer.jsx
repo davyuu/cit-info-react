@@ -135,7 +135,7 @@ class Next extends React.Component {
                   type="text"
                   name="prayer"
                   placeholder="Add your prayer request"
-                  cols="10" 
+                  cols="10"
                   value={this.state.prayer}
                   onChange={e => this.setState({ prayer: e.target.value })}
                 />
@@ -146,6 +146,7 @@ class Next extends React.Component {
               </p>
             </div>
             <button
+              className='button'
               type="button"
               style={{ backgroundColor: colors.PRAYER_THEME }}
               onClick={() => this.onFormSubmit()}
