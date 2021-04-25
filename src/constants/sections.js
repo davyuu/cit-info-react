@@ -17,6 +17,11 @@ const sections = [{
   image: images.gift,
   linkTo: routes.christmas,
 }, {
+  title: strings.alphaHeader,
+  image: images.alpha,
+  linkTo: routes.alpha,
+  active: true
+}, {
   title: "The Marriage Course",
   image: images.marriage,
   linkTo: routes.marriage,
@@ -54,10 +59,6 @@ const sections = [{
   title: strings.nextHeader,
   image: images.nextSteps,
   linkTo: routes.next,
-}, {
-  title: strings.alphaHeader,
-  image: images.alpha,
-  linkTo: routes.alpha,
 }, {
   title: strings.volunteerHome,
   image: images.volunteer,
