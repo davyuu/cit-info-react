@@ -1,8 +1,15 @@
 .section {
-  height: 5.5em;
+  height: 90px;
+  width: 100%;
   display: flex;
   align-items: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  overflow: visible;
+  background: transparent;
   text-decoration: none;
+  cursor: pointer;
 
   .img {
     height: 40px;
@@ -15,8 +22,9 @@
   }
 
   label {
-    font-size: 1.52em;
+    font-size: 24px;
     font-weight: 700;
     color: black;
+    text-align: left;
   }
 }

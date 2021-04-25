@@ -301,6 +301,7 @@ class Connect extends React.Component {
               </label>
             </div>
             <button
+              className='button'
               type='button'
               style={{backgroundColor: colors.CONNECT_THEME}}
               onClick={() => this.onConnectFormSubmit()}

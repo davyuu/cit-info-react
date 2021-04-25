@@ -1,27 +1,20 @@
 import React from 'react'
-import DynamicLink from './DynamicLink'
+import DynamicButton from './DynamicButton'
 import './Section.scss'
 
 class Section extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false,
-    }
-  }
-
   render() {
     return (
-      <DynamicLink
+      <DynamicButton
         className='section'
+        onClick={this.props.onClick}
         linkTo={this.props.linkTo}
         external={this.props.external}
       >
-	      <div className='img' dangerouslySetInnerHTML={{__html: this.props.image}} />
-        <label>
-          {this.props.title}
-        </label>
-      </DynamicLink>
+	      {this.props.image && <div className='img' dangerouslySetInnerHTML={{__html: this.props.image}} />}
+        {this.props.imageUrl && <img className='img' src={this.props.imageUrl} />}
+        <label>{this.props.title}</label>
+      </DynamicButton>
     )
   }
 }

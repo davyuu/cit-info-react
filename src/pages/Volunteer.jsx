@@ -161,6 +161,7 @@ class Volunteer extends React.Component {
               />
             </div>
             <button
+              className='button'
               type='button'
               style={{backgroundColor: colors.VOLUNTEER_THEME}}
               onClick={() => this.onConnectFormSubmit()}

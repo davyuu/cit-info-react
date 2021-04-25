@@ -55,7 +55,7 @@ class Kids extends React.Component {
           devotionalGrade45: service.devotional_grade_4_5,
         };
       })
-      
+
       let currentService = 0
 
       this.setState({
@@ -205,6 +205,7 @@ class Kids extends React.Component {
           />
         </div>
         <button
+          className='button'
           type='button'
           style={{backgroundColor: themeColor}}
           onClick={() => this.onFormSubmit()}
