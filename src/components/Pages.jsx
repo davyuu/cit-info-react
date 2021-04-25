@@ -86,6 +86,7 @@ class Pages extends React.Component {
             title={currentPage.title}
             color={currentPage.color}
           />
+          {currentPage.headerImage && <img className='header-img' src={currentPage.headerImage}/>}
           <div className='page-content' dangerouslySetInnerHTML={{__html: currentPage.content}} />
         </div>
       </Modal>
