@@ -27,7 +27,7 @@ class Pages extends React.Component {
           .map(val => ({
             id: val.id,
             title: val.acf.title,
-            active: val.acf.active || true,
+            active: val.acf.active,
             icon: val.acf.icon,
             color: val.acf.color,
             headerImage: val.acf.header_image,
