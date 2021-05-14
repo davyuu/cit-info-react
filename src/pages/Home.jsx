@@ -37,12 +37,12 @@ const Home = () => (
         image={images.alpha}
         linkTo={routes.alpha}
       />
-      <hr/>
+      {/* <hr/>
       <Section
         title="The Marriage Course"
         image={images.marriage}
         linkTo={routes.marriage}
-      />
+      /> */}
       <hr/>
       <Section
         title={strings.prayerHeader}
