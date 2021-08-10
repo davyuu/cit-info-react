@@ -15,6 +15,7 @@ const images = {
   marriage: require('./home/couple.svg'),
   giving: require('./home/giving.svg'),
   groups: require('./home/community-groups.svg'),
+  survey: require('./home/question-mark.svg'),
   volunteer: require('./home/join-team.svg'),
 
   // Headers

@@ -6,6 +6,7 @@ import Section from '../components/Section'
 import strings from '../constants/strings.js';
 import './Home.scss'
 
+const surveyLink = 'https://www.surveymonkey.com/r/5J8HVZ8'
 const communityGroupsLink = 'https://churchintoronto.churchcenter.com/groups/community-groups'
 const Home = () => (
   <div className='home'>
@@ -27,16 +28,23 @@ const Home = () => (
         linkTo={routes.kids}
       />
       <hr/>
+      <Section
+        title="Complete the CIT survey"
+        image={images.survey}
+        linkTo={surveyLink}
+        external
+      />
+      {/* <hr/> */}
       {/* <Section
         title={strings.christmasHeader}
         image={images.gift}
         linkTo={routes.christmas}
       /> */}
-      <Section
+      {/* <Section
         title={strings.alphaHeader}
         image={images.alpha}
         linkTo={routes.alpha}
-      />
+      /> */}
       {/* <hr/>
       <Section
         title="The Marriage Course"

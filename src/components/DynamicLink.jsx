@@ -8,6 +8,7 @@ class DynamicLink extends React.Component {
         <a
           className='section'
           href={this.props.linkTo}
+          target="_blank"
         >
           {this.props.children}
         </a>
