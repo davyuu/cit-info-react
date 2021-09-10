@@ -6,7 +6,7 @@ import Section from '../components/Section'
 import strings from '../constants/strings.js';
 import './Home.scss'
 
-const surveyLink = 'https://www.surveymonkey.com/r/5J8HVZ8'
+const surveyLink = 'https://gael-chsol.appspot.com/sve/htm/chsol-gather.htm?ns=cit'
 const communityGroupsLink = 'https://churchintoronto.churchcenter.com/groups/community-groups'
 const Home = () => (
   <div className='home'>
@@ -29,7 +29,7 @@ const Home = () => (
       />
       <hr/>
       <Section
-        title="Complete the CIT survey"
+        title="Register to attend CIT in-person"
         image={images.survey}
         linkTo={surveyLink}
         external
