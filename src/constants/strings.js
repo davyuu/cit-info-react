@@ -3,6 +3,7 @@ const strings = {
   confirmDescription: 'Thanks for connecting with us at CIT. Someone will be in contact with you in the next week to follow up',
   messageHeader: 'Latest Message',
   kidsHeader: 'citKids',
+  youthHeader: 'CITYouth',
   christmasHeader: 'Operation Christmas Child',
   newsHeader: 'Upcoming Events',
   newsSorry: 'Sorry',

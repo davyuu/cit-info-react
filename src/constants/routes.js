@@ -2,6 +2,7 @@ const routes = {
   home: '/',
   message: '/message',
   kids: '/kids',
+  youth: '/youth',
   news: '/news',
   connect: '/connect',
   prayer: "/prayer",

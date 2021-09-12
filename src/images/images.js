@@ -6,6 +6,7 @@ const images = {
   // Page Icons
   message: require('./home/latest-message.svg'),
   kids: require('./home/kids.svg'),
+  youth: require('./home/youth.svg'),
   upcomingEvents: require('./home/upcoming-events.svg'),
   connect: require('./home/connect.svg'),
   prayer: require('./home/prayer.svg'),
@@ -22,6 +23,7 @@ const images = {
   // Headers
   alphaHeader: require('./headers/alpha.jpg'),
   kidsHeader: require('./headers/citKids.png'),
+  youthHeader: require('./headers/cityouth.jpg'),
 
   // Icons
   arrowLeftWhite: require('./icons/arrow_left_white.png'),
