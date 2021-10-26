@@ -65,6 +65,12 @@ const Home = () => (
       />
       <hr/>
       <Section
+        title="CIT Toy Drive 2021"
+        image={images.toy}
+        linkTo={routes.toy}
+      />
+      <hr/>
+      <Section
         title={strings.connectHeader}
         image={images.connect}
         linkTo={routes.connect}

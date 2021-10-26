@@ -14,6 +14,7 @@ import Alpha from './pages/Alpha'
 import Christmas from './pages/Christmas'
 import Marriage from './pages/Marriage'
 import Giving from './pages/Giving'
+import ToyDrive from './pages/ToyDrive'
 import Confirm from './pages/Confirm'
 import Volunteer from './pages/Volunteer'
 import Stats from './pages/Stats'
@@ -49,6 +50,7 @@ class App extends React.Component {
           <Route path={routes.christmas} component={Christmas}/>
           <Route path={routes.marriage} component={Marriage}/>
           <Route path={routes.giving} component={Giving}/>
+          <Route path={routes.toy} component={ToyDrive}/>
           <Route path={routes.confirm} component={Confirm}/>
           <Route path={routes.volunteer} component={Volunteer}/>
           <Route path={routes.stats} render={() => (

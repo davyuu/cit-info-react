@@ -10,6 +10,7 @@ const routes = {
   christmas: '/christmas',
   marriage: '/marriage',
   giving: '/giving',
+  toy: '/toy',
   confirm: '/confirm',
   volunteer: '/volunteer',
   stats: '/stats',
