@@ -14,6 +14,7 @@ const images = {
   gift: require('./home/gift.svg'),
   marriage: require('./home/couple.svg'),
   giving: require('./home/giving.svg'),
+  toy: require('./home/toy.svg'),
   groups: require('./home/community-groups.svg'),
   survey: require('./home/question-mark.svg'),
   volunteer: require('./home/join-team.svg'),
