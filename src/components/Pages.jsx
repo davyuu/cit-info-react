@@ -29,6 +29,7 @@ class Pages extends React.Component {
             title: val.acf.title,
             active: val.acf.active,
             icon: val.acf.icon,
+            externalUrl: val.acf.external_url,
             color: val.acf.color,
             headerImage: val.acf.header_image,
             content: val.acf.content,
@@ -63,6 +64,8 @@ class Pages extends React.Component {
         key={page.id}
         title={page.title}
         imageUrl={page.icon}
+        external={!!page.externalUrl}
+        linkTo={page.externalUrl}
         onClick={() => this.openModal(page)}
       />
     )

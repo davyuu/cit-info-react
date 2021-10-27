@@ -3,16 +3,7 @@ import {Link} from 'react-router-dom'
 
 class DynamicButton extends React.Component {
   render() {
-    if (this.props.onClick) {
-      return (
-        <button
-          className={this.props.className}
-          onClick={this.props.onClick}
-        >
-          {this.props.children}
-        </button>
-      )
-    } else if (this.props.external) {
+    if (this.props.external) {
       return (
         <a
           className={this.props.className}
@@ -21,6 +12,15 @@ class DynamicButton extends React.Component {
         >
           {this.props.children}
         </a>
+      )
+    } else if (this.props.onClick) {
+      return (
+        <button
+          className={this.props.className}
+          onClick={this.props.onClick}
+        >
+          {this.props.children}
+        </button>
       )
     } else {
       return (

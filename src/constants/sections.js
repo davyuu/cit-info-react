@@ -17,7 +17,6 @@ const sections = [{
   image: images.survey,
   linkTo: 'https://gael-chsol.appspot.com/sve/htm/chsol-gather.htm?ns=cit',
   external: true,
-  active: true
 }, {
   title: strings.christmasHeader,
   image: images.gift,
@@ -44,7 +43,6 @@ const sections = [{
   title: "CIT Toy Drive 2021",
   image: images.toy,
   linkTo: routes.toy,
-  active: true
 }, {
   title: strings.connectHeader,
   image: images.connect,
