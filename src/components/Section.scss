@@ -15,6 +15,7 @@
     height: 40px;
     width: 40px;
     margin: 1em;
+    filter: invert(20%) sepia(91%) saturate(3047%) hue-rotate(248deg) brightness(87%) contrast(95%);
 
     svg {
       fill: #5938d9;

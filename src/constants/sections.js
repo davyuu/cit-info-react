@@ -13,6 +13,12 @@ const sections = [{
   linkTo: routes.kids,
   active: true
 }, {
+  title: "Register to attend CIT in-person",
+  image: images.survey,
+  linkTo: 'https://gael-chsol.appspot.com/sve/htm/chsol-gather.htm?ns=cit',
+  external: true,
+  active: true
+}, {
   title: strings.christmasHeader,
   image: images.gift,
   linkTo: routes.christmas,
@@ -20,7 +26,6 @@ const sections = [{
   title: strings.alphaHeader,
   image: images.alpha,
   linkTo: routes.alpha,
-  active: true
 }, {
   title: "The Marriage Course",
   image: images.marriage,
