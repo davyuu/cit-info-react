@@ -29,6 +29,12 @@ const Home = () => (
       />
       <hr/>
       <Section
+        title={strings.youthHeader}
+        image={images.youth}
+        linkTo={routes.youth}
+      />
+      <hr/>
+      <Section
         title="Register to attend CIT in-person"
         image={images.survey}
         linkTo={surveyLink}
