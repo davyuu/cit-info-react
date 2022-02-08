@@ -71,9 +71,9 @@ const Home = () => (
       />
       <hr/>
       <Section
-        title="CIT Toy Drive 2021"
-        image={images.toy}
-        linkTo={routes.toy}
+        title="Refugee Support"
+        image={images.handshake}
+        linkTo={routes.support}
       />
       <hr/>
       <Section
