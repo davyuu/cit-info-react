@@ -27,7 +27,7 @@ class Support extends React.Component {
             className='button'
             style={{backgroundColor: THEME}}
             target="_blank"
-            href="https://docs.google.com/forms/d/1zjQz465Hb8_dhY9ffSLzdIGkCMJXbTlKlCr0ddf1x6Q/edit?usp=sharing_eip_m&ts=61fc347a">Sign up here</a>
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdUCvkxQEjsunlRFq9GVNRG044A-p2woJGIatpatTIZEHvBzA/viewform">Sign up here</a>
 
         </div>
       </div>
