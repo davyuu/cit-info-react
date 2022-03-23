@@ -7,6 +7,7 @@ import strings from '../constants/strings.js';
 import './Home.scss'
 
 const surveyLink = 'https://gael-chsol.appspot.com/sve/htm/chsol-gather.htm?ns=cit'
+const cityouthLink = 'https://instagram.com/cityouth_?utm_medium=copy_link'
 const communityGroupsLink = 'https://churchintoronto.churchcenter.com/groups/community-groups'
 const Home = () => (
   <div className='home'>
@@ -31,11 +32,18 @@ const Home = () => (
       <Section
         title={strings.youthHeader}
         image={images.youth}
-        linkTo={routes.youth}
+        linkTo={cityouthLink}
+        external
       />
       <hr/>
       <Section
-        title="Register to attend CIT in-person"
+        title={strings.connectHeader}
+        image={images.connect}
+        linkTo={routes.connect}
+      />
+      <hr/>
+      <Section
+        title="Attend CIT in-person"
         image={images.survey}
         linkTo={surveyLink}
         external
@@ -59,12 +67,6 @@ const Home = () => (
       /> */}
       <hr/>
       <Section
-        title={strings.prayerHeader}
-        image={images.prayer}
-        linkTo={routes.prayer}
-      />
-      <hr/>
-      <Section
         title={strings.givingHeader}
         image={images.giving}
         linkTo={routes.giving}
@@ -77,16 +79,16 @@ const Home = () => (
       />
       <hr/>
       <Section
-        title={strings.connectHeader}
-        image={images.connect}
-        linkTo={routes.connect}
-      />
-      <hr/>
-      <Section
         title={strings.groupsHeader}
         image={images.groups}
         linkTo={communityGroupsLink}
         external
+      />
+      <hr/>
+      <Section
+        title={strings.prayerHeader}
+        image={images.prayer}
+        linkTo={routes.prayer}
       />
       {/* <hr/>
       <Section
