@@ -52,7 +52,7 @@ class App extends React.Component {
           <Route path={routes.christmas} component={Christmas}/>
           <Route path={routes.marriage} component={Marriage}/>
           <Route path={routes.giving} component={Giving}/>
-          <Route path={routes.toy} component={Support}/>
+          <Route path={routes.support} component={Support}/>
           <Route path={routes.confirm} component={Confirm}/>
           <Route path={routes.volunteer} component={Volunteer}/>
           <Route path={routes.stats} render={() => (
