@@ -214,24 +214,32 @@ class Message extends React.Component {
       }
 
       content = (
-        <div className='message-content'>
-          <div className='message-header-container'>
-            <img className='message-header-img' src={message.seriesImage}/>
-            <div className='message-header-tabs'>
-              <div className={tabClass(MESSAGE_KEY)} onClick={() => this.setState({currentTab: MESSAGE_KEY})}>
-                MESSAGE
-              </div>
-              {studyGuideTab}
-              {groupMaterialTab}
-              {supplementTab}
-              <div className={tabClass(SONGS_KEY)} onClick={() => this.setState({currentTab: SONGS_KEY})}>
-                SONGS
+        <div className="message-content">
+          <div className="message-header-container">
+            <img className="message-header-img" src={message.seriesImage} />
+            <div className="message-header-tabs-wrapper">
+              <div className="message-header-tabs">
+                <div
+                  className={tabClass(MESSAGE_KEY)}
+                  onClick={() => this.setState({ currentTab: MESSAGE_KEY })}
+                >
+                  MESSAGE
+                </div>
+                {studyGuideTab}
+                {groupMaterialTab}
+                {supplementTab}
+                <div
+                  className={tabClass(SONGS_KEY)}
+                  onClick={() => this.setState({ currentTab: SONGS_KEY })}
+                >
+                  SONGS
+                </div>
               </div>
             </div>
           </div>
           {tabContent}
         </div>
-      )
+      );
     }
 
     let modal

@@ -8,15 +8,21 @@
   object-fit: cover;
 }
 
-.message-header-tabs {
+.message-header-tabs-wrapper {
   position: absolute;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
   width: 100%;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   margin-bottom: 2px;
+}
+
+.message-header-tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
 }
 
 .message-tab {
@@ -39,6 +45,8 @@
 
 .message-container {
   padding: 1.2em;
+  margin: auto;
+  max-width: 800px;
 }
 
 .message-title {
