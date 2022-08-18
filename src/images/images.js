@@ -14,6 +14,7 @@ const images = {
   alpha: require('./home/alpha.svg'),
   gift: require('./home/gift.svg'),
   marriage: require('./home/couple.svg'),
+  lunch: require('./home/lunch.svg'),
   giving: require('./home/giving.svg'),
   toy: require('./home/toy.svg'),
   handshake: require('./home/handshake.svg'),

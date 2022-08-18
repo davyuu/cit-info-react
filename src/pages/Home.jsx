@@ -9,6 +9,8 @@ import './Home.scss'
 const surveyLink = 'https://gael-chsol.appspot.com/sve/htm/chsol-gather.htm?ns=cit'
 const cityouthLink = 'https://instagram.com/cityouth_?utm_medium=copy_link'
 const communityGroupsLink = 'https://churchintoronto.churchcenter.com/groups/community-groups'
+const womenLunchLink = 'https://forms.gle/VJPrWMz6MabpWJ6P6'
+
 const Home = () => (
   <div className='home'>
     <span className="version-number">{version}</span>
@@ -41,13 +43,6 @@ const Home = () => (
         image={images.connect}
         linkTo={routes.connect}
       />
-      <hr/>
-      <Section
-        title="Attend CIT in-person"
-        image={images.survey}
-        linkTo={surveyLink}
-        external
-      />
       {/* <hr/> */}
       {/* <Section
         title={strings.christmasHeader}
@@ -65,6 +60,13 @@ const Home = () => (
         image={images.marriage}
         linkTo={routes.marriage}
       /> */}
+      <hr/>
+      <Section
+        title="Women's Luncheon"
+        image={images.lunch}
+        linkTo={womenLunchLink}
+        external
+      />
       <hr/>
       <Section
         title={strings.givingHeader}
