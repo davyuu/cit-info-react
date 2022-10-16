@@ -9,7 +9,7 @@ import './Home.scss'
 const surveyLink = 'https://gael-chsol.appspot.com/sve/htm/chsol-gather.htm?ns=cit'
 const cityouthLink = 'https://instagram.com/cityouth_?utm_medium=copy_link'
 const communityGroupsLink = 'https://churchintoronto.churchcenter.com/groups/community-groups'
-const womenLunchLink = 'https://forms.gle/VJPrWMz6MabpWJ6P6'
+const christmasMarketLink = 'https://docs.google.com/forms/d/e/1FAIpQLSfVLDNCNRgu2k2_682AObMMbYx2C28ETjdz0hxe1RIFsTokmg/viewform'
 
 const Home = () => (
   <div className='home'>
@@ -62,9 +62,9 @@ const Home = () => (
       /> */}
       <hr/>
       <Section
-        title="Women's Luncheon"
-        image={images.lunch}
-        linkTo={womenLunchLink}
+        title="Christmas Market"
+        image={images.gift}
+        linkTo={christmasMarketLink}
         external
       />
       <hr/>
