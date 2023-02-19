@@ -60,25 +60,25 @@ const Home = () => (
         image={images.marriage}
         linkTo={routes.marriage}
       /> */}
-      <hr/>
+      {/* <hr/>
       <Section
         title="Christmas Market"
         image={images.gift}
         linkTo={christmasMarketLink}
         external
-      />
+      /> */}
       <hr/>
       <Section
         title={strings.givingHeader}
         image={images.giving}
         linkTo={routes.giving}
       />
-      <hr/>
+      {/* <hr/>
       <Section
         title="Refugee Support"
         image={images.handshake}
         linkTo={routes.support}
-      />
+      /> */}
       <hr/>
       <Section
         title={strings.groupsHeader}

@@ -288,7 +288,7 @@ class Connect extends React.Component {
                 Sign me up for a Next Steps Session
               </label>
             </div> */}
-            <div className='row checkbox'>
+            {/* <div className='row checkbox'>
               <input
                 className='connect-form-checkbox'
                 type='checkbox'
@@ -299,7 +299,7 @@ class Connect extends React.Component {
               <label htmlFor="book">
                 I'm new! I'd like a copy of "The Case for Christmas" by Lee Strobel
               </label>
-            </div>
+            </div> */}
             <button
               type='button'
               style={{backgroundColor: colors.CONNECT_THEME}}
