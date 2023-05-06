@@ -34,7 +34,8 @@ class Connect extends React.Component {
   onConnectFormSubmit() {
     if(this.isFormValid() && !this.state.loading) {
       this.setState({loading: true});
-      this.createPerson();
+      this.sendToSheets()
+      // this.createPerson();
     }
   }
 
@@ -68,7 +69,6 @@ class Connect extends React.Component {
         this.createPhoneNumberForPerson(personId),
         this.postSubscribedForPerson(personId),
         this.postTypeForPerson(personId),
-        this.sendToSheets()
       ]).then(([emailRes, numberRes, subRes, typeRes, sheetRes]) => {
         if(!(emailRes && numberRes && subRes && typeRes && sheetRes)){
           this.showSuccess();
@@ -150,7 +150,7 @@ class Connect extends React.Component {
   }
 
   sendToSheets() {
-    NetworkUtils.sendToSheets('connect', this.state, this.successHandler, this.errorHandler)
+    NetworkUtils.sendToSheets('connect', this.state, () => this.showSuccess(), this.errorHandler)
   }
 
   successHandler() {
