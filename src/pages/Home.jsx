@@ -10,6 +10,8 @@ const surveyLink = 'https://gael-chsol.appspot.com/sve/htm/chsol-gather.htm?ns=c
 const cityouthLink = 'https://instagram.com/cityouth_?utm_medium=copy_link'
 const communityGroupsLink = 'https://churchintoronto.churchcenter.com/groups/community-groups'
 const christmasMarketLink = 'https://docs.google.com/forms/d/e/1FAIpQLSfVLDNCNRgu2k2_682AObMMbYx2C28ETjdz0hxe1RIFsTokmg/viewform'
+const womensEventLink = 'https://docs.google.com/forms/d/e/1FAIpQLSfYWnnAOn3OOxBWUmxug6jJHy6dwbvVZsPAA1dzX357ccA34Q/viewform'
+const blessingBagsLink = 'https://docs.google.com/document/d/1-OjlRqhWLl-PiPrujwYtTqTxs8lL8FeOeXU1z1j9rRI/edit'
 
 const Home = () => (
   <div className='home'>
@@ -79,6 +81,20 @@ const Home = () => (
         image={images.handshake}
         linkTo={routes.support}
       /> */}
+      <hr/>
+      <Section
+        title="Women's Event - June 24"
+        image={images.woman}
+        linkTo={womensEventLink}
+        external
+      />
+      <hr/>
+      <Section
+        title="Blessing Bags for Scott Mission"
+        image={images.bag}
+        linkTo={blessingBagsLink}
+        external
+      />
       <hr/>
       <Section
         title={strings.groupsHeader}

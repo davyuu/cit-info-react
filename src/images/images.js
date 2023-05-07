@@ -21,6 +21,8 @@ const images = {
   groups: require('./home/community-groups.svg'),
   survey: require('./home/question-mark.svg'),
   volunteer: require('./home/join-team.svg'),
+  bag: require('./home/bag.svg'),
+  woman: require('./home/woman.svg'),
 
   // Headers
   alphaHeader: require('./headers/alpha.jpg'),
