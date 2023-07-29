@@ -6,7 +6,7 @@ import Section from '../components/Section'
 import strings from '../constants/strings.js';
 import './Home.scss'
 
-const surveyLink = 'https://gael-chsol.appspot.com/sve/htm/chsol-gather.htm?ns=cit'
+const thanksgivingLink = 'https://signup.com/client/invitation2/secure/433064654016/false#/invitation'
 const cityouthLink = 'https://instagram.com/cityouth_?utm_medium=copy_link'
 const communityGroupsLink = 'https://churchintoronto.churchcenter.com/groups/community-groups'
 const christmasMarketLink = 'https://docs.google.com/forms/d/e/1FAIpQLSfVLDNCNRgu2k2_682AObMMbYx2C28ETjdz0hxe1RIFsTokmg/viewform'
@@ -83,16 +83,9 @@ const Home = () => (
       /> */}
       <hr/>
       <Section
-        title="Women's Event - June 24"
-        image={images.woman}
-        linkTo={womensEventLink}
-        external
-      />
-      <hr/>
-      <Section
-        title="Blessing Bags for Scott Mission"
-        image={images.bag}
-        linkTo={blessingBagsLink}
+        title="Thanksgiving Signup"
+        image={images.gift}
+        linkTo={thanksgivingLink}
         external
       />
       <hr/>
