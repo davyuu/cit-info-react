@@ -45,8 +45,8 @@ const Home = () => (
         image={images.connect}
         linkTo={routes.connect}
       />
-      {/* <hr/> */}
-      {/* <Section
+      {/* <hr/>
+      <Section
         title={strings.christmasHeader}
         image={images.gift}
         linkTo={routes.christmas}
@@ -62,13 +62,13 @@ const Home = () => (
         image={images.marriage}
         linkTo={routes.marriage}
       /> */}
-      {/* <hr/>
+      <hr/>
       <Section
         title="Christmas Market"
         image={images.gift}
         linkTo={christmasMarketLink}
         external
-      /> */}
+      />
       <hr/>
       <Section
         title={strings.givingHeader}
@@ -81,13 +81,13 @@ const Home = () => (
         image={images.handshake}
         linkTo={routes.support}
       /> */}
-      <hr/>
+      {/* <hr/>
       <Section
         title="Thanksgiving Signup"
         image={images.gift}
         linkTo={thanksgivingLink}
         external
-      />
+      /> */}
       <hr/>
       <Section
         title={strings.groupsHeader}
