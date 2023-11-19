@@ -36,6 +36,9 @@ const images = {
   clock: require('./icons/clock.svg'),
   info: require('./icons/info.svg'),
   location: require('./icons/location.svg'),
+
+  // Misc
+  christmasMarket: require('./christmas-market.jpg'),
 };
 
 export default images;

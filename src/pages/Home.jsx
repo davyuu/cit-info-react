@@ -45,12 +45,12 @@ const Home = () => (
         image={images.connect}
         linkTo={routes.connect}
       />
-      {/* <hr/>
+      <hr/>
       <Section
         title={strings.christmasHeader}
         image={images.gift}
         linkTo={routes.christmas}
-      /> */}
+      />
       {/* <Section
         title={strings.alphaHeader}
         image={images.alpha}
@@ -62,13 +62,6 @@ const Home = () => (
         image={images.marriage}
         linkTo={routes.marriage}
       /> */}
-      <hr/>
-      <Section
-        title="Christmas Market"
-        image={images.gift}
-        linkTo={christmasMarketLink}
-        external
-      />
       <hr/>
       <Section
         title={strings.givingHeader}

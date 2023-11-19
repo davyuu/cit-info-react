@@ -4,7 +4,7 @@ const strings = {
   messageHeader: 'Latest Message',
   kidsHeader: 'citKids',
   youthHeader: 'CITYouth',
-  christmasHeader: 'Operation Christmas Child',
+  christmasHeader: 'Christmas Market',
   newsHeader: 'Upcoming Events',
   newsSorry: 'Sorry',
   newsNoEvents: 'Looks like there are no upcoming events. Please check back later for more updates',
