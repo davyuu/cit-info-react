@@ -31,7 +31,7 @@ class Marriage extends React.Component {
             <p>It is based on Christian principles, but designed to help couples of all faiths strengthen their relationship.</p>
 
             <p><b>When:</b></p>
-            <p>Beginning February 9, 2021 at 7:30 pm</p>
+            <p>Beginning January 24 at 6:30 pm with dinner.</p>
             <p>To find out more information or to register please email: delmartin0211@gmail.com.</p>
           </section>
         </div>
