@@ -10,6 +10,7 @@ const thanksgivingLink = 'https://signup.com/client/invitation2/secure/433064654
 const cityouthLink = 'https://instagram.com/cityouth_?utm_medium=copy_link'
 const communityGroupsLink = 'https://churchintoronto.churchcenter.com/groups/community-groups'
 const christmasMarketLink = 'https://docs.google.com/forms/d/e/1FAIpQLSfVLDNCNRgu2k2_682AObMMbYx2C28ETjdz0hxe1RIFsTokmg/viewform'
+const springFestivalLink = 'https://docs.google.com/forms/d/e/1FAIpQLSd7Rzg5PsiLXbFunj8FC7pYTA_iBhOdM25IDAvUmHkZH2rdRw/viewform'
 const womensEventLink = 'https://docs.google.com/forms/d/e/1FAIpQLSfYWnnAOn3OOxBWUmxug6jJHy6dwbvVZsPAA1dzX357ccA34Q/viewform'
 const blessingBagsLink = 'https://docs.google.com/document/d/1-OjlRqhWLl-PiPrujwYtTqTxs8lL8FeOeXU1z1j9rRI/edit'
 
@@ -45,12 +46,13 @@ const Home = () => (
         image={images.connect}
         linkTo={routes.connect}
       />
-      {/* <hr/>
+      <hr/>
       <Section
-        title={strings.christmasHeader}
+        title="Spring Festival"
         image={images.gift}
-        linkTo={routes.christmas}
-      /> */}
+        linkTo={springFestivalLink}
+        external
+      />
       {/* <Section
         title={strings.alphaHeader}
         image={images.alpha}
