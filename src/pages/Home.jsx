@@ -47,17 +47,18 @@ const Home = () => (
         linkTo={routes.connect}
       />
       <hr/>
-      <Section
+      {/* <Section
         title="Spring Festival"
         image={images.gift}
         linkTo={springFestivalLink}
         external
       />
-      {/* <Section
+      <hr/> */}
+      <Section
         title={strings.alphaHeader}
         image={images.alpha}
         linkTo={routes.alpha}
-      /> */}
+      />
       {/* <hr/>
       <Section
         title="The Marriage Course"
