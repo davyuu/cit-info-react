@@ -9,7 +9,7 @@ import './Home.scss'
 const thanksgivingLink = 'https://signup.com/client/invitation2/secure/433064654016/false#/invitation'
 const cityouthLink = 'https://instagram.com/cityouth_?utm_medium=copy_link'
 const communityGroupsLink = 'https://churchintoronto.churchcenter.com/groups/community-groups'
-const christmasMarketLink = 'https://docs.google.com/forms/d/e/1FAIpQLSfVLDNCNRgu2k2_682AObMMbYx2C28ETjdz0hxe1RIFsTokmg/viewform'
+const christmasMarketLink = 'https://signup.com/go/yysaCNM'
 const springFestivalLink = 'https://docs.google.com/forms/d/e/1FAIpQLSd7Rzg5PsiLXbFunj8FC7pYTA_iBhOdM25IDAvUmHkZH2rdRw/viewform'
 const womensEventLink = 'https://docs.google.com/forms/d/e/1FAIpQLSfYWnnAOn3OOxBWUmxug6jJHy6dwbvVZsPAA1dzX357ccA34Q/viewform'
 const blessingBagsLink = 'https://docs.google.com/document/d/1-OjlRqhWLl-PiPrujwYtTqTxs8lL8FeOeXU1z1j9rRI/edit'
@@ -47,13 +47,13 @@ const Home = () => (
         linkTo={routes.connect}
       />
       <hr/>
-      {/* <Section
-        title="Spring Festival"
+      <Section
+        title="Christmas Market"
         image={images.gift}
-        linkTo={springFestivalLink}
+        linkTo={christmasMarketLink}
         external
       />
-      <hr/> */}
+      <hr/>
       <Section
         title={strings.alphaHeader}
         image={images.alpha}
