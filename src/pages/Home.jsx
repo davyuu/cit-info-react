@@ -34,26 +34,26 @@ const Home = () => (
         linkTo={routes.kids}
       />
       <hr/>
-      <Section
+      {/* <Section
         title={strings.youthHeader}
         image={images.youth}
         linkTo={cityouthLink}
         external
       />
-      <hr/>
+      <hr/> */}
       <Section
         title={strings.connectHeader}
         image={images.connect}
         linkTo={routes.connect}
       />
       <hr/>
-      <Section
+      {/* <Section
         title="Christmas Market"
         image={images.gift}
         linkTo={christmasMarketLink}
         external
       />
-      <hr/>
+      <hr/> */}
       <Section
         title={strings.alphaHeader}
         image={images.alpha}

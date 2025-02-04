@@ -3,7 +3,6 @@ import AlertContainer from 'react-alert'
 import {RingLoader} from 'react-spinners'
 
 import HeaderBar from '../components/HeaderBar'
-import TitleSection from '../components/TitleSection'
 import routes from '../constants/routes'
 import strings from '../constants/strings'
 import images from '../images/images';
@@ -92,11 +91,12 @@ class Alpha extends React.Component {
         />
         <img className='header-img' src={images.alphaHeader}/>
         <div className='page-wrapper'>
-          <TitleSection
-            title={strings.alphaTitle}
-            description={strings.alphaDescription}
-            description2={strings.alphaDescription2}
-          />
+          <div className='title-section'>
+            <h2>Try Alpha</h2>
+            <p>Exploring Faith? Join the free Alpha Course</p>
+            <p>Explore life, meaning & Purpose over dinner</p>
+            <p>We welcome individuals of different ages, languages & backgrounds. Whether you’re new to faith, seeking understanding, or just curious, we’d love to have you!</p>
+          </div>
 
           <hr/>
 
@@ -110,76 +110,22 @@ class Alpha extends React.Component {
               <div className='img' dangerouslySetInnerHTML={{__html: images.location}} />
               <p>CIT: 671 Sheppard Ave. East, Toronto</p>
             </div> */}
-            <p>If you have any questions, feel free to contact teaching pastor Ian for more information: ibrinksman@hotmail.com</p>
+            <p>If you’d like to register as a guest for the upcoming session of Alpha at CIT, please sign up here</p>
+            <a
+              className='button'
+              style={{backgroundColor: colors.ALPHA_THEME}}
+              href='https://forms.gle/hFAb7ZiU2nzYhStz8'
+            >
+              Sign Up
+            </a>
           </div>
 
           <hr/>
 
-          <form autoComplete='on'>
-            <h3>CONTACT INFO</h3>
-            <label>Name</label>
-            <div className='row'>
-              <input
-                className='left'
-                type='text'
-                name="first name"
-                autoComplete="given-name"
-                placeholder='First name'
-                value={this.state.firstName}
-                onChange={(e) => this.setState({firstName: e.target.value})}
-              />
-              <input
-                className='right'
-                type='text'
-                name="last name"
-                autoComplete="family-name"
-                placeholder='Last name'
-                value={this.state.lastName}
-                onChange={(e) => this.setState({lastName: e.target.value})}
-              />
-            </div>
-            <label>Email</label>
-            <div className='row'>
-              <input
-                type='text'
-                name='email'
-                autoComplete="email"
-                placeholder='youremailaddress@example.com'
-                value={this.state.email}
-                onChange={(e) => this.setState({email: e.target.value})}
-              />
-            </div>
-            <label>Phone</label>
-            <div className='row'>
-              <input
-                type='number'
-                name='phone'
-                autoComplete="tel"
-                placeholder='4161234567'
-                value={this.state.phone}
-                onChange={(e) => this.setState({phone: e.target.value})}
-              />
-            </div>
-            <div className='row checkbox'>
-              <input
-                className='connect-form-checkbox'
-                type='checkbox'
-                id='volunteer'
-                value={this.state.volunteer}
-                onChange={(e) => this.setState({volunteer: e.target.checked})}
-              />
-              <label htmlFor="volunteer">
-                I’m interested in volunteering
-              </label>
-            </div>
-            <button
-              type='button'
-              style={{backgroundColor: colors.ALPHA_THEME}}
-              onClick={() => this.onConnectFormSubmit()}
-            >
-              Sign Me Up
-            </button>
-          </form>
+          <div className='info'>
+            <h3>MORE INFORMATION</h3>
+            <p>If you have any questions about participating or volunteering for the Alpha course, feel free to contact pastor Ian for more information at <a href='mailto:ibrinksman@hotmail.com'>ibrinksman@hotmail.com</a></p>
+          </div>
         </div>
         <div
           className='loading-spinner'
