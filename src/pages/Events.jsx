@@ -103,8 +103,8 @@ class Events extends React.Component {
     } else if (news.length === 0) {
       content = (
         <div className='no-event'>
-          <h2>{strings.newsSorry}</h2>
-          <p>{strings.newsNoEvents}</p>
+          <h2>{strings.eventsSorry}</h2>
+          <p>{strings.eventsNoEvents}</p>
         </div>
       )
     } else {
@@ -113,8 +113,8 @@ class Events extends React.Component {
       if (currentNews.length === 0) {
         content = (
           <div className='no-event'>
-            <h2>{strings.newsSorry}</h2>
-            <p>{strings.newsNoEvents}</p>
+            <h2>{strings.eventsSorry}</h2>
+            <p>{strings.eventsNoEvents}</p>
           </div>
         )
       } else {
@@ -144,7 +144,7 @@ class Events extends React.Component {
       <div className='news'>
         <HeaderBar
           goBack={this.props.history.goBack}
-          title={strings.newsHeader}
+          title={strings.eventsHeader}
           color={colors.EVENTS_THEME}
         />
         <FloatingButtons

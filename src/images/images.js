@@ -7,7 +7,7 @@ const images = {
   message: require('./home/latest-message.svg'),
   kids: require('./home/kids.svg'),
   youth: require('./home/youth.svg'),
-  upcomingEvents: require('./home/upcoming-events.svg'),
+  events: require('./home/events.svg'),
   connect: require('./home/connect.svg'),
   prayer: require('./home/prayer.svg'),
   nextSteps: require('./home/next-steps.svg'),

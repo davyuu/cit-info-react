@@ -74,8 +74,8 @@ const Home = () => (
       /> */}
       <hr/>
       <Section
-        title={strings.newsHeader}
-        image={images.upcomingEvents}
+        title={strings.eventsHeader}
+        image={images.events}
         linkTo={routes.events}
       />
       {/* <hr/>
