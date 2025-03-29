@@ -1,21 +1,19 @@
 const routes = {
   home: '/',
-  message: '/message',
-  kids: '/kids',
-  youth: '/youth',
-  news: '/news',
-  connect: '/connect',
-  prayer: "/prayer",
-  next: '/next',
   alpha: '/alpha',
-  christmas: '/christmas',
-  marriage: '/marriage',
-  giving: '/giving',
-  support: '/support',
   confirm: '/confirm',
+  connect: '/connect',
+  giving: '/giving',
+  kids: '/kids',
+  message: '/message',
+  news: '/news',
+  next: '/next',
+  prayer: "/prayer",
   volunteer: '/volunteer',
+  youth: '/youth',
+  // Stats
+  login: '/login',
   stats: '/stats',
-  login: '/login'
 };
 
 export default routes;

@@ -38,7 +38,7 @@ const images = {
   location: require('./icons/location.svg'),
 
   // Misc
-  christmasMarket: require('./christmas-market.jpg'),
+  gazebo: require('./gazebo.jpg'),
 };
 
 export default images;
