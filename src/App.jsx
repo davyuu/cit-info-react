@@ -7,10 +7,10 @@ import Home from './pages/Home'
 import Alpha from './pages/Alpha'
 import Confirm from './pages/Confirm'
 import Connect from './pages/Connect'
+import Events from './pages/Events'
 import Giving from './pages/Giving'
 import Kids from './pages/Kids'
 import Message from './pages/Message'
-import News from './pages/News'
 import Next from './pages/Next'
 import Prayer from "./pages/Prayer";
 import Volunteer from './pages/Volunteer'
@@ -42,10 +42,10 @@ class App extends React.Component {
           <Route path={routes.alpha} component={Alpha}/>
           <Route path={routes.confirm} component={Confirm}/>
           <Route path={routes.connect} component={Connect}/>
+          <Route path={routes.events} component={Events}/>
           <Route path={routes.giving} component={Giving}/>
           <Route path={routes.kids} component={Kids}/>
           <Route path={routes.message} component={Message}/>
-          <Route path={routes.news} component={News}/>
           <Route path={routes.next} component={Next}/>
           <Route path={routes.prayer} component={Prayer} />
           <Route path={routes.volunteer} component={Volunteer}/>

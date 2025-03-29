@@ -76,7 +76,7 @@ const Home = () => (
       <Section
         title={strings.newsHeader}
         image={images.upcomingEvents}
-        linkTo={routes.news}
+        linkTo={routes.events}
       />
       {/* <hr/>
       <Section

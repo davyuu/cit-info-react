@@ -5,12 +5,12 @@ import HeaderBar from '../components/HeaderBar'
 import FloatingButtons from '../components/FloatingButtons'
 import * as colors from '../constants/colors'
 import strings from '../constants/strings';
-import './News.scss'
+import './Events.scss'
 
 const UPCOMING = 0;
 const PAST = 1;
 
-class News extends React.Component {
+class Events extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,8 +29,10 @@ class News extends React.Component {
     .then(res => res.json())
     .then(res => {
       const news = res
+        .filter((val) => val.acf.active)
         .map((val, i) => ({
           id: val.id,
+          active: val.acf.active,
           title: val.acf.title,
           image: val.acf.image,
           date: moment(val.acf.date, 'YYYY/MM/DD'),
@@ -85,7 +87,7 @@ class News extends React.Component {
           </div>
         }
         <div className='page-wrapper'>
-          <h2 style={{color: colors.NEWS_THEME}}>{news.title}</h2>
+          <h2 style={{color: colors.EVENTS_THEME}}>{news.title}</h2>
           <p className='html' dangerouslySetInnerHTML={{__html: news.content}}/>
         </div>
       </div>
@@ -122,13 +124,13 @@ class News extends React.Component {
               <img className='img' src={currentNewsItem.image}/>
             }
             <div className="content">
-              <h2 style={{color: colors.NEWS_THEME}}>{currentNewsItem.title}</h2>
+              <h2 style={{color: colors.EVENTS_THEME}}>{currentNewsItem.title}</h2>
               <p className='html' dangerouslySetInnerHTML={{__html: currentNewsItem.content}}/>
 
               {currentNewsItem.linkUrl &&
                 <a
                   className='button'
-                  style={{backgroundColor: colors.NEWS_THEME}}
+                  style={{backgroundColor: colors.EVENTS_THEME}}
                   href={currentNewsItem.linkUrl}
                 >{currentNewsItem.linkLabel}</a>
               }
@@ -143,7 +145,7 @@ class News extends React.Component {
         <HeaderBar
           goBack={this.props.history.goBack}
           title={strings.newsHeader}
-          color={colors.NEWS_THEME}
+          color={colors.EVENTS_THEME}
         />
         <FloatingButtons
           leftClicked={this.goPast}
@@ -159,4 +161,4 @@ class News extends React.Component {
   }
 }
 
-export default News
+export default Events
