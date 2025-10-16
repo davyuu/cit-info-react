@@ -46,13 +46,6 @@ class Giving extends React.Component {
           </section>
 
           <section>
-            <h3>Text-to-Give</h3>
-            <p>Simply text an amount to: <b>84321</b></p>
-            <p>If it’s your first time giving by text, you’ll get a message back with a link to get your giving account set up. Every other time will be as simple as sending a text message.</p>
-            <p><b>Standard Message & Data Rates May Apply</b></p>
-          </section>
-
-          <section>
             <h3>Cash or Cheque</h3>
             <p>If you prefer to give by <b>cash or cheque</b>, you can do so by using the donation envelopes available at church. Once you have completed the information on the front just drop them into the <b>offering box</b>, located just outside the back auditorium doors.</p>
           </section>

@@ -24,6 +24,12 @@ const Home = () => (
       />
       <hr/>
       <Section
+        title={strings.eventsHeader}
+        image={images.events}
+        linkTo={routes.events}
+      />
+      <hr/>
+      <Section
         title={strings.kidsHeader}
         image={images.kids}
         linkTo={routes.kids}
@@ -72,12 +78,6 @@ const Home = () => (
         image={images.upcomingEvents}
         linkTo={routes.event}
       /> */}
-      <hr/>
-      <Section
-        title={strings.eventsHeader}
-        image={images.events}
-        linkTo={routes.events}
-      />
       {/* <hr/>
       <Section
         title={strings.nextHeader}
