@@ -6,6 +6,7 @@ import Section from '../components/Section'
 import strings from '../constants/strings.js';
 import './Home.scss'
 
+const announcementsLink = 'https://churchintoronto.org/fetch-announce/view'
 const cityouthLink = 'https://instagram.com/cityouth_?utm_medium=copy_link'
 const communityGroupsLink = 'https://churchintoronto.churchcenter.com/groups/community-groups'
 
@@ -26,7 +27,9 @@ const Home = () => (
       <Section
         title={strings.eventsHeader}
         image={images.events}
-        linkTo={routes.events}
+        linkTo={announcementsLink}
+        external
+        // linkTo={routes.events}
       />
       <hr/>
       <Section
