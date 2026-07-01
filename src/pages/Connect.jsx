@@ -150,7 +150,12 @@ class Connect extends React.Component {
   }
 
   sendToSheets() {
-    NetworkUtils.sendToSheets('connect', this.state, () => this.showSuccess(), this.errorHandler)
+    NetworkUtils.sendToSheets(
+      'connect',
+      this.state,
+      () => this.showSuccess(),
+      () => this.showError('An error occurred. Please try again.')
+    )
   }
 
   successHandler() {
