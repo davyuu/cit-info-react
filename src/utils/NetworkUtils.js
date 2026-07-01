@@ -71,5 +71,15 @@ export const sendToSheets = (type, fields, successHandler, errorHandler, url = S
     return encodeURIComponent(key) + '=' + encodeURIComponent(value)
   }).join('&');
 
-  postRequest(url, successHandler, errorHandler, body, SHEETS_HEADERS)
+  fetch(url, {
+    headers: SHEETS_HEADERS,
+    method: 'POST',
+    mode: 'no-cors',
+    body
+  })
+  .then(() => successHandler())
+  .catch(err => {
+    console.log(err);
+    errorHandler();
+  })
 }
